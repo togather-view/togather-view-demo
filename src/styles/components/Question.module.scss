@@ -1,0 +1,29 @@
+@import "../mixin";
+
+.listElementContainer {
+  padding: 18px 0;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid #DFDFDF;
+
+  }
+
+  .group {
+    color: rgb(0, 0, 0, 0.85);
+    margin-bottom: 5px;
+
+    font-size: $font-size-small;
+
+    :not(:last-child) {
+      margin-right: 5px;
+    }
+  }
+
+  .title {
+
+  }
+
+  .techList {
+
+  }
+}
