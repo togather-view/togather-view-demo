@@ -16,7 +16,9 @@ function MainPage() {
             <span className={styles.emoji}>📝</span>예진님을 위해 준비된 면접에
             참여해보세요!
           </h3>
-          <Button className={styles.button}>면접 시작하기</Button>
+          <Button className={styles.button} type="primary">
+            면접 시작하기
+          </Button>
         </div>
       </div>
       <div className={styles.container}>

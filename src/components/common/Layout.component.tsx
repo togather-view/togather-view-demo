@@ -24,8 +24,9 @@ function LayoutComponent({ children }) {
           <div className={styles.content}>
             <div className={styles.logo}>투게더뷰</div>
             <div className={styles.menu}>
-              <IconButtonComponent icon={<FiBookmark />} type="text" />
-              <Button shape="round">인터뷰 시작하기</Button>
+              <Button type="primary" shape="round">
+                면접 시작하기
+              </Button>
               <Dropdown overlay={userMenu}>
                 <IconButtonComponent icon={<FiUser />} />
               </Dropdown>

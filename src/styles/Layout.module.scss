@@ -5,12 +5,18 @@
 
   .header {
     height: 65px;
+
     display: flex;
     justify-content: center;
     align-items: center;
 
+    position: sticky;
+    z-index: 9999;
+    top: 0;
+    background: white;
+
     .wrap {
-      max-width: 1192px;
+      max-width: $max-width;
       margin: 0 $layout-margin-x-desktop;
       width: 100%;
 
@@ -34,7 +40,7 @@
         .menu {
 
           :not(:last-child) {
-            margin-right: 5px;
+            margin-right: 7px;
           }
         }
       }
@@ -49,7 +55,7 @@
     padding-bottom: 40px;
 
     .wrap {
-      max-width: 1192px;
+      max-width: $max-width;
       margin: 0 $layout-margin-x-desktop;
       width: 100%;
 
