@@ -3,27 +3,85 @@
 .listElementContainer {
   padding: 18px 0;
 
+
   &:not(:last-child) {
     border-bottom: 1px solid #DFDFDF;
 
   }
 
-  .group {
-    color: rgb(0, 0, 0, 0.85);
-    margin-bottom: 5px;
+  .wrap {
+    display: flex;
+    justify-content: space-between;
+    color: $color-black-default;
 
-    font-size: $font-size-small;
+    position: relative;
 
-    :not(:last-child) {
-      margin-right: 5px;
+    @include tablet {
+      display: block;
     }
-  }
 
-  .title {
+    .group {
+      margin-bottom: 5px;
 
-  }
+      font-size: $font-size-small;
 
-  .techList {
+      :not(:last-child) {
+        margin-right: 5px;
+      }
+    }
 
+    .title {
+
+    }
+
+    .techList {
+
+    }
+
+    .info {
+      display: flex;
+      align-items: center;
+
+      @include tablet {
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+
+      .element {
+        display: inline;
+        text-align: center;
+        padding: 0 18px;
+
+        @include tablet {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          padding: 0;
+          font-size: $font-size-small;
+        }
+
+        &:not(:last-child) {
+          margin-right: 15px;
+        }
+
+        .count {
+          font-size: 1.3em;
+          margin-bottom: 3px;
+
+          @include tablet {
+            font-size: $font-size-small;
+            margin-left:  5px;
+            margin-bottom: 0;
+          }
+        }
+
+        .icon {
+          color: #4f4f4f;
+        }
+      }
+    }
   }
 }

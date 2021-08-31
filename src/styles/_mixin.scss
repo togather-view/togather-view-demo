@@ -21,9 +21,26 @@ $breakpoint-desktop: 1200px;
   }
 }
 
+.mobile {
+  display: none;
+
+  @include tablet {
+    display: block;
+  }
+}
+
+.desktop {
+  display: block;
+  @include  tablet {
+    display: none;
+  }
+}
+
 // Variables
 $max-width: 1020px;
 $layout-margin-x-desktop: 64px;
 $layout-margin-x-mobile: 24px;
 
 $font-size-small: 0.9em;
+
+$color-black-default: rgb(0, 0, 0, 0.85);
