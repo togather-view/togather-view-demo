@@ -1,12 +1,13 @@
 import { memo, useMemo } from "react";
-import { FiBookmark, FiUser } from "react-icons/fi";
+import Link from "next/link";
+import { FiUser } from "react-icons/fi";
 import { Button, Dropdown, Menu } from "antd";
 
 import IconButtonComponent from "@src/components/common/IconButton.component";
 
 import styles from "@src/styles/Layout.module.scss";
 
-function LayoutComponent({ children }) {
+function LayoutComponent({ showInterviewButton = true, children }) {
   const userMenu = useMemo(
     () => (
       <Menu>
@@ -22,11 +23,21 @@ function LayoutComponent({ children }) {
       <header className={styles.header}>
         <div className={styles.wrap}>
           <div className={styles.content}>
-            <div className={styles.logo}>투게더뷰</div>
+            <Link href="/main">
+              <a>
+                <h1 className={styles.logo}>투게더뷰</h1>
+              </a>
+            </Link>
             <div className={styles.menu}>
-              <Button type="primary" shape="round">
-                면접 시작하기
-              </Button>
+              {showInterviewButton && (
+                <Link href="/interview">
+                  <a>
+                    <Button type="primary" shape="round">
+                      면접 시작하기
+                    </Button>
+                  </a>
+                </Link>
+              )}
               <Dropdown overlay={userMenu}>
                 <IconButtonComponent icon={<FiUser />} />
               </Dropdown>
