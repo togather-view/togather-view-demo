@@ -43,3 +43,5 @@ export default {
   gIos,
   gDeveloper,
 };
+
+export const GroupList = [gFrontend, gServer, gAndroid, gIos, gDeveloper];
