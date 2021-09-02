@@ -50,3 +50,12 @@ export default {
   tReact,
   tPersonality,
 };
+
+export const TechList = [
+  tJavascript,
+  tCss,
+  tBrowser,
+  tNetwork,
+  tReact,
+  tPersonality,
+];

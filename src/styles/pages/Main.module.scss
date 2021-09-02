@@ -13,8 +13,6 @@
 
     margin: 40px 0;
 
-    cursor: pointer;
-
     @include tablet {
       margin: 20px 0;
       display: block;
@@ -33,8 +31,4 @@
       }
     }
   }
-}
-
-.emoji {
-  margin-right: 13px;
 }

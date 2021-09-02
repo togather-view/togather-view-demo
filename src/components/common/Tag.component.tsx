@@ -1,9 +1,9 @@
 import { memo } from "react";
 import { Tag } from "antd";
 
-function TagComponent({ title, color }) {
+function TagComponent({ className = "", title, color = "", onClick = null }) {
   return (
-    <Tag title={title} color={color}>
+    <Tag className={className} title={title} color={color} onClick={onClick} >
       {title}
     </Tag>
   );
