@@ -1,6 +1,6 @@
-import { memo, useCallback, useState } from "react";
+import { memo, useCallback, useEffect, useState } from "react";
 import { Radio, Button } from "antd";
-import { ArrowRightOutlined } from "@ant-design/icons";
+import { ArrowRightOutlined, LoadingOutlined } from "@ant-design/icons";
 
 // components
 import LayoutComponent from "@src/components/common/Layout.component";
@@ -17,8 +17,15 @@ function InterviewFormPage() {
   const [selectedTechList, setSelectedTechList] = useState([]);
   const [allowDuplicated, setAllowDuplicated] = useState("true");
 
+  const [interviewLoadingState, setInterviewLoadingState] = useState("NONE");
+
   const onSelectAllowDuplicated = useCallback(
     (e) => setAllowDuplicated(e.target.value),
+    [],
+  );
+
+  const onClickStartInterview = useCallback(
+    () => setInterviewLoadingState("LOADING"),
     [],
   );
 
@@ -76,12 +83,25 @@ function InterviewFormPage() {
             </Radio.Group>
           </div>
           {/* Start interview */}
-          <Button className={styles.nextButton} type="primary">
+          <Button
+            className={styles.nextButton}
+            type="primary"
+            onClick={onClickStartInterview}
+          >
             면접 시작하기
             <ArrowRightOutlined />
           </Button>
         </div>
       </div>
+      {interviewLoadingState === "LOADING" && (
+        <div className={styles.loading}>
+          <div className={styles.wrap}>
+            <LoadingOutlined className={styles.icon} />
+            <h2>예진님을 위한 면접을 준비하고 있습니다.</h2>
+            <p>잠시만 기다려 주세요!</p>
+          </div>
+        </div>
+      )}
     </LayoutComponent>
   );
 }
