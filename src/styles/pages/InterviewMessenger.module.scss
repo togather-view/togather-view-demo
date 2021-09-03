@@ -1,0 +1,103 @@
+@import "../mixin";
+
+.container {
+  max-width: $max-width;
+  margin: 0 auto;
+  height: 100vh;
+  overflow: hidden;
+
+  position: relative;
+
+  header {
+    position: absolute;
+    top: 0;
+    height: 60px;
+    width: 100%;
+
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: antiquewhite;
+
+    h3 {
+      margin: 0;
+    }
+    .submit {
+      position: absolute;
+      right: 0;
+    }
+  }
+  main {
+    position: absolute;
+    top: 60px;
+    bottom: 120px;
+
+    box-sizing: content-box;
+
+    .messenger {
+      height: 100%;
+      padding: 24px;
+
+      overflow-y: auto;
+
+      @include tablet {
+        padding: 18px;
+      }
+
+
+      .messageWrap {
+        display: flex;
+        gap: 10px;
+        width: 90%;
+
+        .avatar {
+        }
+
+        .message {
+
+          .name {
+            margin-bottom: 3px;
+          }
+
+          .contents {
+            background: #DFDFDF;
+            border-radius: 0 $message-radius $message-radius $message-radius;
+
+            padding: 9px 12px;
+          }
+
+        }
+      }
+    }
+  }
+  footer {
+    position: absolute;
+    bottom: 0;
+    height: 120px;
+    width: 100%;
+
+    padding: 15px;
+    display: flex;
+    align-items: center;
+
+    background: #eaeaea;
+
+    textarea {
+      height: 100%;
+      width: 80%;
+
+      border: none;
+      background: transparent;
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    button {
+      margin: auto;
+    }
+  }
+}
