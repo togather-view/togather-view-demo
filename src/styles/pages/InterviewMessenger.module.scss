@@ -19,8 +19,11 @@
     align-items: center;
     justify-content: center;
 
-    background: antiquewhite;
+    background: white;
+    box-shadow:  5px 5px 4px #e6e6e6,
+    -5px -5px 4px #ffffff;
 
+    z-index: 9999;
     h3 {
       margin: 0;
     }
@@ -62,7 +65,7 @@
           }
 
           .contents {
-            background: #DFDFDF;
+            background: #eeeeee;
             border-radius: 0 $message-radius $message-radius $message-radius;
 
             padding: 9px 12px;
@@ -82,7 +85,7 @@
     display: flex;
     align-items: center;
 
-    background: #eaeaea;
+    background: white;
 
     textarea {
       height: 100%;
