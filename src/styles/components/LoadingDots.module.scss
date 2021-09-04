@@ -1,0 +1,44 @@
+$animation-speed: 1.4;
+$interval: $animation-speed/4;
+$ballSize: 5px;
+$ballColor: #4f4f4f;
+
+@mixin dot($color) {
+  display: inline-block;
+  content: '';
+  height: $ballSize;
+  width: $ballSize;
+  border-radius: 50%;
+  background-color: $color;
+
+  &:not(:last-child) {
+    margin-right: 2px;
+  }
+}
+
+.wrap {
+  height: $ballSize * 4;
+}
+
+.ball1 {
+  @include dot($ballColor);
+
+  animation: jump $animation-speed + s $interval * 0 + s ease infinite;
+}
+.ball2 {
+  @include dot($ballColor);
+
+  animation: jump $animation-speed + s $interval * 1 + s ease infinite;
+}
+.ball3 {
+  @include dot($ballColor);
+
+  animation: jump $animation-speed + s $interval * 2 + s ease infinite;
+}
+
+@keyframes jump {
+  30% { margin-bottom: $ballSize * 1; }
+  35% { margin-bottom: $ballSize * 1; }
+  65% { margin-bottom: 0; }
+  to { margin-bottom: 0; }
+}
