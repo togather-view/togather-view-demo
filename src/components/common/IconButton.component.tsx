@@ -1,9 +1,15 @@
-import { cloneElement, memo, useMemo } from "react";
+import { cloneElement, memo, ReactElement, useMemo } from "react";
+import { ButtonType } from "antd/lib/button/button";
 import { Button } from "antd";
 
 import styles from "@src/styles/common.module.scss";
 
-function IconButtonComponent({ icon, type = "default" }) {
+interface props {
+  icon: ReactElement;
+  type: ButtonType;
+}
+
+function IconButtonComponent({ icon, type = "default" }: props) {
   const iconClone = useMemo(
     () => cloneElement(icon, { className: styles.icon }),
     [icon],

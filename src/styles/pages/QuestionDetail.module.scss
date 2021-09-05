@@ -1,0 +1,47 @@
+@import "../mixin";
+
+.likeQuestionButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 30px auto;
+}
+
+.answerInput {
+
+  margin-bottom: 30px;
+
+  .inputArea {
+    margin-bottom: 10px;
+    display: grid;
+    grid-template-columns: 9fr 1fr;
+    min-height: 100px;
+
+    .textArea {
+      border: 1px solid $color-border-gray;
+      border-right: none;
+
+      border-radius: 2px;
+
+      padding: 10px;
+    }
+
+    .submitButton {
+      height: 100%;
+    }
+  }
+
+  .confirmShare {
+    width: 100%;
+    display: flex;
+    justify-content: right;
+
+    .message {
+      margin-right: 10px;
+    }
+
+    .switch {
+
+    }
+  }
+}

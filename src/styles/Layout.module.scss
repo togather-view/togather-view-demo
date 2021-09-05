@@ -37,10 +37,19 @@
           margin: 0;
         }
 
+        .dropdownMenu {
+          text-align: center;
+        }
+
         .menu {
 
-          :not(:last-child) {
-            margin-right: 7px;
+          .dropdown {
+            text-align: center;
+          }
+
+          .avatar {
+            cursor: pointer;
+            margin-left: 7px;
           }
         }
       }
