@@ -11,7 +11,7 @@ import { Question } from "@src/interface/interface";
 
 // component
 import LayoutComponent from "@src/components/common/Layout.component";
-import QuestionListElement from "@src/components/question/QuestionListElement.component";
+import QuestionDetailComponent from "@src/components/question/QuestionDetail.component";
 import QuestionAnswerComponent from "@src/components/question/QuestionAnswer.component";
 
 // styles
@@ -25,29 +25,31 @@ function QuestionDetailPage({ questionId }) {
 
   return (
     <LayoutComponent>
-      <section>
-        <QuestionListElement question={question} />
-        <Button className={styles.likeQuestionButton} type="text">
-          이 질문을 추천합니다! <LikeOutlined className={styles.icon} />
-        </Button>
-      </section>
-      <section className={styles.answerInput}>
-        <h2>나의 답변 작성하기</h2>
-        <div className={styles.inputArea}>
-          <textarea className={styles.textArea} />
-          <Button className={styles.submitButton}>작성</Button>
-        </div>
-        <div className={styles.confirmShare}>
-          <p className={styles.message}>다른 사람에게 답변을 공개할까요?</p>
-          <Switch className={styles.switch} />
-        </div>
-      </section>
-      <section>
-        <h2>다른 사람의 답변 보기</h2>
-        {answerList.map((x) => (
-          <QuestionAnswerComponent key={x.id} answer={x} />
-        ))}
-      </section>
+      <div>
+        <section>
+          <QuestionDetailComponent question={question} />
+          <Button className={styles.likeQuestionButton} type="text">
+            이 질문을 추천합니다! <LikeOutlined className={styles.icon} />
+          </Button>
+        </section>
+        <section className={styles.answerInput}>
+          <h2>나의 답변 작성하기</h2>
+          <div className={styles.inputArea}>
+            <textarea className={styles.textArea} />
+            <Button className={styles.submitButton}>작성</Button>
+          </div>
+          <div className={styles.confirmShare}>
+            <p className={styles.message}>다른 사람에게 답변을 공개할까요?</p>
+            <Switch className={styles.switch} />
+          </div>
+        </section>
+        <section>
+          <h2>다른 사람의 답변 보기</h2>
+          {answerList.map((x) => (
+            <QuestionAnswerComponent key={x.id} answer={x} />
+          ))}
+        </section>
+      </div>
     </LayoutComponent>
   );
 }

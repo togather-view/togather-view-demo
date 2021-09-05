@@ -90,3 +90,79 @@
     }
   }
 }
+
+
+.detailContainer {
+  margin: 40px 0;
+
+  @include tablet {
+    margin: 20px 0;
+  }
+
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+
+    .createdInfo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      .name {
+        font-weight: bold;
+      }
+
+      p {
+        margin-bottom: 0;
+      }
+    }
+
+    .info {
+      display: flex;
+      align-items: center;
+
+      .element {
+        margin-right: 15px;
+
+        .icon {
+          display: inline;
+          margin-right: 8px;
+        }
+
+        .count {
+          display: inline;
+
+        }
+      }
+    }
+
+  }
+
+  h3 {
+    font-size: 1.24rem;
+    margin-bottom: 15px;
+  }
+
+  .tagContainer {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 5px;
+
+    font-size: small;
+
+    p {
+      margin-bottom: 0;
+    }
+
+    .group {
+      :not(:last-child):after {
+        content: "/";
+        margin: 0 6px;
+      }
+    }
+  }
+
+}
