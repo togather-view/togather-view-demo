@@ -17,6 +17,14 @@ export interface Question {
   jobGroup: JobGroup[];
 }
 
+export interface Answer {
+  id: number;
+  contents: string;
+  likeCount: number;
+  createdBy: User;
+  createdAt: string;
+}
+
 export interface User {
   id: number;
   firstName: string;
