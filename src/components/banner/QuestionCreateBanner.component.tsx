@@ -9,7 +9,7 @@ import QuestionFormComponent from "@src/components/question/QuestionForm.compone
 import styles from "@src/styles/pages/Main.module.scss";
 
 function QuestionCreateBannerComponent() {
-  const [visible, setVisible] = useState(true);
+  const [visible, setVisible] = useState(false);
 
   const openForm = useCallback(() => setVisible(true), []);
   const closeForm = useCallback(() => setVisible(false), []);
