@@ -1,8 +1,9 @@
 import { memo, useMemo } from "react";
-import { Avatar, Button, Switch } from "antd";
+import { Button, Switch } from "antd";
 
 // dummy
 import { questionList } from "@dummy/question.data";
+import { myAccount } from "@dummy/user.data";
 
 // type
 import { Question } from "@src/interface/interface";
@@ -10,8 +11,6 @@ import { Question } from "@src/interface/interface";
 // component
 import LayoutComponent from "@src/components/common/Layout.component";
 import QuestionListElement from "@src/components/question/QuestionListElement.component";
-import { myAccount } from "@dummy/user.data";
-import { LikeOutlined } from "@ant-design/icons";
 import QuestionAnswerComponent from "@src/components/question/QuestionAnswer.component";
 
 function QuestionDetailPage({ questionId }) {
@@ -19,6 +18,7 @@ function QuestionDetailPage({ questionId }) {
     const idToInt = parseInt(questionId, 10);
     return questionList.find((x) => x.id === idToInt);
   }, [questionId]);
+
   return (
     <LayoutComponent>
       <section>
@@ -38,9 +38,7 @@ function QuestionDetailPage({ questionId }) {
         <QuestionAnswerComponent
           createdAt="2021년 3월 9일"
           createdBy={myAccount}
-          contents="군인·군무원·경찰공무원 기타 법률이 정하는 자가 전투·훈련등 직무집행과 관련하여 받은 손해에 대하여는 법률이 정하는 보상외에 국가 또는 공공단체에 공무원의 직무상 불법행위로 인한 배상은 청구할 수 없다.
-
-"
+          contents="군인·군무원·경찰공무원 기타 법률이 정하는 자가 전투·훈련등 직무집행과 관련하여 받은 손해에 대하여는 법률이 정하는 보상외에 국가 또는 공공단체에 공무원의 직무상 불법행위로 인한 배상은 청구할 수 없다."
           likeCount={2}
         />
         <QuestionAnswerComponent

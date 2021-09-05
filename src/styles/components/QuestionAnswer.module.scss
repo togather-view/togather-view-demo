@@ -1,0 +1,64 @@
+@import "../mixin";
+
+.questionAnswerWrap {
+
+  padding-bottom: 15px;
+
+  p {
+    margin-bottom: 0;
+  }
+
+
+  &:not(:last-child) {
+    border-bottom: 1px solid $color-border-gray;
+  }
+
+  .header {
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-top: 15px;
+    padding-bottom: 10px;
+
+    .avatar {
+
+    }
+
+    .name {
+      font-weight: bold;
+    }
+  }
+
+  .body {
+    .contents {
+      padding-bottom: 10px;
+    }
+  }
+
+  .footer {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    .createdAt {
+
+    }
+
+    .like {
+      cursor: pointer;
+      border: none;
+      background: none;
+      height: fit-content;
+      padding: 0;
+    }
+
+    .icon {
+      margin-right: 5px;
+    }
+
+    .count {
+
+    }
+  }
+}
