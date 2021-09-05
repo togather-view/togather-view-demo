@@ -2,7 +2,7 @@ import { memo, useCallback, useMemo, useState } from "react";
 
 import TagComponent from "@src/components/common/Tag.component";
 
-import styles from "@src/styles/pages/InterviewForm.module.scss";
+import styles from "@src/styles/components/TagSelect.module.scss";
 
 function TagSelectComponent({
   color,

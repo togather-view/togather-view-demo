@@ -1,0 +1,45 @@
+@import "../mixin";
+
+.container {
+  position: sticky;
+  top: 90px;
+  width: 280px;
+
+  border: 1px solid $color-border-gray;
+  border-radius: 2px;
+  padding: 14px;
+
+  @include mobile {
+    display: none;
+  }
+
+  :not(:last-child) {
+    margin-bottom: 5px;
+  }
+
+  .radioWrap {
+    overflow-x: scroll;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* Hide scrollbar for IE, Edge and Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .radioGroup {
+
+    white-space: nowrap;
+
+    .button {
+    }
+  }
+
+  .selectContainer {
+    margin-top: 10px;
+    line-height: 30px;
+  }
+
+}

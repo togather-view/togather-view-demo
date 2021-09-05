@@ -39,32 +39,6 @@
 
       }
 
-      .tagContainer {
-        background: #F0F0F0;
-        border-radius: 5px;
-        padding: 5px 10px;
-        line-height: 30px;
-
-        .tag {
-          cursor: pointer;
-        }
-
-        .tagSelectedBlue {
-          cursor: pointer;
-          color: #0070f3;
-        }
-
-        .tagSelectedOrange {
-          cursor: pointer;
-          color: #e3750e;
-        }
-      }
-
-      .selectContainer {
-        margin-top: 10px;
-        line-height: 30px;
-      }
-
       .radioGroup {
         display: grid;
         grid-template-columns: 1fr 1fr;

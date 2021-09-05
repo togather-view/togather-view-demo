@@ -1,7 +1,6 @@
 import { memo, useMemo } from "react";
 import Link from "next/link";
 import { EyeOutlined, LikeOutlined, MessageOutlined } from "@ant-design/icons";
-import classNames from "classnames";
 
 import TagComponent from "@src/components/common/Tag.component";
 
@@ -14,24 +13,6 @@ interface Props {
 }
 
 function QuestionListElement({ question }: Props) {
-  const mobileIconClassName = useMemo(
-    () =>
-      classNames({
-        [styles.icon]: true,
-        [styles.mobile]: true,
-      }),
-    [],
-  );
-
-  const desktopIconClassName = useMemo(
-    () =>
-      classNames({
-        [styles.icon]: true,
-        [styles.desktop]: true,
-      }),
-    [],
-  );
-
   return (
     <div className={styles.listElementContainer}>
       <Link href={`/question/${question.id}`}>
@@ -55,19 +36,16 @@ function QuestionListElement({ question }: Props) {
           </div>
           <div className={styles.info}>
             <div className={styles.element}>
-              <LikeOutlined className={mobileIconClassName} />
+              <LikeOutlined className={styles.icon} />
               <div className={styles.count}>0</div>
-              <LikeOutlined className={desktopIconClassName} />
             </div>
             <div className={styles.element}>
-              <MessageOutlined className={mobileIconClassName} />
+              <MessageOutlined className={styles.icon} />
               <div className={styles.count}>2</div>
-              <MessageOutlined className={desktopIconClassName} />
             </div>
             <div className={styles.element}>
-              <EyeOutlined className={mobileIconClassName} />
+              <EyeOutlined className={styles.icon} />
               <div className={styles.count}>23</div>
-              <EyeOutlined className={desktopIconClassName} />
             </div>
           </div>
         </a>
