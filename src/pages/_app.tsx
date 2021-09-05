@@ -1,4 +1,4 @@
-import "antd/dist/antd.css";
+import "@src/styles/antd-custom.css";
 import "@src/styles/globals.scss";
 
 function MyApp({ Component, pageProps }) {
