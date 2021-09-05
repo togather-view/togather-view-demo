@@ -14,6 +14,7 @@ import { TechList } from "@dummy/tech.data";
 import { myAccount } from "@dummy/user.data";
 
 import styles from "@src/styles/pages/InterviewForm.module.scss";
+import tagStyles from "@src/styles/components/TagSelect.module.scss";
 
 function InterviewFormPage() {
   const router = useRouter();
@@ -71,7 +72,7 @@ function InterviewFormPage() {
               tagList={GroupList}
               selectedList={selectedJobList}
               setSelectedList={setSelectedJobList}
-              selectedClassName={styles.tagSelectedBlue}
+              selectedClassName={tagStyles.tagSelectedBlue}
             />
           </div>
           {/* Select Techs */}
@@ -84,7 +85,7 @@ function InterviewFormPage() {
               tagList={TechList}
               selectedList={selectedTechList}
               setSelectedList={setSelectedTechList}
-              selectedClassName={styles.tagSelectedOrange}
+              selectedClassName={tagStyles.tagSelectedOrange}
             />
           </div>
           {/* Check if allow duplication */}
