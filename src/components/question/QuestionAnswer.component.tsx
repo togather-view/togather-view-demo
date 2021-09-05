@@ -3,28 +3,20 @@ import { Avatar } from "antd";
 import { LikeFilled, LikeOutlined } from "@ant-design/icons";
 
 // interface
-import { User } from "@src/interface/interface";
+import { Answer, User } from "@src/interface/interface";
 
 import styles from "@src/styles/components/QuestionAnswer.module.scss";
 
 interface props {
-  createdBy: User;
-  createdAt: string;
-  contents: string;
-  likeCount: number;
+  answer: Answer;
 }
 
-function QuestionAnswerComponent({
-  createdBy,
-  createdAt,
-  contents,
-  likeCount,
-}: props) {
+function QuestionAnswerComponent({ answer }: props) {
   const [liked, setLiked] = useState(false);
   const onClickLike = useCallback(() => setLiked(!liked), [liked]);
   const displayedLikeCount = useMemo(
-    () => likeCount + (liked ? 1 : 0),
-    [likeCount, liked],
+    () => answer.likeCount + (liked ? 1 : 0),
+    [answer.likeCount, liked],
   );
   const likeIcon = useMemo(
     () =>
@@ -39,18 +31,18 @@ function QuestionAnswerComponent({
     <div className={styles.questionAnswerWrap}>
       <div className={styles.header}>
         <div>
-          <Avatar src={createdBy.avatarUrl} />
+          <Avatar src={answer.createdBy.avatarUrl} />
         </div>
         <p className={styles.name}>
-          {createdBy.familyName}
-          {createdBy.firstName}
+          {answer.createdBy.familyName}
+          {answer.createdBy.firstName}
         </p>
       </div>
       <div className={styles.body}>
-        <p className={styles.contents}>{contents}</p>
+        <p className={styles.contents}>{answer.contents}</p>
       </div>
       <div className={styles.footer}>
-        <p className={styles.createdAt}>{createdAt}</p>
+        <p className={styles.createdAt}>{answer.createdAt}</p>
         <button className={styles.like} type="button" onClick={onClickLike}>
           {likeIcon}
           <span className={styles.count}>{displayedLikeCount}</span>
