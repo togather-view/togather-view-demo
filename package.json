@@ -20,6 +20,7 @@
     "sass": "^1.38.2"
   },
   "devDependencies": {
+    "@types/antd": "^1.0.0",
     "@types/node": "^16.7.4",
     "@types/react": "^17.0.19",
     "@typescript-eslint/eslint-plugin": "^4.29.3",

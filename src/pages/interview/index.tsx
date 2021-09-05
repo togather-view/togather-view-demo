@@ -9,12 +9,13 @@ import TagSelectComponent from "@src/components/interview/TagSelect.component";
 // dummy
 import { GroupList } from "@dummy/group.data";
 import { TechList } from "@dummy/tech.data";
+import { myAccount } from "@dummy/user.data";
 
 import styles from "@src/styles/pages/InterviewForm.module.scss";
 
 function InterviewFormPage() {
-  const [selectedJobList, setSelectedJobList] = useState([]);
-  const [selectedTechList, setSelectedTechList] = useState([]);
+  const [selectedJobList, setSelectedJobList] = useState(myAccount.jobList);
+  const [selectedTechList, setSelectedTechList] = useState(myAccount.techList);
   const [allowDuplicated, setAllowDuplicated] = useState("true");
 
   const [interviewLoadingState, setInterviewLoadingState] = useState("NONE");
@@ -36,8 +37,10 @@ function InterviewFormPage() {
           {/* Title */}
           <div className={styles.title}>
             <h2>
-              예진님의 면접을 시작할게요!
-              <p>그 전에, 예진님에 대해 몇 가지 더 알려주세요.</p>
+              {myAccount.firstName}님의 면접을 시작할게요!
+              <p>
+                그 전에, {myAccount.firstName}님에 대해 몇 가지 더 알려주세요.
+              </p>
             </h2>
           </div>
           {/* Select job group */}
@@ -97,7 +100,7 @@ function InterviewFormPage() {
         <div className={styles.loading}>
           <div className={styles.wrap}>
             <LoadingOutlined className={styles.icon} />
-            <h2>예진님을 위한 면접을 준비하고 있습니다.</h2>
+            <h2>{myAccount.firstName}님을 위한 면접을 준비하고 있습니다.</h2>
             <p>잠시만 기다려 주세요!</p>
           </div>
         </div>
