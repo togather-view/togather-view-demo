@@ -1,4 +1,4 @@
-import { memo, useState } from "react";
+import { memo, useCallback, useState } from "react";
 import { Button, Input } from "antd";
 
 // dummy
@@ -12,15 +12,18 @@ import TagSelectComponent from "@src/components/interview/TagSelect.component";
 import styles from "@src/styles/components/QuestionForm.module.scss";
 import tagStyles from "@src/styles/components/TagSelect.module.scss";
 
-function QuestionFormComponent() {
+function QuestionFormComponent({ closeForm }) {
   const [selectedJobList, setSelectedJobList] = useState([]);
   const [selectedTechList, setSelectedTechList] = useState([]);
+  const [contents, setContents] = useState("");
+
+  const onChangeContents = useCallback((e) => setContents(e.value), []);
 
   return (
     <div className={styles.wrap}>
       <h2 className={styles.title}>예상 질문 공유하기</h2>
       <h3>질문 내용</h3>
-      <Input.TextArea rows={4} />
+      <Input.TextArea rows={4} onChange={onChangeContents} value={contents} />
       <div className={tagStyles.selectContainer}>
         <h3>직군</h3>
         <TagSelectComponent
@@ -41,7 +44,7 @@ function QuestionFormComponent() {
           tagList={TechList}
         />
       </div>
-      <Button className={styles.submit} type="primary">
+      <Button className={styles.submit} type="primary" onClick={closeForm}>
         공유하기
       </Button>
     </div>
