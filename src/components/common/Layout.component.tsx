@@ -1,16 +1,16 @@
 import { memo, useMemo } from "react";
 import Link from "next/link";
-import { FiUser } from "react-icons/fi";
-import { Button, Dropdown, Menu } from "antd";
+import { Avatar, Button, Dropdown, Menu } from "antd";
 
-import IconButtonComponent from "@src/components/common/IconButton.component";
+// dummy
+import { myAccount } from "@dummy/user.data";
 
 import styles from "@src/styles/Layout.module.scss";
 
 function LayoutComponent({ showInterviewButton = true, children }) {
   const userMenu = useMemo(
     () => (
-      <Menu>
+      <Menu className={styles.dropdownMenu}>
         <Menu.Item>내 정보</Menu.Item>
         <Menu.Item>로그아웃</Menu.Item>
       </Menu>
@@ -38,8 +38,13 @@ function LayoutComponent({ showInterviewButton = true, children }) {
                   </a>
                 </Link>
               )}
-              <Dropdown overlay={userMenu}>
-                <IconButtonComponent icon={<FiUser />} />
+              <Dropdown
+                className={styles.dropdown}
+                overlay={userMenu}
+                getPopupContainer={(t) => t.parentElement}
+                placement="bottomCenter"
+              >
+                <Avatar src={myAccount.avatarUrl} className={styles.avatar} />
               </Dropdown>
             </div>
           </div>
