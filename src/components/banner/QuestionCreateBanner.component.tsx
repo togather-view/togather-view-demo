@@ -1,27 +1,30 @@
-import { memo } from "react";
-import Link from "next/link";
-import { Button } from "antd";
+import { memo, useCallback, useState } from "react";
+import { Button, Modal } from "antd";
 
-// dummy
-import { myAccount } from "@dummy/user.data";
+// components
+import QuestionFormComponent from "@src/components/question/QuestionForm.component";
 
 // styles
 import styles from "@src/styles/pages/Main.module.scss";
 
 function QuestionCreateBannerComponent() {
+  const [visible, setVisible] = useState(true);
+
+  const openForm = useCallback(() => setVisible(true), []);
+  const closeForm = useCallback(() => setVisible(false), []);
+
   return (
     <div className={styles.box}>
       <h3>
         <span className={styles.emoji}>📝</span>
         다른 사람들과 예상 질문을 공유해보세요!
       </h3>
-      <Link href="/interview">
-        <a>
-          <Button className={styles.button} type="primary">
-            예상 질문 공유하기
-          </Button>
-        </a>
-      </Link>
+      <Button className={styles.button} type="primary" onClick={openForm}>
+        예상 질문 공유하기
+      </Button>
+      <Modal visible={visible} footer={null} onCancel={closeForm}>
+        <QuestionFormComponent />
+      </Modal>
     </div>
   );
 }
