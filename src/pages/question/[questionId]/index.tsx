@@ -1,5 +1,6 @@
 import { memo, useMemo } from "react";
 import { Button, Switch } from "antd";
+import { LikeOutlined } from "@ant-design/icons";
 
 // dummy
 import { questionList } from "@dummy/question.data";
@@ -15,7 +16,6 @@ import QuestionAnswerComponent from "@src/components/question/QuestionAnswer.com
 
 // styles
 import styles from "@src/styles/pages/QuestionDetail.module.scss";
-import { LikeOutlined } from "@ant-design/icons";
 
 function QuestionDetailPage({ questionId }) {
   const question: Question = useMemo(() => {

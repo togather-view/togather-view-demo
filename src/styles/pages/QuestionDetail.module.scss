@@ -20,6 +20,10 @@
     .textArea {
       border: 1px solid $color-border-gray;
       border-right: none;
+
+      border-radius: 2px;
+
+      padding: 10px;
     }
 
     .submitButton {
