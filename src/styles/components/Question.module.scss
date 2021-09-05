@@ -44,43 +44,31 @@
     }
 
     .info {
-      display: flex;
-      align-items: center;
+      position: absolute;
+      top: 0;
+      right: 0;
 
-      @include tablet {
-        position: absolute;
-        top: 0;
-        right: 0;
-      }
+      display: flex;
 
       .element {
-        display: inline;
         text-align: center;
-        padding: 0 18px;
 
-        @include tablet {
-          width: 100%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
-          padding: 0;
-          font-size: $font-size-small;
-        }
+        padding: 0;
+        font-size: $font-size-small;
 
         &:not(:last-child) {
           margin-right: 15px;
         }
 
         .count {
-          font-size: 1.3em;
-          margin-bottom: 3px;
-
-          @include tablet {
-            font-size: $font-size-small;
-            margin-left: 5px;
-            margin-bottom: 0;
-          }
+          font-size: $font-size-small;
+          margin-left: 5px;
+          margin-bottom: 0;
         }
 
         .icon {

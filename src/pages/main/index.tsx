@@ -3,6 +3,7 @@ import { Button } from "antd";
 import Link from "next/link";
 
 import LayoutComponent from "@src/components/common/Layout.component";
+import QuestionFilterComponent from "@src/components/common/QuestionFilter.component";
 import QuestionListElement from "@src/components/question/QuestionListElement.component";
 
 // dummy
@@ -36,7 +37,10 @@ function MainPage() {
             <QuestionListElement key={x.id} question={x} />
           ))}
         </div>
-        <div className={styles.sideWrap}>{/*    Filter          */}</div>
+        <div className={styles.sideWrap}>
+          {/*    Filter          */}
+          <QuestionFilterComponent />
+        </div>
       </div>
     </LayoutComponent>
   );

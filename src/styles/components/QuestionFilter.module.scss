@@ -1,0 +1,10 @@
+@import "../mixin";
+
+.container {
+  position: sticky;
+  top: 80px;
+
+  border: 1px solid $color-border-gray;
+  border-radius: 2px;
+  padding: 14px;
+}
