@@ -1,14 +1,12 @@
 import { memo } from "react";
-import { Button } from "antd";
-import Link from "next/link";
 
 import LayoutComponent from "@src/components/common/Layout.component";
+import InterviewStartBannerComponent from "@src/components/banner/InterviewStartBanner.component";
 import QuestionFilterComponent from "@src/components/common/QuestionFilter.component";
 import QuestionListElement from "@src/components/question/QuestionListElement.component";
 
 // dummy
 import { questionList } from "@dummy/question.data";
-import { myAccount } from "@dummy/user.data";
 
 import styles from "@src/styles/pages/Main.module.scss";
 
@@ -16,19 +14,7 @@ function MainPage() {
   return (
     <LayoutComponent>
       <div className={styles.banner}>
-        <div className={styles.box}>
-          <h3>
-            <span className={styles.emoji}>📝</span>
-            {myAccount.firstName}님을 위해 준비된 면접에 참여해보세요!
-          </h3>
-          <Link href="/interview">
-            <a>
-              <Button className={styles.button} type="primary">
-                면접 시작하기
-              </Button>
-            </a>
-          </Link>
-        </div>
+        <InterviewStartBannerComponent />
       </div>
       <div className={styles.container}>
         {/*    Question List   */}
