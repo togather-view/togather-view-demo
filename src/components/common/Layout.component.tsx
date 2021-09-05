@@ -11,7 +11,11 @@ function LayoutComponent({ showInterviewButton = true, children }) {
   const userMenu = useMemo(
     () => (
       <Menu className={styles.dropdownMenu}>
-        <Menu.Item>내 정보</Menu.Item>
+        <Menu.Item>
+          <Link href="/profile">
+            <a>내 정보</a>
+          </Link>
+        </Menu.Item>
         <Menu.Item>로그아웃</Menu.Item>
       </Menu>
     ),

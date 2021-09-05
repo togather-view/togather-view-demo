@@ -10,5 +10,5 @@ export const myAccount: User = {
   techList: [tJavascript],
   jobList: [gFrontend],
   avatarUrl:
-    "https://cdn.pixabay.com/photo/2017/09/20/12/12/girl-2768346__480.jpg",
+    "http://file3.instiz.net/data/file3/2018/03/08/9/1/7/917ed6f38cc0beeda22294ecb7b48d9b.jpg",
 };
