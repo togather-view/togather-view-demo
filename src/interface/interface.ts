@@ -16,3 +16,12 @@ export interface Question {
   techList: Tech[];
   jobGroup: JobGroup[];
 }
+
+export interface User {
+  id: number;
+  firstName: string;
+  familyName: string;
+  techList: Tech[];
+  jobList: JobGroup[];
+  avatarUrl: string;
+}
