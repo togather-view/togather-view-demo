@@ -2,6 +2,7 @@ import { memo } from "react";
 
 import LayoutComponent from "@src/components/common/Layout.component";
 import InterviewStartBannerComponent from "@src/components/banner/InterviewStartBanner.component";
+import QuestionCreateBannerComponent from "@src/components/banner/QuestionCreateBanner.component";
 import QuestionFilterComponent from "@src/components/common/QuestionFilter.component";
 import QuestionListElement from "@src/components/question/QuestionListElement.component";
 
@@ -15,6 +16,7 @@ function MainPage() {
     <LayoutComponent>
       <div className={styles.banner}>
         <InterviewStartBannerComponent />
+        <QuestionCreateBannerComponent />
       </div>
       <div className={styles.container}>
         {/*    Question List   */}

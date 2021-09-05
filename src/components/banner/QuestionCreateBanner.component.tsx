@@ -8,17 +8,17 @@ import { myAccount } from "@dummy/user.data";
 // styles
 import styles from "@src/styles/pages/Main.module.scss";
 
-function InterviewStartBannerComponent() {
+function QuestionCreateBannerComponent() {
   return (
     <div className={styles.box}>
       <h3>
-        <span className={styles.emoji}>💁‍</span>
-        {myAccount.firstName}님을 위해 준비된 면접에 참여해보세요!
+        <span className={styles.emoji}>📝</span>
+        다른 사람들과 예상 질문을 공유해보세요!
       </h3>
       <Link href="/interview">
         <a>
           <Button className={styles.button} type="primary">
-            면접 시작하기
+            예상 질문 공유하기
           </Button>
         </a>
       </Link>
@@ -26,4 +26,4 @@ function InterviewStartBannerComponent() {
   );
 }
 
-export default memo(InterviewStartBannerComponent);
+export default memo(QuestionCreateBannerComponent);
