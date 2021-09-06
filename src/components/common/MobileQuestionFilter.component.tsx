@@ -1,10 +1,10 @@
 import { memo, useCallback, useMemo, useState } from "react";
 import { CaretDownOutlined } from "@ant-design/icons";
-import { Dropdown, Menu } from "antd";
+import { Dropdown, Menu, Modal } from "antd";
 
 // dummy
-import { gFrontend } from "@dummy/group.data";
-import { tJavascript } from "@dummy/tech.data";
+import { gFrontend, GroupList } from "@dummy/group.data";
+import { TechList, tJavascript } from "@dummy/tech.data";
 import { myAccount } from "@dummy/user.data";
 
 // type
@@ -12,12 +12,17 @@ import { QuestionSortType } from "@src/interface/interface";
 
 // styles
 import styles from "@src/styles/components/MobileQuestionFilter.module.scss";
+import TagSelectComponent from "@src/components/interview/TagSelect.component";
+import tagStyles from "@src/styles/components/TagSelect.module.scss";
 
 function MobileQuestionFilterComponent() {
   const [sort, setSort] = useState(QuestionSortType.LATEST);
   const [selectedJobList, setSelectedJobList] = useState(myAccount.jobList);
   const [selectedTechList, setSelectedTechList] = useState(myAccount.techList);
 
+  const [visible, setVisible] = useState(false);
+  const onClose = useCallback(() => setVisible(false), []);
+  const onOpen = useCallback(() => setVisible(true), []);
   const onSelectSort = useCallback((e) => setSort(e.key), []);
 
   const menu = useMemo(
@@ -72,17 +77,44 @@ function MobileQuestionFilterComponent() {
             <CaretDownOutlined />
           </div>
         </Dropdown>
-        <div className={styles.box}>
+        <div className={styles.box} onClick={onOpen}>
           <span className={styles.label}>직군</span>
-          <span className={styles.selected}>{selectedJob}</span>
+          {selectedJob}
           <CaretDownOutlined />
         </div>
-        <div className={styles.box}>
+        <div className={styles.box} onClick={onOpen}>
           <span className={styles.label}>기술</span>
           {selectedTech}
           <CaretDownOutlined />
         </div>
       </div>
+
+      <Modal
+        visible={visible}
+        onCancel={onClose}
+        footer={null}
+        closable={false}
+      >
+        <div className={styles.selectContainer}>
+          <TagSelectComponent
+            color="blue"
+            selectedClassName={tagStyles.tagSelectedBlue}
+            selectedList={selectedJobList}
+            setSelectedList={setSelectedJobList}
+            tagList={GroupList}
+          />
+        </div>
+        <br />
+        <div className={styles.selectContainer}>
+          <TagSelectComponent
+            color="orange"
+            selectedClassName={tagStyles.tagSelectedOrange}
+            selectedList={selectedTechList}
+            setSelectedList={setSelectedTechList}
+            tagList={TechList}
+          />
+        </div>
+      </Modal>
     </div>
   );
 }
