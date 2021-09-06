@@ -6,6 +6,9 @@
   grid-template-columns: 280px auto;
   gap: 40px;
 
+  @include mobile {
+    display: block;
+  }
 }
 
 .profile {
@@ -64,6 +67,15 @@
 
 .menu {
   margin-top: 20px;
+
+  @include mobile {
+    margin-top: 10px;
+  }
+
+  .mobileMenu {
+    width: 100%;
+    overflow: hidden;
+  }
 }
 
 .contentsContainer {
@@ -72,7 +84,11 @@
     border: 1px solid $color-border-gray;
     padding: 20px;
 
-    &:not(:last-child) {
+    @include mobile {
+      border: none;
+      padding: 5px 0 0 0;
+    }
+      &:not(:last-child) {
       margin-bottom: 20px;
     }
 

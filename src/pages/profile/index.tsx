@@ -1,10 +1,11 @@
 import LayoutComponent from "@src/components/common/Layout.component";
 import { memo, useCallback, useState } from "react";
-import { Button, Menu } from "antd";
+import { Button, Menu, Tabs } from "antd";
 
 // dummy
 import { questionList } from "@dummy/question.data";
 import { answerList } from "@dummy/answer.data";
+import { myAccount } from "@dummy/user.data";
 
 // component
 import ProfileCardComponent from "@src/components/profile/ProfileCard.component";
@@ -13,7 +14,6 @@ import QuestionAnswerComponent from "@src/components/question/QuestionAnswer.com
 
 // styles
 import styles from "@src/styles/pages/Profile.module.scss";
-import { myAccount } from "@dummy/user.data";
 
 const ProfileMenu = {
   RECORD: "RECORD",
@@ -25,6 +25,7 @@ const ProfileMenu = {
 function ProfilePage() {
   const [menu, setMenu] = useState(ProfileMenu.RECORD);
   const onClickMenu = useCallback((e) => setMenu(e.key), []);
+  const onClickTab = useCallback((e) => setMenu(e), []);
   return (
     <LayoutComponent>
       <div className={styles.wrap}>
@@ -36,12 +37,28 @@ function ProfilePage() {
             bookmarkCount={42}
           />
           <div className={styles.menu}>
-            <Menu selectedKeys={[menu]} onSelect={onClickMenu}>
+            <Menu
+              className={styles.desktop}
+              selectedKeys={[menu]}
+              onSelect={onClickMenu}
+            >
               <Menu.Item key={ProfileMenu.RECORD}>면접 기록</Menu.Item>
               <Menu.Item key={ProfileMenu.BOOKMARK}>북마크</Menu.Item>
               <Menu.Item key={ProfileMenu.ANSWER}>나의 답변</Menu.Item>
               <Menu.Item key={ProfileMenu.QUESTION}>공유한 질문</Menu.Item>
             </Menu>
+            <div className={styles.mobile}>
+              <Tabs
+                className={styles.mobileMenu}
+                activeKey={menu}
+                onChange={onClickTab}
+              >
+                <Tabs.TabPane key={ProfileMenu.RECORD} tab="면접 기록" />
+                <Tabs.TabPane key={ProfileMenu.BOOKMARK} tab="북마크" />
+                <Tabs.TabPane key={ProfileMenu.ANSWER} tab="나의 답변" />
+                <Tabs.TabPane key={ProfileMenu.QUESTION} tab="공유한 질문" />
+              </Tabs>
+            </div>
           </div>
         </section>
         <section className={styles.contentsContainer}>
@@ -60,7 +77,7 @@ function ProfilePage() {
           )}
           {menu === ProfileMenu.QUESTION && (
             <div className={styles.contentsBox}>
-              <h2>공유한 질문</h2>
+              <h2>나의 예상 질문</h2>
               <div>
                 {questionList.slice(0, 5).map((x) => (
                   <QuestionListElement key={x.id} question={x} />
