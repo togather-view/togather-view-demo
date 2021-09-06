@@ -1,20 +1,19 @@
 import LayoutComponent from "@src/components/common/Layout.component";
 import { memo, useCallback, useState } from "react";
-import { Avatar, Button, Menu } from "antd";
+import { Button, Menu } from "antd";
 
 // dummy
-import { myAccount } from "@dummy/user.data";
 import { questionList } from "@dummy/question.data";
 import { answerList } from "@dummy/answer.data";
 
 // component
-import TagComponent from "@src/components/common/Tag.component";
+import ProfileCardComponent from "@src/components/profile/ProfileCard.component";
 import QuestionListElement from "@src/components/question/QuestionListElement.component";
 import QuestionAnswerComponent from "@src/components/question/QuestionAnswer.component";
 
 // styles
 import styles from "@src/styles/pages/Profile.module.scss";
-import Link from "next/link";
+import { myAccount } from "@dummy/user.data";
 
 const ProfileMenu = {
   RECORD: "RECORD",
@@ -30,45 +29,12 @@ function ProfilePage() {
     <LayoutComponent>
       <div className={styles.wrap}>
         <section>
-          <div className={styles.profile}>
-            <div>
-              <Avatar src={myAccount.avatarUrl} size={120} shape="square" />
-            </div>
-            <div className={styles.info}>
-              <p className={styles.name}>
-                {myAccount.familyName}
-                {myAccount.firstName}
-              </p>
-              <div className={styles.tagList}>
-                {myAccount.jobList.map((x) => (
-                  <p key={x.id} className={styles.job}>
-                    {x.name}
-                  </p>
-                ))}
-              </div>
-              <div className={styles.tech}>
-                <div className={styles.tagList}>
-                  {myAccount.techList.map((x) => (
-                    <TagComponent key={x.id} title={x.name} color={x.color} />
-                  ))}
-                </div>
-              </div>
-            </div>
-            <div className={styles.countWrap}>
-              <div>
-                <p>답변 작성</p>
-                <p>12</p>
-              </div>
-              <div>
-                <p>질문 공유</p>
-                <p>30</p>
-              </div>
-              <div>
-                <p>북마크</p>
-                <p>42</p>
-              </div>
-            </div>
-          </div>
+          <ProfileCardComponent
+            profile={myAccount}
+            questionCount={30}
+            answerCount={12}
+            bookmarkCount={42}
+          />
           <div className={styles.menu}>
             <Menu selectedKeys={[menu]} onSelect={onClickMenu}>
               <Menu.Item key={ProfileMenu.RECORD}>면접 기록</Menu.Item>
@@ -83,7 +49,7 @@ function ProfilePage() {
             <div className={styles.contentsBox}>
               <h2>북마크</h2>
               <div>
-                {questionList.slice(0, 3).map((x) => (
+                {questionList.slice(0, 5).map((x) => (
                   <QuestionListElement key={x.id} question={x} />
                 ))}
               </div>
@@ -96,7 +62,7 @@ function ProfilePage() {
             <div className={styles.contentsBox}>
               <h2>공유한 질문</h2>
               <div>
-                {questionList.slice(0, 3).map((x) => (
+                {questionList.slice(0, 5).map((x) => (
                   <QuestionListElement key={x.id} question={x} />
                 ))}
               </div>
@@ -109,7 +75,7 @@ function ProfilePage() {
             <div className={styles.contentsBox}>
               <h2>나의 답변</h2>
               <div>
-                {answerList.slice(0, 3).map((x) => (
+                {answerList.slice(0, 5).map((x) => (
                   <QuestionAnswerComponent key={x.id} answer={x} />
                 ))}
               </div>
