@@ -15,6 +15,8 @@
   .wrap {
     background: #fbfbfb;
     border: 1px solid $color-border-gray;
+    border-left: none;
+    border-right: none;
 
     position: absolute;
     left: -$layout-margin-x-mobile;
@@ -36,6 +38,7 @@
       display: inline-block;
 
       border: 1px solid $color-border-gray;
+
       border-radius: 2px;
       padding: 3px 8px;
 
@@ -53,6 +56,10 @@
 
       .selected {
         color: $primary-color;
+        font-size: small;
+      }
+
+      .notSelected {
         font-size: small;
       }
     }
