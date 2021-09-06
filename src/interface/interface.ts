@@ -33,3 +33,10 @@ export interface User {
   jobList: JobGroup[];
   avatarUrl: string;
 }
+
+export enum QuestionSortType {
+  LATEST = "최신순",
+  LIKE = "인기순",
+  COMMENT = "답변순",
+  VIEW = "조회순",
+}
