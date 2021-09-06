@@ -24,8 +24,24 @@ $breakpoint-desktop: 1200px;
 .mobile {
   display: none;
 
+  @include mobile {
+    display: block;
+  }
+}
+
+.tablet {
+  display: none;
+
   @include tablet {
     display: block;
+  }
+}
+
+.desktopTablet {
+  display: block;
+
+  @include mobile {
+    display: none;
   }
 }
 
@@ -35,6 +51,7 @@ $breakpoint-desktop: 1200px;
     display: none;
   }
 }
+
 
 .emoji {
   margin-right: 13px;

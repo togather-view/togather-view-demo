@@ -1,5 +1,5 @@
 import LayoutComponent from "@src/components/common/Layout.component";
-import { memo, useCallback, useState } from "react";
+import { memo, useCallback, useMemo, useState } from "react";
 import { Button, Menu, Tabs } from "antd";
 
 // dummy
@@ -24,8 +24,10 @@ const ProfileMenu = {
 
 function ProfilePage() {
   const [menu, setMenu] = useState(ProfileMenu.RECORD);
+
   const onClickMenu = useCallback((e) => setMenu(e.key), []);
   const onClickTab = useCallback((e) => setMenu(e), []);
+
   return (
     <LayoutComponent>
       <div className={styles.wrap}>
@@ -38,9 +40,10 @@ function ProfilePage() {
           />
           <div className={styles.menu}>
             <Menu
-              className={styles.desktop}
+              className={styles.desktopTablet}
               selectedKeys={[menu]}
               onSelect={onClickMenu}
+              mode="vertical"
             >
               <Menu.Item key={ProfileMenu.RECORD}>면접 기록</Menu.Item>
               <Menu.Item key={ProfileMenu.BOOKMARK}>북마크</Menu.Item>
