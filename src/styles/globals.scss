@@ -24,3 +24,12 @@ h2 {
 * {
   box-sizing: border-box;
 }
+.ant-tag {
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.ant-menu-vertical {
+  border-right: none;
+}
