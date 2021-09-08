@@ -42,6 +42,29 @@
           //        1px -1px 0 $primary-color-logo,
           //        -1px 1px 0 $primary-color-logo,
           //        1px 1px 0 $primary-color-logo;
+
+          display: block;
+          @include tablet {
+            display: none;
+          }
+        }
+
+        .logoContainer {
+          display: none;
+          @include tablet {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 65px;
+          }
+
+          .logoImg {
+            margin: auto;
+            height: 48px;
+            width: 48px;
+            position: absolute;
+            left: 10px;
+          }
         }
 
         .dropdownMenu {
