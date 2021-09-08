@@ -11,6 +11,7 @@ import { myAccount } from "@dummy/user.data";
 import ProfileCardComponent from "@src/components/profile/ProfileCard.component";
 import QuestionListElement from "@src/components/question/QuestionListElement.component";
 import QuestionAnswerComponent from "@src/components/question/QuestionAnswer.component";
+import { MyPageSeo } from "@src/components/seo/Seo.component";
 
 // styles
 import styles from "@src/styles/pages/Profile.module.scss";
@@ -30,6 +31,7 @@ function ProfilePage() {
 
   return (
     <LayoutComponent>
+      <MyPageSeo />
       <div className={styles.wrap}>
         <section>
           <ProfileCardComponent
