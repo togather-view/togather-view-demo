@@ -4,7 +4,11 @@
   min-height: 100vh;
 
   .header {
-    height: $height-header-mobile;
+    height: $height-header-desktop;
+
+    @include tablet {
+      height: $height-header-mobile;
+    }
 
     display: flex;
     justify-content: center;
