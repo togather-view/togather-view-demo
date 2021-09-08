@@ -33,8 +33,15 @@
 
         .logo {
           font-weight: 800;
-          font-size: 1.8rem;
+          font-size: 2rem;
           margin: 0;
+          font-family: 'Recipekorea';
+          color: $primary-color-logo;
+          //text-shadow:
+          //        -1px -1px 0 $primary-color-logo,
+          //        1px -1px 0 $primary-color-logo,
+          //        -1px 1px 0 $primary-color-logo,
+          //        1px 1px 0 $primary-color-logo;
         }
 
         .dropdownMenu {
