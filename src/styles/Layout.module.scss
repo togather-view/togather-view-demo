@@ -4,7 +4,7 @@
   min-height: 100vh;
 
   .header {
-    height: 65px;
+    height: $height-header-mobile;
 
     display: flex;
     justify-content: center;
@@ -55,13 +55,13 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 65px;
+            height: $height-header-mobile;
           }
 
           .logoImg {
             margin: auto;
-            height: 48px;
-            width: 48px;
+            height: 42px;
+            width: 42px;
             position: absolute;
             left: 10px;
           }
