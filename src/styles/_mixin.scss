@@ -62,6 +62,8 @@ $breakpoint-desktop: 1200px;
 
 // Variables
 $max-width: 1020px;
+$height-header-desktop: 65px;
+$height-header-mobile: 52px;
 $layout-margin-x-desktop: 64px;
 $layout-margin-x-mobile: 24px;
 
@@ -70,3 +72,6 @@ $font-size-small: 0.9em;
 $color-black-default: rgb(0, 0, 0, 0.85);
 $color-border-gray: #DFDFDF;
 $primary-color: #0087e5;
+$primary-color-darker: #003C66;
+$primary-color-light: #008DF2;
+$primary-color-logo: #008DF2;
