@@ -38,9 +38,13 @@ function LoginPage() {
           <div className={styles.contents}>또는</div>
           <div className={styles.line} />
         </div>
-        <Button className={styles.loginButton} size="large">
-          <span className={styles.oauthIcon}>✉️</span>이메일로 회원가입
-        </Button>
+        <Link href="/signup">
+          <a>
+            <Button className={styles.loginButton} size="large">
+              <span className={styles.oauthIcon}>✉️</span>이메일로 회원가입
+            </Button>
+          </a>
+        </Link>
         <Button className={styles.loginButton} size="large">
           <img
             className={styles.oauthIcon}

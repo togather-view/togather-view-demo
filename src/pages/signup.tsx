@@ -8,22 +8,21 @@ import TagSelectComponent from "@src/components/interview/TagSelect.component";
 // dummy
 import { GroupList } from "@dummy/group.data";
 import { TechList } from "@dummy/tech.data";
-import { myAccount } from "@dummy/user.data";
 
 // styles
 import styles from "@src/styles/pages/Login.module.scss";
 import tagStyles from "@src/styles/components/TagSelect.module.scss";
 
 function SignUpPage() {
-  const [selectedJobList, setSelectedJobList] = useState(myAccount.jobList);
-  const [selectedTechList, setSelectedTechList] = useState(myAccount.techList);
+  const [selectedJobList, setSelectedJobList] = useState([]);
+  const [selectedTechList, setSelectedTechList] = useState([]);
 
   return (
     <div className={styles.container}>
       <div className={styles.box}>
         <div className={styles.logo}>
-          <h1 className={styles.title}>투게더뷰</h1>
-          <p className={styles.description}>함께 준비하는 개발자 기술 면접</p>
+          <h1 className={styles.title}>회원가입</h1>
+          <p className={styles.description}>투게더뷰에 어서오세요!</p>
         </div>
         <div className={styles.form}>
           <div className={styles.item}>
