@@ -1,0 +1,90 @@
+@import "../mixin";
+
+.container {
+  text-align: center;
+  width: 768px;
+  margin: auto;
+
+  @include mobile {
+    width: auto;
+  }
+
+  .box {
+    max-width: 448px;
+
+    margin: auto;
+
+    @include mobile {
+      padding:  0 $layout-margin-x-mobile;
+    }
+
+    .logo {
+      padding-top: 64px;
+      margin-bottom: 40px;
+
+      .title {
+        font-family: 'Recipekorea';
+        color: $primary-color-logo;
+        font-size: 2.2rem;
+        margin-bottom: 2px;
+
+      }
+
+      .description {
+        font-weight: 500;
+        font-size: medium;
+      }
+    }
+
+    .form {
+      margin-bottom: 36px;
+
+      .item {
+        margin-bottom: 24px;
+
+        .label {
+          margin-bottom: 5px;
+          text-align: left;
+          font-weight: bold;
+          font-size: small;
+        }
+
+        .input {
+          padding: 11px;
+        }
+      }
+    }
+
+    .loginButton {
+      width: 100%;
+      font-size: 14px;
+      margin-bottom: 12px;
+    }
+
+    .oauthIcon {
+      width: 18px;
+      height: 18px;
+      margin-right: 10px;
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+
+      margin-bottom: 12px;
+
+      .contents {
+        display: block;
+        white-space: nowrap;
+        margin: 0 10px;
+        font-size: small;
+      }
+
+      .line {
+        border-bottom: 1px solid $color-border-gray;
+        width: 100%;
+      }
+    }
+  }
+
+}
