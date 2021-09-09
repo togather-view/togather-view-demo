@@ -54,6 +54,7 @@ function SignUpPage() {
           <div className={styles.line} />
         </div>
         <div className={styles.tagSelectContainer}>
+          <h2>추가 정보</h2>
           <h4>관심 직무 선택</h4>
           <div className={styles.selectContainer}>
             <TagSelectComponent
@@ -80,6 +81,18 @@ function SignUpPage() {
           <a>
             <Button className={styles.loginButton} type="primary" size="large">
               가입하기
+            </Button>
+          </a>
+        </Link>
+        <div className={styles.divider}>
+          <div className={styles.line} />
+          <div className={styles.contents}>이미 계정이 있다면</div>
+          <div className={styles.line} />
+        </div>
+        <Link href="/login">
+          <a>
+            <Button className={styles.loginButton} size="large">
+              로그인
             </Button>
           </a>
         </Link>
