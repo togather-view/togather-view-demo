@@ -37,7 +37,7 @@
     }
 
     .form {
-      margin-bottom: 36px;
+      //margin-bottom: 36px;
 
       .item {
         margin-bottom: 24px;
@@ -87,4 +87,18 @@
     }
   }
 
+}
+
+.tagSelectContainer {
+  text-align: left;
+
+  margin-bottom: 36px;
+  padding-top: 12px;
+}
+
+.signupBottom {
+    height: 140px;
+  @include mobile {
+    height: 40px;
+  }
 }
