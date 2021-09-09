@@ -10,7 +10,9 @@ function LoginPage() {
       <div className={styles.box}>
         <div className={styles.logo}>
           <h1 className={styles.title}>투게더뷰</h1>
-          <p className={styles.description}>함께 준비하는 개발자 기술 면접</p>
+          <p className={styles.description}>
+            함께 준비하는 개발자 기술 면접 대비 플랫폼
+          </p>
         </div>
         <div className={styles.form}>
           <div className={styles.item}>
