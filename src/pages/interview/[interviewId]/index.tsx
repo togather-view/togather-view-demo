@@ -23,17 +23,15 @@ function InterviewMessengerPage() {
     let time = 60;
     let min = 0;
     let sec = 0;
-    const x = () =>
-      setInterval(() => {
-        min = parseInt(String(time / 60), 10);
-        sec = time % 60;
-        setLeftTime(`${min}분 ${sec}초`);
-        time -= 1;
-        if (time < 0) {
-          clearInterval(x);
-        }
-      }, 1000);
-    x();
+    const x = setInterval(() => {
+      min = parseInt(String(time / 60), 10);
+      sec = time % 60;
+      setLeftTime((min > 0 ? `${min}분` : "") + (sec > 0 ? `${sec}초` : ""));
+      time -= 1;
+      if (time < 0) {
+        clearInterval(x);
+      }
+    }, 1000);
   }, []);
 
   useEffect(() => {
@@ -110,7 +108,7 @@ function InterviewMessengerPage() {
               <p className={styles.name}>면접관</p>
             </div>
 
-            <p>{leftTime}</p>
+            <p className={styles.timer}>{leftTime}</p>
 
             <Button className={styles.submit} type="link">
               완료
