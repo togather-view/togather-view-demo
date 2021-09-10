@@ -9,12 +9,36 @@ import TagComponent from "@src/components/common/Tag.component";
 import { myAccount } from "@dummy/user.data";
 import { messageList } from "@dummy/message.data";
 
+// type
+import { MessageSide } from "@src/interface/interface";
+
 // styles
 import styles from "@src/styles/pages/InterviewMessenger.module.scss";
-import { MessageSide } from "@src/interface/interface";
 
 function InterviewMessengerPage() {
   const [displayedMessages, setDisplayedMessages] = useState([]);
+  const [leftTime, setLeftTime] = useState("");
+
+  const startTimer = useCallback(() => {
+    let time = 60;
+    let min = 0;
+    let sec = 0;
+    const x = () =>
+      setInterval(() => {
+        min = parseInt(String(time / 60), 10);
+        sec = time % 60;
+        setLeftTime(`${min}분 ${sec}초`);
+        time -= 1;
+        if (time < 0) {
+          clearInterval(x);
+        }
+      }, 1000);
+    x();
+  }, []);
+
+  useEffect(() => {
+    startTimer();
+  }, []);
 
   const makeMessageDebounce = useCallback(
     (time) =>
@@ -85,6 +109,8 @@ function InterviewMessengerPage() {
               </div>
               <p className={styles.name}>면접관</p>
             </div>
+
+            <p>{leftTime}</p>
 
             <Button className={styles.submit} type="link">
               완료
