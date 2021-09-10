@@ -48,6 +48,21 @@ export const message9: Message = {
   side: MessageSide.INTERVIEWER,
   contents: "호이스팅이 무엇인지 설명해주세요.",
 };
+export const message10: Message = {
+  id: 10,
+  side: MessageSide.INTERVIEWER,
+  contents: "다음 질문입니다.",
+};
+export const message11: Message = {
+  id: 11,
+  side: MessageSide.INTERVIEWER,
+  contents: "마지막 질문입니다.",
+};
+export const message12: Message = {
+  id: 12,
+  side: MessageSide.INTERVIEWER,
+  contents: "이것으로 이번 면접을 마치겠습니다. 수고하셨습니다.",
+};
 export const messageList = [
   message1,
   message2,
@@ -58,4 +73,18 @@ export const messageList = [
   message7,
   message8,
   message9,
+];
+export const interviewMessageList = [
+  [message1, message2, message3, message4, message5], // 인사
+  [message7, message8, message9], // 질문 1
+  [message7, message10, message9], // 질문 2
+  [message7, message10, message9], // 질문 3
+  [message7, message10, message9], // 질문 4
+  [message7, message10, message9], // 질문 5
+  [message7, message10, message9], // 질문 6
+  [message7, message10, message9], // 질문 7
+  [message7, message10, message9], // 질문 8
+  [message7, message10, message9], // 질문 9
+  [message7, message11, message9], // 질문 10
+  [message7, message12], // 맺음말
 ];
