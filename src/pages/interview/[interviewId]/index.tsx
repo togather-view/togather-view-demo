@@ -3,33 +3,15 @@ import { Avatar, Button } from "antd";
 import _ from "lodash";
 
 import LoadingDotsComponent from "@src/components/common/LoadingDots.component";
-
-import styles from "@src/styles/pages/InterviewMessenger.module.scss";
 import TagComponent from "@src/components/common/Tag.component";
+
+// dummy
 import { myAccount } from "@dummy/user.data";
+import { messageList } from "@dummy/message.data";
 
-const contents1 =
-  "예비비는 총액으로 국회의 의결을 얻어야 한다. 예비비의 지출은 차기국회의 승인을 얻어야 한다.";
-const contents2 =
-  "국가는 청원에 대하여 심사할 의무를 진다. 학교교육 및 평생교육을 포함한 교육제도와 그 운영, 교육재정 및 교원의 지위에 관한 기본적인 사항은 법률로 정한다";
-const contents3 =
-  "예비비는 총액으로 국회의 의결을 얻어야 한다. 예비비의 지출은 ";
-// "차기국회의 승인을 얻어야 한다. 국가는 청원에 대하여 심사할 의무를 진다. 학교교육 및 평생교육을 포함한 교육제도와 그 운영, 교육재정 및 교원의 지위에 관한 기본적인 사항은 법률로 정한다";
-
-const contentsList = [
-  contents1,
-  contents2,
-  contents3,
-  contents1,
-  contents2,
-  contents3,
-  contents1,
-  contents2,
-  contents3,
-  contents1,
-  contents2,
-  contents3,
-];
+// styles
+import styles from "@src/styles/pages/InterviewMessenger.module.scss";
+import { MessageSide } from "@src/interface/interface";
 
 function InterviewMessengerPage() {
   const [displayedMessages, setDisplayedMessages] = useState([]);
@@ -40,29 +22,36 @@ function InterviewMessengerPage() {
         () =>
           setDisplayedMessages([
             ...displayedMessages,
-            contentsList[displayedMessages.length],
+            messageList[displayedMessages.length],
           ]),
         time,
       ),
     [displayedMessages],
   );
 
-  const messageList = useMemo(() => {
-    const isLeft = contentsList.length > displayedMessages.length;
+  const messageListDOM = useMemo(() => {
+    const isLeft = messageList.length > displayedMessages.length;
     const list = displayedMessages.map((x, index) => (
       // eslint-disable-next-line react/no-array-index-key
-      <p key={`message-list-${index}`} className={styles.contents}>
-        {x}
+      <p
+        key={`message-list-${index}`}
+        className={
+          x.side === MessageSide.INTERVIEWER
+            ? styles.contentsLeft
+            : styles.contentsRight
+        }
+      >
+        {x.contents}
       </p>
     ));
     if (isLeft) {
       list.push(
-        <p className={styles.contents}>
+        <p className={styles.contentsLeft}>
           <LoadingDotsComponent />
         </p>,
       );
       const addDisplayMessage = makeMessageDebounce(
-        contentsList[displayedMessages.length].length * 20,
+        messageList[displayedMessages.length].contents.length * 60,
       );
       addDisplayMessage();
     }
@@ -104,7 +93,7 @@ function InterviewMessengerPage() {
           <main>
             <div className={styles.messenger}>
               <div className={styles.messageWrap}>
-                <div className={styles.message}>{messageList}</div>
+                <div className={styles.message}>{messageListDOM}</div>
               </div>
             </div>
           </main>

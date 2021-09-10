@@ -29,6 +29,7 @@
       font-family: "Recipekorea";
       color: $primary-color;
     }
+
     h2 {
       margin-bottom: 30px;
     }
@@ -105,15 +106,16 @@
       .messageWrap {
         display: flex;
         gap: 10px;
-        width: 90%;
 
-        margin-bottom:  auto;
+        margin-bottom: auto;
+        width: 100%;
 
 
         .avatar {
         }
 
         .message {
+          width: 100%;
 
           .name {
             margin-bottom: 3px;
@@ -121,13 +123,24 @@
 
           .contents {
             width: fit-content;
+            max-width: 90%;
 
             border: 1px solid $color-border-gray;
             border-radius: 0 $message-radius $message-radius $message-radius;
 
-            padding: 9px 12px;
+            padding: 12px 15px;
 
             background-color: white;
+          }
+
+          .contentsLeft {
+            @extend .contents;
+          }
+
+          .contentsRight {
+            @extend .contents;
+            border-radius: $message-radius 0 $message-radius $message-radius;
+            margin-left: auto;
           }
 
         }
