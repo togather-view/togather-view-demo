@@ -5,6 +5,8 @@ import _ from "lodash";
 import LoadingDotsComponent from "@src/components/common/LoadingDots.component";
 
 import styles from "@src/styles/pages/InterviewMessenger.module.scss";
+import TagComponent from "@src/components/common/Tag.component";
+import { myAccount } from "@dummy/user.data";
 
 const contents1 =
   "예비비는 총액으로 국회의 의결을 얻어야 한다. 예비비의 지출은 차기국회의 승인을 얻어야 한다.";
@@ -60,38 +62,58 @@ function InterviewMessengerPage() {
         </p>,
       );
       const addDisplayMessage = makeMessageDebounce(
-        contentsList[displayedMessages.length].length * 30,
+        contentsList[displayedMessages.length].length * 20,
       );
       addDisplayMessage();
     }
     return list;
-  }, [displayedMessages]);
+  }, [displayedMessages, makeMessageDebounce]);
 
   return (
     <div className={styles.container}>
-      <header>
-        <h3>예진님의 면접</h3>
-        <Button className={styles.submit} type="link">
-          완료
-        </Button>
-      </header>
-      <main>
-        <div className={styles.messenger}>
-          <div className={styles.messageWrap}>
-            <div className={styles.avatar}>
-              <Avatar src="/static/interviewer.png" size={48} />
-            </div>
-            <div className={styles.message}>
-              <p className={styles.name}>면접관</p>
-              {messageList}
-            </div>
+      <div className={styles.box}>
+        <div className={styles.infoWrap}>
+          <h1>투게더뷰</h1>
+          <h2>예진님의 면접</h2>
+          <div className={styles.tagList}>
+            <h3>선택한 직무</h3>
+            {myAccount.jobList.map((x) => (
+              <TagComponent title={x.name} key={x.id} />
+            ))}
+          </div>
+          <div className={styles.tagList}>
+            <h3>선택한 기술</h3>
+            {myAccount.techList.map((x) => (
+              <TagComponent title={x.name} color={x.color} key={x.id} />
+            ))}
           </div>
         </div>
-      </main>
-      <footer>
-        <textarea />
-        <Button type="link">전송</Button>
-      </footer>
+        <div className={styles.messengerWrap}>
+          <header>
+            <div className={styles.title}>
+              <div className={styles.avatar}>
+                <Avatar src="/static/interviewer.png" size={36} />
+              </div>
+              <p className={styles.name}>면접관</p>
+            </div>
+
+            <Button className={styles.submit} type="link">
+              완료
+            </Button>
+          </header>
+          <main>
+            <div className={styles.messenger}>
+              <div className={styles.messageWrap}>
+                <div className={styles.message}>{messageList}</div>
+              </div>
+            </div>
+          </main>
+          <div className={styles.footer}>
+            <textarea placeholder="답변 입력하기" />
+            {/* <Button type="link">전송</Button> */}
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

@@ -1,10 +1,47 @@
 @import "../mixin";
 
 .container {
-  max-width: $max-width;
-  margin: 0 auto;
+  padding: 40px;
+
   height: 100vh;
-  overflow: hidden;
+
+  .box {
+    border: 1px solid $color-border-gray;
+    border-radius: 10px;
+
+    overflow: hidden;
+
+    display: flex;
+    justify-content: center;
+
+    height: 100%;
+    width: fit-content;
+
+    margin: auto;
+  }
+
+  .infoWrap {
+    width: 420px;
+    border-right: 1px solid $color-border-gray;
+    padding: 20px;
+
+    h1 {
+      font-family: "Recipekorea";
+      color: $primary-color;
+    }
+    h2 {
+      margin-bottom: 30px;
+    }
+
+    .tagList {
+      margin-bottom: 20px;
+    }
+  }
+}
+
+.messengerWrap {
+  width: 720px;
+  height: 100%;
 
   position: relative;
 
@@ -17,21 +54,30 @@
     text-align: center;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
 
+    padding: 0 30px;
     background: white;
-    box-shadow:  5px 5px 4px #e6e6e6,
-    -5px -5px 4px #ffffff;
 
     z-index: 9999;
-    h3 {
-      margin: 0;
+
+    .title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      .name {
+        margin-bottom: 0;
+        font-size: medium;
+        font-weight: bold;
+      }
     }
+
     .submit {
-      position: absolute;
-      right: 0;
+      padding: 0;
     }
   }
+
   main {
     position: absolute;
     top: 60px;
@@ -40,12 +86,17 @@
 
     box-sizing: content-box;
 
+    background: #f0f0f0;
+
     .messenger {
       width: 100%;
       height: 100%;
       padding: 24px;
 
       overflow-y: auto;
+
+      display: flex;
+      flex-direction: column-reverse;
 
       @include tablet {
         padding: 18px;
@@ -55,6 +106,9 @@
         display: flex;
         gap: 10px;
         width: 90%;
+
+        margin-bottom:  auto;
+
 
         .avatar {
         }
@@ -68,34 +122,45 @@
           .contents {
             width: fit-content;
 
-            background: #eeeeee;
+            border: 1px solid $color-border-gray;
             border-radius: 0 $message-radius $message-radius $message-radius;
 
             padding: 9px 12px;
+
+            background-color: white;
           }
 
         }
       }
     }
   }
-  footer {
+
+  .footer {
     position: absolute;
     bottom: 0;
     height: 120px;
     width: 100%;
 
-    padding: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 15px;
+    padding-top: 10px;
+
     display: flex;
     align-items: center;
 
-    background: white;
+    background-color: #f0f0f0;
 
     textarea {
       height: 100%;
-      width: 80%;
+      width: 100%;
 
-      border: none;
-      background: transparent;
+      border: 1px solid $color-border-gray;
+      border-radius: 10px;
+      padding: 14px;
+
+      resize: none;
+      background-color: white;
 
       &:focus {
         outline: none;
