@@ -1,0 +1,16 @@
+.wrap {
+  .title {
+    margin-bottom: 20px;
+  }
+
+  .submit {
+    margin-top: 20px;
+    float: right;
+  }
+
+  &::after {
+    display: block;
+    content: " ";
+    clear: both;
+  }
+}

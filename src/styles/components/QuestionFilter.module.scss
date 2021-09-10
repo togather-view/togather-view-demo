@@ -3,7 +3,7 @@
 .container {
   position: sticky;
   top: 90px;
-  width: 280px;
+  width: 320px;
 
   border: 1px solid $color-border-gray;
   border-radius: 2px;
@@ -19,6 +19,7 @@
 
   .radioWrap {
     overflow-x: scroll;
+    text-align: center;
 
     &::-webkit-scrollbar {
       display: none;
@@ -30,7 +31,6 @@
   }
 
   .radioGroup {
-
     white-space: nowrap;
 
     .button {

@@ -13,6 +13,7 @@ import TagSelectComponent from "@src/components/interview/TagSelect.component";
 import styles from "@src/styles/components/QuestionFilter.module.scss";
 
 import tagStyles from "@src/styles/components/TagSelect.module.scss";
+import { QuestionSortType } from "@src/interface/interface";
 
 function QuestionFilterComponent() {
   const [selectedJobList, setSelectedJobList] = useState(myAccount.jobList);
@@ -21,17 +22,26 @@ function QuestionFilterComponent() {
   return (
     <div className={styles.container}>
       <div className={styles.radioWrap}>
-        <Radio.Group className={styles.radioGroup} value="LATEST">
-          <Radio.Button className={styles.button} value="LATEST">
+        <Radio.Group
+          className={styles.radioGroup}
+          value={QuestionSortType.LATEST}
+        >
+          <Radio.Button
+            className={styles.button}
+            value={QuestionSortType.LATEST}
+          >
             최신순
           </Radio.Button>
-          <Radio.Button className={styles.button} value="LIKE">
+          <Radio.Button className={styles.button} value={QuestionSortType.LIKE}>
             인기순
           </Radio.Button>
-          <Radio.Button className={styles.button} value="COMMENT">
+          <Radio.Button
+            className={styles.button}
+            value={QuestionSortType.COMMENT}
+          >
             답변순
           </Radio.Button>
-          <Radio.Button className={styles.button} value="VIEW">
+          <Radio.Button className={styles.button} value={QuestionSortType.VIEW}>
             조회순
           </Radio.Button>
         </Radio.Group>

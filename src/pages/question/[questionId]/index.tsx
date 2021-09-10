@@ -13,6 +13,7 @@ import { Question } from "@src/interface/interface";
 import LayoutComponent from "@src/components/common/Layout.component";
 import QuestionDetailComponent from "@src/components/question/QuestionDetail.component";
 import QuestionAnswerComponent from "@src/components/question/QuestionAnswer.component";
+import { QuestionSeo } from "@src/components/seo/Seo.component";
 
 // styles
 import styles from "@src/styles/pages/QuestionDetail.module.scss";
@@ -25,6 +26,7 @@ function QuestionDetailPage({ questionId }) {
 
   return (
     <LayoutComponent>
+      <QuestionSeo question={question} />
       <div>
         <section>
           <QuestionDetailComponent question={question} />

@@ -1,0 +1,68 @@
+@import "../mixin";
+
+.container {
+  height: 60px;
+
+  position: sticky;
+  top: $height-header-mobile;
+  z-index: 800;
+
+  display: none;
+  @include mobile {
+    display: block;
+  }
+
+  .wrap {
+    background: #fbfbfb;
+    border: 1px solid $color-border-gray;
+    border-left: none;
+    border-right: none;
+
+    position: absolute;
+    left: -$layout-margin-x-mobile;
+    right:-$layout-margin-x-mobile;
+    padding: 10px $layout-margin-x-mobile;
+
+    overflow-x: auto;
+    white-space: nowrap;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* Hide scrollbar for IE, Edge and Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+
+    .box {
+      display: inline-block;
+
+      border: 1px solid $color-border-gray;
+
+      border-radius: 2px;
+      padding: 3px 8px;
+
+      background: white;
+
+      cursor: pointer;
+
+      :not(:last-child) {
+        margin-right: 7px;
+      }
+
+      &:not(:last-child) {
+        margin-right: 10px;
+      }
+
+      .selected {
+        color: $primary-color;
+        font-size: small;
+      }
+
+      .notSelected {
+        color: #595959;
+        font-size: small;
+      }
+    }
+  }
+}

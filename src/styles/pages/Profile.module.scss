@@ -1,0 +1,107 @@
+@import "../mixin";
+
+.wrap {
+  margin: 20px 0;
+  display: grid;
+  grid-template-columns: 280px auto;
+  gap: 40px;
+
+  @include mobile {
+    display: block;
+  }
+}
+
+.profile {
+
+  border-radius: 2px;
+  border: 1px solid $color-border-gray;
+  padding: 25px 10px;
+
+  height: fit-content;
+  text-align: center;
+
+  p {
+    margin-bottom: 0;
+  }
+
+  .info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+
+    .name {
+      margin-top: 10px;
+      font-size: 1.4rem;
+      font-weight: bolder;
+    }
+
+    .tech {
+      margin-top: 10px;
+    }
+
+    .tagList {
+      line-height: 28px;
+    }
+
+    .job {
+      background: none;
+      display: inline-block;
+
+      &:not(:last-child) {
+        &::after {
+          content: "/";
+          margin: 0 5px;
+        }
+      }
+    }
+  }
+
+  .countWrap {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin: 20px 0 auto auto;
+  }
+}
+
+.menu {
+  margin-top: 20px;
+
+  @include mobile {
+    margin-top: 10px;
+  }
+
+  .mobileMenu {
+    width: 100%;
+    overflow: hidden;
+  }
+}
+
+.contentsContainer {
+  .contentsBox {
+    border-radius: 2px;
+    border: 1px solid $color-border-gray;
+    padding: 20px;
+
+    @include mobile {
+      border: none;
+      padding: 5px 0 0 0;
+    }
+      &:not(:last-child) {
+      margin-bottom: 20px;
+    }
+
+  }
+
+  .more {
+    width: 100%;
+    text-align: center;
+  }
+
+  .noData {
+    margin: 40px 0;
+    width: 100%;
+    text-align: center;
+  }
+}

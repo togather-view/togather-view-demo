@@ -7,12 +7,14 @@ import _ from "lodash";
 // components
 import LayoutComponent from "@src/components/common/Layout.component";
 import TagSelectComponent from "@src/components/interview/TagSelect.component";
+import { InterviewFormSeo } from "@src/components/seo/Seo.component";
 
 // dummy
 import { GroupList } from "@dummy/group.data";
 import { TechList } from "@dummy/tech.data";
 import { myAccount } from "@dummy/user.data";
 
+// styles
 import styles from "@src/styles/pages/InterviewForm.module.scss";
 import tagStyles from "@src/styles/components/TagSelect.module.scss";
 
@@ -51,6 +53,7 @@ function InterviewFormPage() {
 
   return (
     <LayoutComponent showInterviewButton={false}>
+      <InterviewFormSeo />
       <div className={styles.container}>
         <div className={styles.formBox}>
           {/* Title */}

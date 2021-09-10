@@ -11,7 +11,11 @@ function LayoutComponent({ showInterviewButton = true, children }) {
   const userMenu = useMemo(
     () => (
       <Menu className={styles.dropdownMenu}>
-        <Menu.Item>내 정보</Menu.Item>
+        <Menu.Item>
+          <Link href="/profile">
+            <a>내 정보</a>
+          </Link>
+        </Menu.Item>
         <Menu.Item>로그아웃</Menu.Item>
       </Menu>
     ),
@@ -26,6 +30,13 @@ function LayoutComponent({ showInterviewButton = true, children }) {
             <Link href="/main">
               <a>
                 <h1 className={styles.logo}>투게더뷰</h1>
+                <div className={styles.logoContainer}>
+                  <img
+                    className={styles.logoImg}
+                    src="/static/logo.png"
+                    alt="투게더뷰"
+                  />
+                </div>
               </a>
             </Link>
             <div className={styles.menu}>

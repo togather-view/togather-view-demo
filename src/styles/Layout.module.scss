@@ -4,14 +4,18 @@
   min-height: 100vh;
 
   .header {
-    height: 65px;
+    height: $height-header-desktop;
+
+    @include tablet {
+      height: $height-header-mobile;
+    }
 
     display: flex;
     justify-content: center;
     align-items: center;
 
     position: sticky;
-    z-index: 9999;
+    z-index: 999;
     top: 0;
     background: white;
 
@@ -33,8 +37,38 @@
 
         .logo {
           font-weight: 800;
-          font-size: 1.8rem;
+          font-size: 2rem;
           margin: 0;
+          font-family: 'Recipekorea';
+          color: $primary-color-logo;
+          //text-shadow:
+          //        -1px -1px 0 $primary-color-logo,
+          //        1px -1px 0 $primary-color-logo,
+          //        -1px 1px 0 $primary-color-logo,
+          //        1px 1px 0 $primary-color-logo;
+
+          display: block;
+          @include tablet {
+            display: none;
+          }
+        }
+
+        .logoContainer {
+          display: none;
+          @include tablet {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: $height-header-mobile;
+          }
+
+          .logoImg {
+            margin: auto;
+            height: 42px;
+            width: 42px;
+            position: absolute;
+            left: 10px;
+          }
         }
 
         .dropdownMenu {
