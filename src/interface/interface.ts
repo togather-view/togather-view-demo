@@ -34,6 +34,17 @@ export interface User {
   avatarUrl: string;
 }
 
+export interface Message {
+  id: number;
+  side: MessageSide;
+  contents: string;
+}
+
+export enum MessageSide {
+  INTERVIEWER,
+  INTERVIEWEE,
+}
+
 export enum QuestionSortType {
   LATEST = "최신순",
   LIKE = "인기순",
