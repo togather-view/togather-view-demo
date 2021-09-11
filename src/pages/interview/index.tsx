@@ -1,6 +1,8 @@
 import { memo, useCallback, useEffect, useState } from "react";
 import { Radio, Button } from "antd";
 import { ArrowRightOutlined, LoadingOutlined } from "@ant-design/icons";
+import { useRouter } from "next/router";
+import _ from "lodash";
 
 // components
 import LayoutComponent from "@src/components/common/Layout.component";
@@ -17,6 +19,8 @@ import styles from "@src/styles/pages/InterviewForm.module.scss";
 import tagStyles from "@src/styles/components/TagSelect.module.scss";
 
 function InterviewFormPage() {
+  const router = useRouter();
+
   const [selectedJobList, setSelectedJobList] = useState(myAccount.jobList);
   const [selectedTechList, setSelectedTechList] = useState(myAccount.techList);
   const [allowDuplicated, setAllowDuplicated] = useState("true");
@@ -32,6 +36,20 @@ function InterviewFormPage() {
     () => setInterviewLoadingState("LOADING"),
     [],
   );
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const routeNextPage = useCallback(
+    _.debounce(() => {
+      router.push("/interview/1");
+    }, 3000),
+    [],
+  );
+
+  useEffect(() => {
+    if (interviewLoadingState === "LOADING") {
+      routeNextPage();
+    }
+  }, [routeNextPage, interviewLoadingState]);
 
   return (
     <LayoutComponent showInterviewButton={false}>
