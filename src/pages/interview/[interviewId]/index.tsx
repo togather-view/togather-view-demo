@@ -52,7 +52,6 @@ function InterviewMessengerPage() {
       if (index === toAddList.length) setMessageLeft(false);
       if (index < toAddList.length) {
         x();
-        console.log(index, toAddList.length);
       } else if (messageListIndex + 1 < interviewMessageList.length) {
         setAllowMessage(true);
         setIntervieweeDone(false);

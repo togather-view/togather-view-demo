@@ -5,6 +5,10 @@
 
   height: 100vh;
 
+  @include tablet {
+    padding: 0;
+  }
+
   .box {
     border: 1px solid $color-border-gray;
     border-radius: 10px;
@@ -18,12 +22,25 @@
     width: fit-content;
 
     margin: auto;
+
+    @include tablet {
+      width: 100%;
+      border-radius: 0;
+    }
+
   }
 
   .infoWrap {
-    width: 420px;
+    min-width: 420px;
     border-right: 1px solid $color-border-gray;
     padding: 20px;
+
+    @include mobile {
+      display: none;
+    }
+    @include tablet {
+      min-width: 320px;
+    }
 
     h1 {
       font-family: "Recipekorea";
@@ -45,6 +62,10 @@
   height: 100%;
 
   position: relative;
+
+  @include tablet {
+    width: 100%;
+  }
 
   header {
     position: absolute;
