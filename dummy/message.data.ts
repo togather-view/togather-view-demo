@@ -14,8 +14,7 @@ export const message2: Message = {
 export const message3: Message = {
   id: 3,
   side: MessageSide.INTERVIEWER,
-  contents:
-    "이번 면접에서 예진님은 프론트엔드 직군에 지원하셨네요.이번 면접에서 예진님은 프론트엔드 직군에 지원하셨네요.이번 면접에서 예진님은 프론트엔드 직군에 지원하셨네요.",
+  contents: "이번 면접에서 예진님은 프론트엔드 직군에 지원하셨네요.",
 };
 export const message4: Message = {
   id: 4,

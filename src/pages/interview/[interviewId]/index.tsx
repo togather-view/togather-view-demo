@@ -1,13 +1,17 @@
-import { memo, useCallback, useEffect, useMemo, useState } from "react";
+import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Avatar, Button } from "antd";
 import _ from "lodash";
 
+// component
 import LoadingDotsComponent from "@src/components/common/LoadingDots.component";
 import TagComponent from "@src/components/common/Tag.component";
 
+// util
+import { startTimer } from "@src/util/messenger";
+
 // dummy
 import { myAccount } from "@dummy/user.data";
-import { messageList } from "@dummy/message.data";
+import { interviewMessageList, messageList } from "@dummy/message.data";
 
 // type
 import { MessageSide } from "@src/interface/interface";
@@ -15,41 +19,52 @@ import { MessageSide } from "@src/interface/interface";
 // styles
 import styles from "@src/styles/pages/InterviewMessenger.module.scss";
 
+const messageTerm = 1200;
+const answerTimeLimit = 60;
+
 function InterviewMessengerPage() {
   const [displayedMessages, setDisplayedMessages] = useState([]);
   const [leftTime, setLeftTime] = useState("");
+  const [timer, setTimer] = useState(null);
+  const [isIntervieweeDone, setIntervieweeDone] = useState(false);
+  const [allowMessage, setAllowMessage] = useState(false);
 
-  const startTimer = useCallback(() => {
-    let time = 60;
-    let min = 0;
-    let sec = 0;
-    const x = setInterval(() => {
-      min = parseInt(String(time / 60), 10);
-      sec = time % 60;
-      setLeftTime((min > 0 ? `${min}분` : "") + (sec > 0 ? `${sec}초` : ""));
-      time -= 1;
-      if (time < 0) {
-        clearInterval(x);
+  const [messageListIndex, setMessageListIndex] = useState(0);
+  const [isMessageLeft, setMessageLeft] = useState(true);
+
+  const textareaRef = useRef(null);
+
+  const onTime = useCallback((min, sec) => {
+    setLeftTime((min > 0 ? `${min}분` : "") + (sec > 0 ? `${sec}초` : ""));
+  }, []);
+
+  const startInterviewerMessage = useCallback(() => {
+    setMessageLeft(true);
+    setAllowMessage(false);
+    if (messageListIndex >= interviewMessageList.length) return;
+    const toAddList = interviewMessageList[messageListIndex];
+    const added = [...displayedMessages];
+    let index = 0;
+    const x = _.debounce(() => {
+      added.push(toAddList[index]);
+      setDisplayedMessages([...added]);
+      index += 1;
+      if (index === toAddList.length) setMessageLeft(false);
+      if (index < toAddList.length) {
+        x();
+        console.log(index, toAddList.length);
+      } else if (messageListIndex + 1 < interviewMessageList.length) {
+        setAllowMessage(true);
+        setIntervieweeDone(false);
+        setMessageListIndex(messageListIndex + 1);
+        textareaRef.current.focus();
+        setTimer(
+          startTimer(answerTimeLimit, onTime, () => setIntervieweeDone(true)),
+        );
       }
-    }, 1000);
-  }, []);
-
-  useEffect(() => {
-    startTimer();
-  }, []);
-
-  const makeMessageDebounce = useCallback(
-    (time) =>
-      _.debounce(
-        () =>
-          setDisplayedMessages([
-            ...displayedMessages,
-            messageList[displayedMessages.length],
-          ]),
-        time,
-      ),
-    [displayedMessages],
-  );
+    }, messageTerm);
+    x();
+  }, [textareaRef, displayedMessages, messageListIndex, onTime]);
 
   const onSubmitMessage = useCallback(
     (e) => {
@@ -71,12 +86,20 @@ function InterviewMessengerPage() {
     [displayedMessages],
   );
 
+  const onClickSubmit = useCallback(() => {
+    setIntervieweeDone(true);
+    if (timer) {
+      clearInterval(timer);
+      setTimer(null);
+      setLeftTime("");
+    }
+  }, [timer]);
+
   const messageListDOM = useMemo(() => {
-    const isLeft = messageList.length > displayedMessages.length;
     const list = displayedMessages.map((x, index) => (
-      // eslint-disable-next-line react/no-array-index-key
-      <p
-        key={`message-list-${index}`}
+      <div
+        // eslint-disable-next-line react/no-array-index-key
+        key={`message-list-${messageListIndex}-${index}`}
         className={
           x.side === MessageSide.INTERVIEWER
             ? styles.contentsLeft
@@ -84,21 +107,28 @@ function InterviewMessengerPage() {
         }
       >
         {x.contents}
-      </p>
+      </div>
     ));
-    if (isLeft) {
+    if (isMessageLeft) {
       list.push(
-        <p className={styles.contentsLeft}>
+        <div
+          key={`loading-${messageListIndex}-${displayedMessages.length}`}
+          className={styles.contentsLeft}
+        >
           <LoadingDotsComponent />
-        </p>,
+        </div>,
       );
-      const addDisplayMessage = makeMessageDebounce(
-        messageList[displayedMessages.length].contents.length * 60,
-      );
-      addDisplayMessage();
     }
     return list;
-  }, [displayedMessages, makeMessageDebounce]);
+  }, [displayedMessages, isMessageLeft, messageListIndex]);
+
+  useEffect(() => startInterviewerMessage(), []);
+  useEffect(() => {
+    if (isIntervieweeDone) {
+      startInterviewerMessage();
+      setIntervieweeDone(false);
+    }
+  }, [isIntervieweeDone, startInterviewerMessage]);
 
   return (
     <div className={styles.container}>
@@ -130,9 +160,15 @@ function InterviewMessengerPage() {
 
             <p className={styles.timer}>{leftTime}</p>
 
-            <Button className={styles.submit} type="link">
-              완료
-            </Button>
+            {allowMessage && (
+              <Button
+                className={styles.submit}
+                type="link"
+                onClick={onClickSubmit}
+              >
+                완료
+              </Button>
+            )}
           </header>
           <main>
             <div className={styles.messenger}>
@@ -142,8 +178,12 @@ function InterviewMessengerPage() {
             </div>
           </main>
           <div className={styles.footer}>
-            <textarea placeholder="답변 입력하기" onKeyDown={onSubmitMessage} />
-            {/* <Button type="link">전송</Button> */}
+            <textarea
+              ref={textareaRef}
+              disabled={!allowMessage}
+              placeholder="답변 입력하기"
+              onKeyDown={onSubmitMessage}
+            />
           </div>
         </div>
       </div>
