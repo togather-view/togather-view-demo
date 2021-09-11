@@ -51,6 +51,26 @@ function InterviewMessengerPage() {
     [displayedMessages],
   );
 
+  const onSubmitMessage = useCallback(
+    (e) => {
+      if (e.keyCode === 13) {
+        if (!e.shiftKey) {
+          e.preventDefault();
+          setDisplayedMessages([
+            ...displayedMessages,
+            {
+              id: 213,
+              contents: e.target.value,
+              side: MessageSide.INTERVIEWEE,
+            },
+          ]);
+          e.target.value = "";
+        }
+      }
+    },
+    [displayedMessages],
+  );
+
   const messageListDOM = useMemo(() => {
     const isLeft = messageList.length > displayedMessages.length;
     const list = displayedMessages.map((x, index) => (
@@ -122,7 +142,7 @@ function InterviewMessengerPage() {
             </div>
           </main>
           <div className={styles.footer}>
-            <textarea placeholder="답변 입력하기" />
+            <textarea placeholder="답변 입력하기" onKeyDown={onSubmitMessage} />
             {/* <Button type="link">전송</Button> */}
           </div>
         </div>

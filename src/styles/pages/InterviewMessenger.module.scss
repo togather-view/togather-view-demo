@@ -137,6 +137,8 @@
             padding: 12px 15px;
 
             background-color: white;
+
+            white-space: pre-wrap;
           }
 
           .contentsLeft {
@@ -177,6 +179,7 @@
       border: 1px solid $color-border-gray;
       border-radius: 10px;
       padding: 14px;
+
 
       resize: none;
       background-color: white;
