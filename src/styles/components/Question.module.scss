@@ -87,13 +87,8 @@
 
   padding: 30px;
 
-  @include tablet {
-    margin: 20px 0;
-  }
-
   @include mobile {
     padding: 20px $layout-margin-x-mobile;
-
   }
 
   .header {
