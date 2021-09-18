@@ -1,0 +1,21 @@
+@import "../mixin";
+
+.box {
+  background-color: $primary-color-logo;
+  border-radius: 24px;
+  height: 210px;
+  padding: 20px;
+
+  box-shadow: 0 10px 20px 0 rgb(150 153 159 / 50%);
+
+  .subtitle {
+    color: white;
+    font-size: medium;
+  }
+
+  .description {
+    color: white;
+    font-size: large;
+    word-break: keep-all;
+  }
+}

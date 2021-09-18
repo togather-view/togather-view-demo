@@ -11,13 +11,29 @@ import QuestionListElement from "@src/components/question/QuestionListElement.co
 import { questionList } from "@dummy/question.data";
 
 import styles from "@src/styles/pages/Main.module.scss";
+import BannerComponent from "@src/components/banner/Banner.component";
 
 function MainPage() {
   return (
     <LayoutComponent>
       <div className={styles.banner}>
-        <InterviewStartBannerComponent />
-        <QuestionCreateBannerComponent />
+        <BannerComponent
+          title="면접 시작하기"
+          description="예준님을 위해 준비된 면접에 참여해보세요!"
+          path="/interview"
+        />
+        <BannerComponent
+          title="질문 공유하기"
+          description="다른 사람들과 예상 질문을 공유해보세요!"
+          path="/interview"
+        />
+        <BannerComponent
+          title="질문 공유하기"
+          description="다른 사람들과 예상 질문을 공유해보세요!"
+          path="/interview"
+        />
+        {/* <InterviewStartBannerComponent /> */}
+        {/* <QuestionCreateBannerComponent /> */}
       </div>
       <div className={styles.container}>
         <MobileQuestionFilterComponent />
