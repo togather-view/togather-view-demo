@@ -29,7 +29,13 @@ function LayoutComponent({ showInterviewButton = true, children }) {
           <div className={styles.content}>
             <Link href="/main">
               <a>
-                <h1 className={styles.logo}>투게더뷰</h1>
+                <div className={styles.logo}>
+                  <img
+                    className={styles.logo}
+                    src="/static/og-image.png"
+                    alt="투게더뷰"
+                  />
+                </div>
                 <div className={styles.logoContainer}>
                   <img
                     className={styles.logoImg}

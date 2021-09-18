@@ -18,15 +18,24 @@
 
   display: grid;
   grid-template-columns: 3fr 1fr;
-  column-gap: 30px;
+  column-gap: 10px;
 
   @include mobile {
     display: block;
   }
+
   .listWrap {
 
+    background: white;
+    border: 1px solid $color-border-gray;
+    border-radius: $border-radius;
+
+    padding: 10px 20px;
+
     @include mobile {
-      margin: 0 $layout-margin-x-mobile;
+      margin: 0;
+      padding: 0 $layout-margin-x-mobile;
+      border: none;
     }
   }
   .sideWrap {

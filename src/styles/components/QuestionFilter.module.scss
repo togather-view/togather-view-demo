@@ -2,12 +2,14 @@
 
 .container {
   position: sticky;
-  top: 90px;
-  width: 320px;
+  top: 80px;
+  width: 326px;
 
   border: 1px solid $color-border-gray;
-  border-radius: 2px;
-  padding: 14px;
+  border-radius: $border-radius;
+  padding: 18px;
+
+  background: white;
 
   @include mobile {
     display: none;
