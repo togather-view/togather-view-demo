@@ -25,6 +25,9 @@
   }
   .listWrap {
 
+    @include mobile {
+      margin: 0 $layout-margin-x-mobile;
+    }
   }
   .sideWrap {
     height: 100vh;

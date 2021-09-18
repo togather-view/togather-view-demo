@@ -1,8 +1,10 @@
 @import "../mixin";
 
 .bannerWrap {
-  &:last-child {
-    display: none;
+  @include mobile {
+    &:last-child {
+      display: none;
+    }
   }
 }
 

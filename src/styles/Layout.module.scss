@@ -105,6 +105,9 @@
       width: 100%;
 
       @include tablet {
+        margin: 0 $layout-margin-x-mobile;
+      }
+      @include mobile {
         margin: 0;
       }
     }
