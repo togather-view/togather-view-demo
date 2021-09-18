@@ -81,10 +81,19 @@
 
 
 .detailContainer {
-  margin: 40px 0;
+
+  background: white;
+  border-radius: $border-radius;
+
+  padding: 30px;
 
   @include tablet {
     margin: 20px 0;
+  }
+
+  @include mobile {
+    padding: 20px $layout-margin-x-mobile;
+
   }
 
   .header {
@@ -130,7 +139,7 @@
 
   h3 {
     font-size: 1.24rem;
-    margin-bottom: 15px;
+    margin-bottom: 24px;
   }
 
   .tagContainer {

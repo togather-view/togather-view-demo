@@ -1,15 +1,28 @@
 @import "../mixin";
 
+.pageWrap {
+  border-left: 1px solid $color-border-gray;
+  border-right: 1px solid $color-border-gray;
+  background: white;
+
+  section:not(:last-child) {
+    border-bottom: 1px solid $color-border-gray;
+  }
+}
+
 .likeQuestionButton {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 30px auto;
+  margin: 0 auto 30px auto;
 }
+
+
 
 .answerInput {
 
-  margin-bottom: 30px;
+  padding: 20px 20px 0 20px;
+  background: #FAFAFA;
 
   .inputArea {
     margin-bottom: 10px;
@@ -23,7 +36,7 @@
 
       border-radius: 2px;
 
-      padding: 10px;
+      padding: 15px;
     }
 
     .submitButton {
@@ -43,5 +56,16 @@
     .switch {
 
     }
+  }
+}
+
+.answerList {
+  background: white;
+
+  padding: 20px 30px;
+  border-radius: $border-radius;
+
+  @include mobile {
+    padding: 10px $layout-margin-x-mobile;
   }
 }

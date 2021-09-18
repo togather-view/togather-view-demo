@@ -27,7 +27,7 @@ function QuestionDetailPage({ questionId }) {
   return (
     <LayoutComponent>
       <QuestionSeo question={question} />
-      <div>
+      <div className={styles.pageWrap}>
         <section>
           <QuestionDetailComponent question={question} />
           <Button className={styles.likeQuestionButton} type="text">
@@ -35,9 +35,11 @@ function QuestionDetailPage({ questionId }) {
           </Button>
         </section>
         <section className={styles.answerInput}>
-          <h2>나의 답변 작성하기</h2>
           <div className={styles.inputArea}>
-            <textarea className={styles.textArea} />
+            <textarea
+              className={styles.textArea}
+              placeholder="답변을 작성해주세요"
+            />
             <Button className={styles.submitButton}>작성</Button>
           </div>
           <div className={styles.confirmShare}>
@@ -46,10 +48,11 @@ function QuestionDetailPage({ questionId }) {
           </div>
         </section>
         <section>
-          <h2>다른 사람의 답변 보기</h2>
-          {answerList.map((x) => (
-            <QuestionAnswerComponent key={x.id} answer={x} />
-          ))}
+          <div className={styles.answerList}>
+            {answerList.map((x) => (
+              <QuestionAnswerComponent key={x.id} answer={x} />
+            ))}
+          </div>
         </section>
       </div>
     </LayoutComponent>
