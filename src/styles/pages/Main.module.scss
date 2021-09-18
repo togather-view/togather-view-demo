@@ -18,7 +18,10 @@
 
   display: grid;
   grid-template-columns: 3fr 1fr;
-  column-gap: 10px;
+
+  border: 1px solid $color-border-gray;
+  border-radius: $border-radius;
+  background: white;
 
   @include mobile {
     display: block;
@@ -27,12 +30,9 @@
   .listWrap {
 
     background: white;
-    border: 1px solid $color-border-gray;
-    border-radius: $border-radius;
+    border-right: 1px solid $color-border-gray;
 
     padding: 10px 20px;
-
-    margin-bottom: 50px;
 
     @include mobile {
       margin: 0;
