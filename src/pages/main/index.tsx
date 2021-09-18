@@ -3,6 +3,7 @@ import { memo } from "react";
 import LayoutComponent from "@src/components/common/Layout.component";
 import InterviewStartBannerComponent from "@src/components/banner/InterviewStartBanner.component";
 import QuestionCreateBannerComponent from "@src/components/banner/QuestionCreateBanner.component";
+import BookmarkBannerComponent from "@src/components/banner/BookmarkBanner.component";
 import MobileQuestionFilterComponent from "@src/components/common/MobileQuestionFilter.component";
 import QuestionFilterComponent from "@src/components/common/QuestionFilter.component";
 import QuestionListElement from "@src/components/question/QuestionListElement.component";
@@ -10,30 +11,16 @@ import QuestionListElement from "@src/components/question/QuestionListElement.co
 // dummy
 import { questionList } from "@dummy/question.data";
 
+// styles
 import styles from "@src/styles/pages/Main.module.scss";
-import BannerComponent from "@src/components/banner/Banner.component";
 
 function MainPage() {
   return (
     <LayoutComponent>
       <div className={styles.banner}>
-        <BannerComponent
-          title="면접 시작하기"
-          description="예준님을 위해 준비된 면접에 참여해보세요!"
-          path="/interview"
-        />
-        <BannerComponent
-          title="질문 공유하기"
-          description="다른 사람들과 예상 질문을 공유해보세요!"
-          path="/interview"
-        />
-        <BannerComponent
-          title="질문 공유하기"
-          description="다른 사람들과 예상 질문을 공유해보세요!"
-          path="/interview"
-        />
-        {/* <InterviewStartBannerComponent /> */}
-        {/* <QuestionCreateBannerComponent /> */}
+        <InterviewStartBannerComponent color="#386CB9" />
+        <QuestionCreateBannerComponent color="#0B97B6" />
+        <BookmarkBannerComponent color="#E19F18" />
       </div>
       <div className={styles.container}>
         <MobileQuestionFilterComponent />

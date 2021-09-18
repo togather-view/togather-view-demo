@@ -103,7 +103,8 @@
       width: 100%;
 
       @include tablet {
-        margin: 0 $layout-margin-x-mobile;
+        margin: 0;
+        padding: 0 $layout-margin-x-mobile;
       }
     }
   }

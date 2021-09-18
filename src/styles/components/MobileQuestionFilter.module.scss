@@ -19,8 +19,10 @@
     border-right: none;
 
     position: absolute;
-    left: -$layout-margin-x-mobile;
-    right:-$layout-margin-x-mobile;
+    //left: -$layout-margin-x-mobile;
+    //right:-$layout-margin-x-mobile;
+    left: 0;
+    right: 0;
     padding: 10px $layout-margin-x-mobile;
 
     overflow-x: auto;

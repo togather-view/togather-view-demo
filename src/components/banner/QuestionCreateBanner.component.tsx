@@ -1,14 +1,14 @@
 import { memo, useCallback, useState } from "react";
-import { Button, Modal } from "antd";
+import { Modal } from "antd";
 import { ExclamationCircleOutlined } from "@ant-design/icons";
 
 // components
 import QuestionFormComponent from "@src/components/question/QuestionForm.component";
 
 // styles
-import styles from "@src/styles/pages/Main.module.scss";
+import BannerComponent from "@src/components/banner/Banner.component";
 
-function QuestionCreateBannerComponent() {
+function QuestionCreateBannerComponent({ color }) {
   const [visible, setVisible] = useState(false);
 
   const openForm = useCallback(() => setVisible(true), []);
@@ -30,14 +30,15 @@ function QuestionCreateBannerComponent() {
   );
 
   return (
-    <div className={styles.box}>
-      <h3>
-        <span className={styles.emoji}>📝</span>
-        다른 사람들과 예상 질문을 공유해보세요!
-      </h3>
-      <Button className={styles.button} type="primary" onClick={openForm}>
-        예상 질문 공유하기
-      </Button>
+    <div>
+      <div onClick={openForm}>
+        <BannerComponent
+          title="예상 질문 공유하기"
+          description="다른 사람들과 예상 질문을 공유해보세요!"
+          color={color}
+          imgSrc="/static/illustrations/question.png"
+        />
+      </div>
       <Modal visible={visible} footer={null} onCancel={showConfirm}>
         <QuestionFormComponent closeForm={closeForm} />
       </Modal>

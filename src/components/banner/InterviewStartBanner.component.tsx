@@ -6,23 +6,20 @@ import { Button } from "antd";
 import { myAccount } from "@dummy/user.data";
 
 // styles
-import styles from "@src/styles/pages/Main.module.scss";
+import BannerComponent from "@src/components/banner/Banner.component";
 
-function InterviewStartBannerComponent() {
+function InterviewStartBannerComponent({ color }) {
   return (
-    <div className={styles.box}>
-      <h3>
-        <span className={styles.emoji}>💁‍</span>
-        {myAccount.firstName}님을 위해 준비된 면접에 참여해보세요!
-      </h3>
-      <Link href="/interview">
-        <a>
-          <Button className={styles.button} type="primary">
-            면접 시작하기
-          </Button>
-        </a>
-      </Link>
-    </div>
+    <Link href="/interview">
+      <a>
+        <BannerComponent
+          title="면접 시작하기"
+          description={`${myAccount.firstName}님을 위해 준비된 면접에 참여해보세요!`}
+          color={color}
+          imgSrc="/static/illustrations/interview.png"
+        />
+      </a>
+    </Link>
   );
 }
 
