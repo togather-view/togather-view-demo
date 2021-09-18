@@ -1,0 +1,55 @@
+@import "../mixin";
+
+.box {
+  border-radius: 24px;
+  height: 210px;
+  padding: 20px;
+
+  box-shadow: 0 10px 20px 0 rgb(150 153 159 / 50%);
+
+  cursor: pointer;
+
+  position: relative;
+
+  @include mobile {
+    width: 160px;
+  }
+
+  .subtitle {
+    color: white;
+    font-size: medium;
+
+    z-index: 10;
+
+    @include mobile {
+      font-size: small;
+    }
+  }
+
+  .description {
+    color: white;
+    font-size: large;
+    word-break: keep-all;
+
+    z-index: 10;
+
+    @include mobile {
+      font-size: medium;
+    }
+  }
+
+  .image {
+    position: absolute;
+    right: 3px;
+    bottom: 10px;
+
+    img {
+      height: 100px;
+      width: auto;
+
+      @include mobile {
+        height: 80px;
+      }
+    }
+  }
+}
