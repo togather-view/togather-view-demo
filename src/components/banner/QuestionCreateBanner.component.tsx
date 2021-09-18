@@ -4,9 +4,10 @@ import { ExclamationCircleOutlined } from "@ant-design/icons";
 
 // components
 import QuestionFormComponent from "@src/components/question/QuestionForm.component";
+import BannerComponent from "@src/components/banner/Banner.component";
 
 // styles
-import BannerComponent from "@src/components/banner/Banner.component";
+import styles from "@src/styles/components/Banner.module.scss";
 
 function QuestionCreateBannerComponent({ color }) {
   const [visible, setVisible] = useState(false);
@@ -30,7 +31,7 @@ function QuestionCreateBannerComponent({ color }) {
   );
 
   return (
-    <div>
+    <div className={styles.bannerWrap}>
       <div onClick={openForm}>
         <BannerComponent
           title="예상 질문 공유하기"

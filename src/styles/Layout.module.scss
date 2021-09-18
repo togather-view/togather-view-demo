@@ -3,6 +3,8 @@
 .container {
   min-height: 100vh;
 
+  background: $color-page-background;
+
   .header {
     height: $height-header-desktop;
 
@@ -104,7 +106,6 @@
 
       @include tablet {
         margin: 0;
-        padding: 0 $layout-margin-x-mobile;
       }
     }
   }
