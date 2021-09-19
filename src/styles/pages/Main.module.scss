@@ -23,8 +23,12 @@
   border-radius: $border-radius;
   background: white;
 
+  margin-bottom: 50px;
+
   @include mobile {
     display: block;
+    border-left: none;
+    border-right: none;
   }
 
   .listWrap {
@@ -32,7 +36,7 @@
     background: white;
     border-right: 1px solid $color-border-gray;
 
-    padding: 10px 20px;
+    padding: 10px 18px;
 
     @include mobile {
       margin: 0;

@@ -116,6 +116,7 @@ function InterviewFormPage() {
             면접 시작하기
             <ArrowRightOutlined />
           </Button>
+          <div className={styles.clearfix} />
         </div>
       </div>
       {interviewLoadingState === "LOADING" && (

@@ -37,15 +37,15 @@ function QuestionListElement({ question }: Props) {
           <div className={styles.info}>
             <div className={styles.element}>
               <LikeOutlined className={styles.icon} />
-              <div className={styles.count}>0</div>
+              <p className={styles.count}>0</p>
             </div>
             <div className={styles.element}>
               <MessageOutlined className={styles.icon} />
-              <div className={styles.count}>2</div>
+              <p className={styles.count}>2</p>
             </div>
             <div className={styles.element}>
               <EyeOutlined className={styles.icon} />
-              <div className={styles.count}>23</div>
+              <p className={styles.count}>23</p>
             </div>
           </div>
         </a>
