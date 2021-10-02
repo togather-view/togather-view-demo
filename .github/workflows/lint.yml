@@ -1,5 +1,4 @@
 name: 'ESLint'
-description: 'ESLint 검사를 실행합니다.'
 on:
   pull_request:
     branches: [ main ]
