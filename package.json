@@ -23,6 +23,7 @@
     "sass": "^1.38.2"
   },
   "devDependencies": {
+    "@babel/core": "^7.15.5",
     "@types/antd": "^1.0.0",
     "@types/node": "^16.7.4",
     "@types/react": "^17.0.19",
