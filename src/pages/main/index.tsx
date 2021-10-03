@@ -25,10 +25,12 @@ function MainPage() {
       <div className={styles.container}>
         <MobileQuestionFilterComponent />
         {/*    Question List   */}
-        <div className={styles.listWrap}>
-          {questionList.map((x) => (
-            <QuestionListElement key={x.id} question={x} />
-          ))}
+        <div>
+          <div className={styles.listWrap}>
+            {questionList.map((x) => (
+              <QuestionListElement key={x.id} question={x} />
+            ))}
+          </div>
         </div>
         <div className={styles.sideWrap}>
           {/*    Filter          */}

@@ -1,8 +1,9 @@
 @import "../mixin";
 
 .container {
-  padding: 40px;
+  background: $color-page-background;
 
+  padding: 40px;
   height: 100vh;
 
   @include tablet {
@@ -34,6 +35,8 @@
     min-width: 420px;
     border-right: 1px solid $color-border-gray;
     padding: 20px;
+
+    background: white;
 
     @include mobile {
       display: none;

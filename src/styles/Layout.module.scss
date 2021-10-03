@@ -3,6 +3,8 @@
 .container {
   min-height: 100vh;
 
+  background: $color-page-background;
+
   .header {
     height: $height-header-desktop;
 
@@ -18,6 +20,8 @@
     z-index: 999;
     top: 0;
     background: white;
+
+    border-bottom: 1px solid $color-border-gray;
 
     .wrap {
       max-width: $max-width;
@@ -36,18 +40,11 @@
         align-items: center;
 
         .logo {
-          font-weight: 800;
-          font-size: 2rem;
-          margin: 0;
-          font-family: 'Recipekorea';
-          color: $primary-color-logo;
-          //text-shadow:
-          //        -1px -1px 0 $primary-color-logo,
-          //        1px -1px 0 $primary-color-logo,
-          //        -1px 1px 0 $primary-color-logo,
-          //        1px 1px 0 $primary-color-logo;
-
           display: block;
+
+          height: $height-header-desktop;
+          width: auto;
+
           @include tablet {
             display: none;
           }
@@ -95,16 +92,16 @@
     display: flex;
     justify-content: center;
 
-    padding-bottom: 40px;
-
     .wrap {
       max-width: $max-width;
       margin: 0 $layout-margin-x-desktop;
       width: 100%;
 
       @include tablet {
+        margin: 0 $layout-margin-x-mobile;
+      }
+      @include mobile {
         margin: 0;
-        padding: 0 $layout-margin-x-mobile;
       }
     }
   }

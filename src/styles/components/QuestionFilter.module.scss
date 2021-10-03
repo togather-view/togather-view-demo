@@ -1,13 +1,13 @@
 @import "../mixin";
 
 .container {
-  position: sticky;
-  top: 90px;
-  width: 320px;
+  //position: sticky;
+  top: 80px;
+  width: 326px;
 
-  border: 1px solid $color-border-gray;
-  border-radius: 2px;
-  padding: 14px;
+  padding: 28px 18px;
+
+  background: white;
 
   @include mobile {
     display: none;

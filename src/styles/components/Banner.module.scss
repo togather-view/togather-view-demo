@@ -1,5 +1,13 @@
 @import "../mixin";
 
+.bannerWrap {
+  @include mobile {
+    &:last-child {
+      display: none;
+    }
+  }
+}
+
 .box {
   border-radius: 24px;
   height: 210px;
@@ -12,7 +20,7 @@
   position: relative;
 
   @include mobile {
-    width: 160px;
+    width: 100%;
   }
 
   .subtitle {

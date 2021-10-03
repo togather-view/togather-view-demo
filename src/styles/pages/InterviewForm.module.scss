@@ -4,9 +4,21 @@
   min-height: 60vh;
   justify-content: center;
 
+  border: 1px solid $color-border-gray;
+  border-radius: $border-radius;
+  background: white;
+
+  margin-top: 30px;
+  padding: 40px;
+
   @include mobile {
     align-items: normal;
-    min-height: 0;
+    height: 100%;
+
+    border: none;
+    margin-top: 0;
+
+    padding: 40px $layout-margin-x-mobile;
   }
 
   h2 {
@@ -20,8 +32,7 @@
 
   .formBox {
     display: block;
-
-    margin-top: 50px;
+    word-break: keep-all;
 
     @include mobile {
       border: none;

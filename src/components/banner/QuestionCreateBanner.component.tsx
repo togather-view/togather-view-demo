@@ -7,7 +7,7 @@ import QuestionFormComponent from "@src/components/question/QuestionForm.compone
 import BannerComponent from "@src/components/banner/Banner.component";
 
 // styles
-import styles from "@src/styles/common.module.scss";
+import styles from "@src/styles/components/Banner.module.scss";
 
 function QuestionCreateBannerComponent({ color }) {
   const [visible, setVisible] = useState(false);
@@ -31,7 +31,7 @@ function QuestionCreateBannerComponent({ color }) {
   );
 
   return (
-    <div>
+    <div className={styles.bannerWrap}>
       <button
         className={styles.buttonWithNoStyle}
         type="button"
