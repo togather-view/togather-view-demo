@@ -1,5 +1,10 @@
+import { memo } from "react";
+
+// components
 import MainPage from "@src/pages/main";
 
-export default function Home() {
+function Home() {
   return <MainPage />;
 }
+
+export default memo(Home);

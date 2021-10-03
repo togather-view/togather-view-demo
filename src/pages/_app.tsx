@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { DefaultSeo } from "@src/components/seo/Seo.component";
 
 import "@src/styles/antd-custom.css";
@@ -12,4 +13,4 @@ function MyApp({ Component, pageProps }) {
   );
 }
 
-export default MyApp;
+export default memo(MyApp);

@@ -64,6 +64,12 @@ $breakpoint-desktop: 1200px;
   clear: both;
 }
 
+.buttonWithNoStyle {
+  text-align: inherit;
+  border: initial;
+  background: inherit;
+}
+
 
 
 // Variables

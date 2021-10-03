@@ -32,14 +32,18 @@ function QuestionCreateBannerComponent({ color }) {
 
   return (
     <div className={styles.bannerWrap}>
-      <div onClick={openForm}>
+      <button
+        className={styles.buttonWithNoStyle}
+        type="button"
+        onClick={openForm}
+      >
         <BannerComponent
           title="예상 질문 공유하기"
           description="다른 사람들과 예상 질문을 공유해보세요!"
           color={color}
           imgSrc="/static/illustrations/question.png"
         />
-      </div>
+      </button>
       <Modal visible={visible} footer={null} onCancel={showConfirm}>
         <QuestionFormComponent closeForm={closeForm} />
       </Modal>

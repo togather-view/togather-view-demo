@@ -34,6 +34,8 @@
     scrollbar-width: none; /* Firefox */
 
     .box {
+      @extend .buttonWithNoStyle;
+
       display: inline-block;
 
       border: 1px solid $color-border-gray;

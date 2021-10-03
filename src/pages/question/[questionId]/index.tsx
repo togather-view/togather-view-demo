@@ -17,6 +17,7 @@ import { QuestionSeo } from "@src/components/seo/Seo.component";
 
 // styles
 import styles from "@src/styles/pages/QuestionDetail.module.scss";
+import { GetServerSideProps } from "next";
 
 function QuestionDetailPage({ questionId }) {
   const question: Question = useMemo(() => {
@@ -59,7 +60,7 @@ function QuestionDetailPage({ questionId }) {
   );
 }
 
-export const getServerSideProps = async (ctx) => {
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const { questionId = "1" } = ctx.query;
   return { props: { questionId } };
 };
