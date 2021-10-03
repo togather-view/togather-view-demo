@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "./node_modules/.bin/eslint src --ext .ts,.tsx"
+    "lint": "./node_modules/.bin/eslint src --ext .ts,.tsx",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
     "@ant-design/icons": "^4.6.4",
@@ -24,11 +26,17 @@
   },
   "devDependencies": {
     "@babel/core": "^7.15.5",
+    "@storybook/addon-actions": "^6.3.9",
+    "@storybook/addon-docs": "^6.3.9",
+    "@storybook/addon-essentials": "^6.3.9",
+    "@storybook/addon-links": "^6.3.9",
+    "@storybook/react": "^6.3.9",
     "@types/antd": "^1.0.0",
     "@types/node": "^16.7.4",
     "@types/react": "^17.0.19",
     "@typescript-eslint/eslint-plugin": "^4.29.3",
     "@typescript-eslint/parser": "^4.29.3",
+    "babel-loader": "^8.2.2",
     "babel-plugin-module-resolver": "^4.1.0",
     "eslint": "^7.32.0",
     "eslint-config-airbnb": "^18.2.1",
@@ -41,6 +49,9 @@
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.2.0",
     "prettier": "^2.3.2",
+    "react-docgen-typescript-loader": "^3.7.2",
+    "react-is": "^17.0.2",
+    "storybook-addon-styled-component-theme": "^2.0.0",
     "typescript": "^4.4.2"
   }
 }
