@@ -2,13 +2,6 @@ import { Question } from "@src/interface/interface";
 import { tBrowser, tCss, tJavascript, tNetwork } from "@dummy/tech.data";
 import { gFrontend, gNode, gServer } from "@dummy/group.data";
 
-const que1: Question = {
-  id: 1,
-  contents: "",
-  techList: [],
-  jobGroup: [],
-};
-
 const que2: Question = {
   id: 2,
   contents: "호이스팅이란 무엇인가요?",

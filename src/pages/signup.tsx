@@ -1,5 +1,5 @@
 import { memo, useState } from "react";
-import { Button, Input, Modal } from "antd";
+import { Button, Input } from "antd";
 import Link from "next/link";
 
 // component

@@ -3,8 +3,8 @@ import { CaretDownOutlined } from "@ant-design/icons";
 import { Dropdown, Menu, Modal } from "antd";
 
 // dummy
-import { gFrontend, GroupList } from "@dummy/group.data";
-import { TechList, tJavascript } from "@dummy/tech.data";
+import { GroupList } from "@dummy/group.data";
+import { TechList } from "@dummy/tech.data";
 import { myAccount } from "@dummy/user.data";
 
 // type
@@ -77,16 +77,16 @@ function MobileQuestionFilterComponent() {
             <CaretDownOutlined />
           </div>
         </Dropdown>
-        <div className={styles.box} onClick={onOpen}>
+        <button className={styles.box} type="button" onClick={onOpen}>
           <span className={styles.label}>직군</span>
           {selectedJob}
           <CaretDownOutlined />
-        </div>
-        <div className={styles.box} onClick={onOpen}>
+        </button>
+        <button className={styles.box} type="button" onClick={onOpen}>
           <span className={styles.label}>기술</span>
           {selectedTech}
           <CaretDownOutlined />
-        </div>
+        </button>
       </div>
 
       <Modal

@@ -1,5 +1,5 @@
 import LayoutComponent from "@src/components/common/Layout.component";
-import { memo, useCallback, useMemo, useState } from "react";
+import { memo, useCallback, useState } from "react";
 import { Button, Menu, Tabs } from "antd";
 
 // dummy

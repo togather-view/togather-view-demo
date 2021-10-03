@@ -1,4 +1,12 @@
-export const startTimer = (time, onTime, onAfterTime) => {
+interface StartTimer {
+  (
+    time: number,
+    onTime: (min: number, sec: number) => void,
+    onAfterTime: () => void,
+  ): ReturnType<typeof setInterval>;
+}
+
+export const startTimer: StartTimer = (time, onTime, onAfterTime) => {
   let leftTime = time;
   let min = 0;
   let sec = 0;
@@ -15,4 +23,6 @@ export const startTimer = (time, onTime, onAfterTime) => {
   return x;
 };
 
-export default {};
+export default {
+  startTimer,
+};
