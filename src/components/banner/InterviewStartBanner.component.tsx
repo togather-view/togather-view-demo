@@ -1,6 +1,5 @@
 import { memo } from "react";
 import Link from "next/link";
-import { Button } from "antd";
 
 // dummy
 import { myAccount } from "@dummy/user.data";

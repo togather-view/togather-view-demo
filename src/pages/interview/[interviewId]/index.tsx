@@ -11,7 +11,7 @@ import { startTimer } from "@src/util/messenger";
 
 // dummy
 import { myAccount } from "@dummy/user.data";
-import { interviewMessageList, messageList } from "@dummy/message.data";
+import { interviewMessageList } from "@dummy/message.data";
 
 // type
 import { MessageSide } from "@src/interface/interface";
@@ -121,7 +121,10 @@ function InterviewMessengerPage() {
     return list;
   }, [displayedMessages, isMessageLeft, messageListIndex]);
 
+  // 이 Effect 는 mount 이후 한 번만 실행
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => startInterviewerMessage(), []);
+
   useEffect(() => {
     if (isIntervieweeDone) {
       startInterviewerMessage();

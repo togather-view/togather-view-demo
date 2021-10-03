@@ -3,7 +3,7 @@ import { Tag } from "antd";
 
 function TagComponent({ className = "", title, color = "", onClick = null }) {
   return (
-    <Tag className={className} title={title} color={color} onClick={onClick} >
+    <Tag className={className} title={title} color={color} onClick={onClick}>
       {title}
     </Tag>
   );

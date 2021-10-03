@@ -3,7 +3,7 @@ import { Avatar } from "antd";
 import { LikeFilled, LikeOutlined } from "@ant-design/icons";
 
 // interface
-import { Answer, User } from "@src/interface/interface";
+import { Answer } from "@src/interface/interface";
 
 import styles from "@src/styles/components/QuestionAnswer.module.scss";
 
