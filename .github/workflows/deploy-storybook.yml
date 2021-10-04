@@ -16,4 +16,4 @@ jobs:
     - name: Deploy storybook
       run: npm run deploy-storybook
       with:
-        github-token: ${{secrets.GITHUB_TOKEN}}
+        github-token: ${{secrets.TOKEN}}
