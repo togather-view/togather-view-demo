@@ -15,3 +15,5 @@ jobs:
       run: npm ci
     - name: Deploy storybook
       run: npm run deploy-storybook
+      with:
+        github-token: ${{secrets.GITHUB_TOKEN}}
