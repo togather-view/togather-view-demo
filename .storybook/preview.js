@@ -1,4 +1,5 @@
-import GlobalStyles from "../src/components/common/GlobalStyles.copmonent";
+import "!style-loader!css-loader!sass-loader!../src/styles/antd-custom.css";
+import "!style-loader!css-loader!sass-loader!../src/styles/globals.scss";
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -7,7 +8,6 @@ export const parameters = {
 export const decorators = [
   (Story) => (
     <>
-      <GlobalStyles />
       <Story />
     </>
   ),

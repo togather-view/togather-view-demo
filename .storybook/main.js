@@ -8,9 +8,19 @@ module.exports = {
   "addons": [
     "@storybook/addon-links",
     "@storybook/addon-essentials",
-    '@storybook/addon-docs',
+    "@storybook/addon-docs",
+    // "@storybook/preset-scss",
     "storybook-addon-styled-component-theme/dist/preset",
   ],
+  typescript: {
+    check: false,
+    checkOptions: {},
+    reactDocgen: "react-docgen-typescript",
+    reactDocgenTypescriptOptions: {
+      shouldExtractLiteralValuesFromEnum: true,
+      propFilter: (prop) => (prop.parent ? !/node_modules/.test(prop.parent.fileName) : true),
+    },
+  },
   webpackFinal: async (config) => {
     // node_modules, styles 폴더 내부 모듈 인식시키기
     config.resolve.modules = [
@@ -29,7 +39,12 @@ module.exports = {
     // scss 모듈 적용
     config.module.rules.push({
       test: /\.scss$/,
-      use: ['style-loader', 'css-loader'],
+      use: ['style-loader', {
+        loader: 'css-loader',
+        options: {
+          modules: true,
+        },
+      }, 'sass-loader'],
       include: path.resolve(__dirname, '../'),
     });
 
