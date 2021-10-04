@@ -9,8 +9,6 @@ module.exports = {
     "@storybook/addon-links",
     "@storybook/addon-essentials",
     "@storybook/addon-docs",
-    // "@storybook/preset-scss",
-    "storybook-addon-styled-component-theme/dist/preset",
   ],
   typescript: {
     check: false,
