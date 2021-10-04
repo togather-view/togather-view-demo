@@ -11,9 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+      with:
+        github-token: ${{secrets.TOKEN}}
     - name: Install npm packages
       run: npm ci
     - name: Deploy storybook
       run: npm run deploy-storybook
-      with:
-        github-token: ${{secrets.TOKEN}}
