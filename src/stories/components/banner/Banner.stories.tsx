@@ -6,6 +6,7 @@ import InterviewStartBannerComponent from "@src/components/banner/InterviewStart
 interface BannerProps {
   color: string;
   imgSrc: string;
+  width: string;
 }
 
 export default {
@@ -13,12 +14,19 @@ export default {
   component: InterviewStartBannerComponent,
 } as Meta;
 
-const InterviewStartTemplate: Story<BannerProps> = (args) => (
-  <InterviewStartBannerComponent {...args} />
-);
+const InterviewStartTemplate: Story<BannerProps> = (args) => {
+  const { width } = args;
+  return (
+    <div style={{ width }}>
+      <InterviewStartBannerComponent {...args} />
+      <div />
+    </div>
+  );
+};
 export const InterviewStart = InterviewStartTemplate.bind({});
 InterviewStart.args = {
   color: "#386CB9",
   imgSrc:
-    "https://assets-global.website-files.com/5bcb5ee81fb2091a2ec550c7/6142d9cf318cf4209d4afc3b_DrawKit%20Product-Project%20Managers%20Grid.png",
+    "https://github.com/together-view/together-view-web/blob/main/public/static/illustrations/interview.png?raw=true",
+  width: "100%",
 };
