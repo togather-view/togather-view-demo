@@ -15,5 +15,11 @@ jobs:
         github-token: ${{secrets.TOKEN}}
     - name: Install npm packages
       run: npm ci
-    - name: Deploy storybook
-      run: npm run deploy-storybook
+    - name: Build storybook
+      run: npm run build-storybook
+    - name: Deploy 🚀
+      uses: JamesIves/github-pages-deploy-action@4.1.5
+      with:
+        branch: gh-pages
+        folder: storybook-static
+        token: ${{ secrets.TOKEN }}
