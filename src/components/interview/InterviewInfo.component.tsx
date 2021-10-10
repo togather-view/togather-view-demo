@@ -1,9 +1,12 @@
-import { memo, useMemo } from "react";
+import { memo, useContext, useMemo } from "react";
 import { Tooltip } from "antd";
 import { ClockCircleOutlined, SmileOutlined } from "@ant-design/icons";
 
 // interface
 import { JobGroup, Tech } from "@src/interface/interface";
+
+// lib
+import MessengerContext from "@src/context/Messenger.context";
 
 // component
 import TagComponent from "@src/components/common/Tag.component";
@@ -12,18 +15,14 @@ import TagComponent from "@src/components/common/Tag.component";
 import styles from "@src/styles/pages/InterviewMessenger.module.scss";
 
 interface Props {
-  totalQuestion: number;
-  nowIndex: number;
   jobList: JobGroup[];
   techList: Tech[];
 }
 
-function InterviewInfoComponent({
-  totalQuestion,
-  nowIndex,
-  jobList,
-  techList,
-}: Props) {
+function InterviewInfoComponent({ jobList, techList }: Props) {
+  const { questionTotal: totalQuestion, questionIndex: nowIndex } =
+    useContext(MessengerContext);
+
   const progressStyle = useMemo(
     () => ({ width: `${(nowIndex / totalQuestion) * 100}%` }),
     [nowIndex, totalQuestion],
