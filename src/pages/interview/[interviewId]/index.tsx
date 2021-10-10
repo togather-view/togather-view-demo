@@ -1,10 +1,10 @@
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { Avatar, Button } from "antd";
 import _ from "lodash";
 
 // component
 import LoadingDotsComponent from "@src/components/common/LoadingDots.component";
-import TagComponent from "@src/components/common/Tag.component";
+import InterviewInfoComponent from "@src/components/interview/InterviewInfo.component";
+import InterviewMessengerHeaderComponent from "@src/components/interview/InterviewMessengerHeader.component";
 
 // util
 import { startTimer } from "@src/util/messenger";
@@ -23,6 +23,8 @@ const messageTerm = 1200;
 const answerTimeLimit = 60;
 
 function InterviewMessengerPage() {
+  const textareaRef = useRef(null);
+
   const [displayedMessages, setDisplayedMessages] = useState([]);
   const [leftTime, setLeftTime] = useState("");
   const [timer, setTimer] = useState(null);
@@ -31,8 +33,6 @@ function InterviewMessengerPage() {
 
   const [messageListIndex, setMessageListIndex] = useState(0);
   const [isMessageLeft, setMessageLeft] = useState(true);
-
-  const textareaRef = useRef(null);
 
   const onTime = useCallback((min, sec) => {
     setLeftTime((min > 0 ? `${min}분` : "") + (sec > 0 ? `${sec}초` : ""));
@@ -94,6 +94,17 @@ function InterviewMessengerPage() {
     }
   }, [timer]);
 
+  // 이 Effect 는 mount 이후 한 번만 실행
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => startInterviewerMessage(), []);
+
+  useEffect(() => {
+    if (isIntervieweeDone) {
+      startInterviewerMessage();
+      setIntervieweeDone(false);
+    }
+  }, [isIntervieweeDone, startInterviewerMessage]);
+
   const messageListDOM = useMemo(() => {
     const list = displayedMessages.map((x, index) => (
       <div
@@ -121,57 +132,16 @@ function InterviewMessengerPage() {
     return list;
   }, [displayedMessages, isMessageLeft, messageListIndex]);
 
-  // 이 Effect 는 mount 이후 한 번만 실행
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(() => startInterviewerMessage(), []);
-
-  useEffect(() => {
-    if (isIntervieweeDone) {
-      startInterviewerMessage();
-      setIntervieweeDone(false);
-    }
-  }, [isIntervieweeDone, startInterviewerMessage]);
-
   return (
     <div className={styles.container}>
       <div className={styles.box}>
-        <div className={styles.infoWrap}>
-          <h1>투게더뷰</h1>
-          <h2>예진님의 면접</h2>
-          <div className={styles.tagList}>
-            <h3>선택한 직무</h3>
-            {myAccount.jobList.map((x) => (
-              <TagComponent title={x.name} key={x.id} />
-            ))}
-          </div>
-          <div className={styles.tagList}>
-            <h3>선택한 기술</h3>
-            {myAccount.techList.map((x) => (
-              <TagComponent title={x.name} color={x.color} key={x.id} />
-            ))}
-          </div>
-        </div>
+        <InterviewInfoComponent
+          user={myAccount}
+          jobList={myAccount.jobList}
+          techList={myAccount.techList}
+        />
+        {/* Messenger */}
         <div className={styles.messengerWrap}>
-          <header>
-            <div className={styles.title}>
-              <div className={styles.avatar}>
-                <Avatar src="/static/interviewer.png" size={36} />
-              </div>
-              <p className={styles.name}>면접관</p>
-            </div>
-
-            <p className={styles.timer}>{leftTime}</p>
-
-            {allowMessage && (
-              <Button
-                className={styles.submit}
-                type="link"
-                onClick={onClickSubmit}
-              >
-                완료
-              </Button>
-            )}
-          </header>
           <main>
             <div className={styles.messenger}>
               <div className={styles.messageWrap}>
