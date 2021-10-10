@@ -70,6 +70,15 @@ $breakpoint-desktop: 1200px;
   background: inherit;
 }
 
+.noScroll {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
 
 
 // Variables

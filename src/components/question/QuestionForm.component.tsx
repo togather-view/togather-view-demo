@@ -6,7 +6,7 @@ import { GroupList } from "@dummy/group.data";
 import { TechList } from "@dummy/tech.data";
 
 // components
-import TagSelectComponent from "@src/components/interview/TagSelect.component";
+import TagSelectComponent from "@src/components/common/TagSelect.component";
 
 // styles
 import styles from "@src/styles/components/QuestionForm.module.scss";

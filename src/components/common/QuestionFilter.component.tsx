@@ -7,7 +7,7 @@ import { myAccount } from "@dummy/user.data";
 import { TechList } from "@dummy/tech.data";
 
 // components
-import TagSelectComponent from "@src/components/interview/TagSelect.component";
+import TagSelectComponent from "@src/components/common/TagSelect.component";
 
 // styles
 import styles from "@src/styles/components/QuestionFilter.module.scss";

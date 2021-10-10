@@ -3,8 +3,13 @@
 .container {
   background: $color-page-background;
 
-  padding: 40px;
+  padding: 0 40px;
   height: 100vh;
+
+  h1 {
+    font-family: "Recipekorea";
+    color: $primary-color;
+  }
 
   @include tablet {
     padding: 0;
@@ -12,7 +17,8 @@
 
   .box {
     border: 1px solid $color-border-gray;
-    border-radius: 10px;
+
+    background-color: white;
 
     overflow: hidden;
 
@@ -30,101 +36,117 @@
     }
 
   }
+}
 
-  .infoWrap {
-    min-width: 420px;
-    border-right: 1px solid $color-border-gray;
-    padding: 20px;
+.infoWrap {
+  min-width: 420px;
+  padding: 20px;
 
-    background: white;
+  height: 100%;
+  border-right: 1px solid $color-border-gray;
 
-    @include mobile {
-      display: none;
-    }
-    @include tablet {
-      min-width: 320px;
-    }
-
-
-    h1 {
-      font-family: "Recipekorea";
-      color: $primary-color;
-    }
-
-    h2 {
-      margin-bottom: 30px;
-    }
-
-    $progress-border-radius: 8px;
-
-    .progress {
-      .background {
-        position: relative;
-        width: 100%;
-        height: 20px;
-        background: #efefef;
-        border-radius: $progress-border-radius;
-        margin-bottom: 8px;
-
-      }
-
-      .inner {
-        position: absolute;
-        left: 0;
-        height: 20px;
-        background-color: #6DCA33;
-        border-radius: $progress-border-radius;
-
-        overflow: hidden;
-
-        transition: width 300ms ease-in-out;
-
-        p {
-          text-align: right;
-          color: white;
-          font-size: $font-size-small;
-          margin-top: 2px;
-          margin-right: 5px;
-          margin-bottom: 0;
-        }
-      }
-
-      .description {
-        font-size: $font-size-small;
-      }
-    }
-
-    .divider {
-      margin: 24px 0;
-    }
-
-    .iconContainer {
-      display: flex;
-      margin-bottom: 18px;
-
-      .active {
-        color: $color-icon-active;
-      }
-
-      .inactive {
-        color: $color-icon-inactive;
-      }
-
-      :nth-child(n) {
-        margin-right: 6px;
-      }
-
-    }
-
-    .label {
-      margin-right: 18px;
-    }
-
-    .tagList {
-      margin-bottom: 14px;
-    }
+  @include mobile {
+    display: none;
+  }
+  @include tablet {
+    min-width: 320px;
   }
 }
+
+.infoDrawer {
+  top: 60px;
+  height: 90vh;
+
+  display: none;
+  @include mobile {
+    display: block;
+  }
+}
+
+.info {
+
+  background: white;
+
+  height: 100%;
+
+  h2 {
+    margin-bottom: 30px;
+  }
+
+  $progress-border-radius: 8px;
+
+  .progress {
+    .background {
+      position: relative;
+      width: 100%;
+      height: 20px;
+      background: #efefef;
+      border-radius: $progress-border-radius;
+      margin-bottom: 8px;
+      border: 1px solid $color-border-gray;
+      overflow: hidden;
+    }
+
+    .inner {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      background-color: #6DCA33;
+
+      overflow: hidden;
+
+      transition: width 300ms ease-in-out;
+
+      p {
+        text-align: right;
+        color: white;
+        font-size: $font-size-small;
+        margin-top: 2px;
+        margin-right: 5px;
+        margin-bottom: 0;
+      }
+    }
+
+    .description {
+      font-size: $font-size-small;
+    }
+  }
+
+  .divider {
+    margin: 24px 0;
+  }
+
+  .iconContainer {
+    display: flex;
+    margin-bottom: 18px;
+
+    .active {
+      font-size: 25px;
+      color: $color-icon-active;
+    }
+
+    .inactive {
+      font-size: 25px;
+      color: $color-icon-inactive;
+    }
+
+    :nth-child(n) {
+      margin-right: 4px;
+    }
+
+  }
+
+  .label {
+    margin-right: 18px;
+  }
+
+  .tagList {
+    margin-bottom: 10px;
+    line-height: 28px;
+  }
+}
+
 
 .messengerWrap {
   width: 720px;
@@ -143,36 +165,30 @@
     width: 100%;
 
     text-align: center;
-    display: flex;
     align-items: center;
     justify-content: space-between;
 
-    padding: 0 30px;
+    padding: 0 20px;
     background: white;
 
     z-index: 9999;
 
-    .title {
+    display: none;
+    @include mobile {
       display: flex;
-      align-items: center;
-      gap: 10px;
-
-      .name {
-        margin-bottom: 0;
-        font-size: medium;
-        font-weight: bold;
-      }
     }
 
-    .timer {
-      margin-bottom: 0;
-      font-size: medium;
-      font-weight: bold;
+    h1 {
+      font-family: "Recipekorea";
+      color: $primary-color;
+      margin: 0;
     }
 
-    .submit {
-      padding: 0;
+    .icon {
+      font-size: 20px;
+      cursor: pointer;
     }
+
   }
 
   main {
@@ -183,12 +199,18 @@
 
     box-sizing: content-box;
 
-    background: #f0f0f0;
+    background: #fafafa;
+
+    @include mobile {
+      top: 60px;
+    }
 
     .messenger {
+      @extend .noScroll;
+
       width: 100%;
       height: 100%;
-      padding: 24px;
+      padding: 20px;
 
       overflow-y: auto;
 
@@ -222,10 +244,10 @@
             max-width: 90%;
 
             border: 1px solid $color-border-gray;
-            border-radius: 0 $message-radius $message-radius $message-radius;
+            border-radius: 3px $message-radius $message-radius $message-radius;
 
-            padding: 12px 15px;
-            margin-bottom: 12px;
+            padding: 10px 13px;
+            margin-bottom: 8px;
 
             background-color: white;
 
@@ -250,26 +272,47 @@
   .footer {
     position: absolute;
     bottom: 0;
-    height: 120px;
+    height: 140px;
     width: 100%;
 
-    padding-left: 15px;
-    padding-right: 15px;
-    padding-bottom: 15px;
-    padding-top: 10px;
+    padding: 10px 15px 15px;
 
-    display: flex;
     align-items: center;
 
-    background-color: #f0f0f0;
+    background-color: #fafafa;
+
+    .toolContainer {
+      display: flex;
+      justify-content: space-between;
+      font-size: $font-size-small;
+
+      padding: 0 5px 3px 5px;
+
+      p {
+        margin: 0;
+      }
+
+      .submit {
+        @extend .buttonWithNoStyle;
+        margin: 0;
+        color: #3AC1E5;
+        font-weight: bold;
+        cursor: pointer;
+      }
+    }
+
+    .toolContainerInvisible {
+      @extend .toolContainer;
+      visibility: hidden;
+    }
 
     textarea {
-      height: 100%;
       width: 100%;
+      height: 80%;
 
       border: 1px solid $color-border-gray;
       border-radius: 10px;
-      padding: 14px;
+      padding: 10px;
 
 
       resize: none;

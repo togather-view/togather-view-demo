@@ -6,7 +6,7 @@ import _ from "lodash";
 
 // components
 import LayoutComponent from "@src/components/common/Layout.component";
-import TagSelectComponent from "@src/components/interview/TagSelect.component";
+import TagSelectComponent from "@src/components/common/TagSelect.component";
 import { InterviewFormSeo } from "@src/components/seo/Seo.component";
 
 // dummy

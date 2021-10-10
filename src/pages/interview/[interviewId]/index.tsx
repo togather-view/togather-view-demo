@@ -26,7 +26,7 @@ function InterviewMessengerPage() {
   const textareaRef = useRef(null);
 
   const [displayedMessages, setDisplayedMessages] = useState([]);
-  const [leftTime, setLeftTime] = useState("");
+  const [leftTime, setLeftTime] = useState("1분");
   const [timer, setTimer] = useState(null);
   const [isIntervieweeDone, setIntervieweeDone] = useState(false);
   const [allowMessage, setAllowMessage] = useState(false);
@@ -90,7 +90,7 @@ function InterviewMessengerPage() {
     if (timer) {
       clearInterval(timer);
       setTimer(null);
-      setLeftTime("");
+      setLeftTime("1분");
     }
   }, [timer]);
 
@@ -132,16 +132,32 @@ function InterviewMessengerPage() {
     return list;
   }, [displayedMessages, isMessageLeft, messageListIndex]);
 
+  const messageToolStyles = useMemo(
+    () => (allowMessage ? styles.toolContainer : styles.toolContainerInvisible),
+    [allowMessage],
+  );
+
   return (
     <div className={styles.container}>
       <div className={styles.box}>
-        <InterviewInfoComponent
-          user={myAccount}
-          jobList={myAccount.jobList}
-          techList={myAccount.techList}
-        />
+        <div className={styles.infoWrap}>
+          <h1>투게더뷰</h1>
+          <InterviewInfoComponent
+            totalQuestion={interviewMessageList.length}
+            nowIndex={messageListIndex}
+            jobList={myAccount.jobList}
+            techList={myAccount.techList}
+          />
+        </div>
         {/* Messenger */}
         <div className={styles.messengerWrap}>
+          <InterviewMessengerHeaderComponent
+            totalQuestion={interviewMessageList.length}
+            nowIndex={messageListIndex}
+            jobList={myAccount.jobList}
+            techList={myAccount.techList}
+          />
+          {/* 메신저 대화 부분 */}
           <main>
             <div className={styles.messenger}>
               <div className={styles.messageWrap}>
@@ -149,7 +165,18 @@ function InterviewMessengerPage() {
               </div>
             </div>
           </main>
+          {/* 메신저 입력 부분 */}
           <div className={styles.footer}>
+            <div className={messageToolStyles}>
+              <p>{leftTime} 후 답변 종료</p>
+              <button
+                type="button"
+                className={styles.submit}
+                onClick={onClickSubmit}
+              >
+                답변 완료하기
+              </button>
+            </div>
             <textarea
               ref={textareaRef}
               disabled={!allowMessage}
