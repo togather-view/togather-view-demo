@@ -10,9 +10,11 @@ import { myAccount } from "@dummy/user.data";
 // type
 import { QuestionSortType } from "@src/interface/interface";
 
+// components
+import TagSelectComponent from "@src/components/common/TagSelect.component";
+
 // styles
 import styles from "@src/styles/components/MobileQuestionFilter.module.scss";
-import TagSelectComponent from "@src/components/interview/TagSelect.component";
 import tagStyles from "@src/styles/components/TagSelect.module.scss";
 
 function MobileQuestionFilterComponent() {

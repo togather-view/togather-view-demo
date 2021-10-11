@@ -3,7 +3,7 @@ import { Button, Input } from "antd";
 import Link from "next/link";
 
 // component
-import TagSelectComponent from "@src/components/interview/TagSelect.component";
+import TagSelectComponent from "@src/components/common/TagSelect.component";
 
 // dummy
 import { GroupList } from "@dummy/group.data";
