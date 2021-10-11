@@ -2,7 +2,6 @@ import { memo } from "react";
 
 // dummy
 import { myAccount } from "@dummy/user.data";
-import { interviewMessageList } from "@dummy/message.data";
 
 // lib
 import { questionList } from "@dummy/question.data";

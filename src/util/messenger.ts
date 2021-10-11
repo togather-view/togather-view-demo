@@ -41,7 +41,7 @@ interface GetQuestionMessageList {
  * @param contents
  * @param side
  */
-export const createNewMessage: CreateNewMessage = function (
+export const createNewMessage: CreateNewMessage = function createNewMessage(
   index,
   contents,
   side,
@@ -60,13 +60,10 @@ export const createNewMessage: CreateNewMessage = function (
  * @param contentList
  * @param side
  */
-const createNewMessageList: CreateNewMessageList = function (
-  index,
-  contentList,
-  side,
-) {
-  return contentList.map((x) => createNewMessage(index, x, side));
-};
+const createNewMessageList: CreateNewMessageList =
+  function createNewMessageList(index, contentList, side) {
+    return contentList.map((x) => createNewMessage(index, x, side));
+  };
 
 /**
  * 타이머

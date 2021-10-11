@@ -80,7 +80,7 @@ function InterviewMessengerComponent() {
   useEffect(() => {
     if (isIntervieweeDone) {
       if (questionIndex === questionTotal) showOutroMessage();
-      else showQuestionMessage(questionIndex);
+      else showQuestionMessage();
       setIntervieweeDone(false);
     }
   }, [

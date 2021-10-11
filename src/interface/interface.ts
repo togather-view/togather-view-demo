@@ -35,7 +35,7 @@ export interface User {
 }
 
 export interface Message {
-  id: string | symbol;
+  id: string;
   side: MessageSide;
   contents: string;
 }
