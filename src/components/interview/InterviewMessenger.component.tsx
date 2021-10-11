@@ -129,8 +129,6 @@ function InterviewMessengerComponent() {
   return (
     <div className={styles.messengerWrap}>
       <InterviewMessengerHeaderComponent
-        totalQuestion={interviewMessageList.length}
-        nowIndex={questionIndex}
         jobList={myAccount.jobList}
         techList={myAccount.techList}
       />

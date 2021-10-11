@@ -15,14 +15,18 @@ import TagComponent from "@src/components/common/Tag.component";
 import styles from "@src/styles/pages/InterviewMessenger.module.scss";
 
 interface Props {
+  totalQuestion: number;
+  nowIndex: number;
   jobList: JobGroup[];
   techList: Tech[];
 }
 
-function InterviewInfoComponent({ jobList, techList }: Props) {
-  const { questionTotal: totalQuestion, questionIndex: nowIndex } =
-    useContext(MessengerContext);
-
+function InterviewInfoComponent({
+  totalQuestion,
+  nowIndex,
+  jobList,
+  techList,
+}: Props) {
   const progressStyle = useMemo(
     () => ({ width: `${(nowIndex / totalQuestion) * 100}%` }),
     [nowIndex, totalQuestion],

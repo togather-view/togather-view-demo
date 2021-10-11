@@ -9,7 +9,7 @@ import { MessengerProvider } from "@src/context/Messenger.context";
 
 // components
 import InterviewMessengerComponent from "@src/components/interview/InterviewMessenger.component";
-import InterviewInfoComponent from "@src/components/interview/InterviewInfo.component";
+import MessengerInterviewInfoWrapperComponent from "@src/components/interview/MessengerInterviewInfoWrapper.component";
 
 // styles
 import styles from "@src/styles/pages/InterviewMessenger.module.scss";
@@ -21,7 +21,7 @@ function InterviewMessengerPage() {
         <div className={styles.box}>
           <div className={styles.infoWrap}>
             <h1>투게더뷰</h1>
-            <InterviewInfoComponent
+            <MessengerInterviewInfoWrapperComponent
               jobList={myAccount.jobList}
               techList={myAccount.techList}
             />
