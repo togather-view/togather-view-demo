@@ -13,26 +13,21 @@ import interview1 from "@dummy/interview.data";
 
 // lib
 import MessengerContext from "@src/context/Messenger.context";
-import { MessageSide } from "@src/interface/interface";
 import { answerTimeLimit } from "@src/lib/constant/timer.constant";
 import { startTimer } from "@src/util/messenger";
 
 // components
 import InterviewMessengerHeaderComponent from "@src/components/interview/InterviewMessengerHeader.component";
-import LoadingDotsComponent from "@src/components/common/LoadingDots.component";
 
 // styles
 import styles from "@src/styles/pages/InterviewMessenger.module.scss";
-import AlertNewMessageComponent from "@src/components/interview/AlertNewMessage.component";
-import { questionListPage1 } from "@dummy/question.data";
+import InterviewMessengerBodyComponent from "@src/components/interview/InterviewMessengerBody.component";
 
 function InterviewMessengerComponent() {
   const {
     questionIndex,
     questionTotal,
     allowMessage,
-    isMessageLeft,
-    displayedList,
     showIntroMessage,
     showOutroMessage,
     showQuestionMessage,
@@ -99,29 +94,6 @@ function InterviewMessengerComponent() {
     }
   }, [afterTime, allowMessage, onTime, timer]);
 
-  const messageListDOM = useMemo(() => {
-    const list = displayedList.map((x) => {
-      const cn =
-        x.side === MessageSide.INTERVIEWER
-          ? styles.contentsLeft
-          : styles.contentsRight;
-      return (
-        <div key={x.id} className={cn}>
-          {x.contents}
-        </div>
-      );
-    });
-    if (isMessageLeft) {
-      const s = Symbol("loading").toString();
-      list.push(
-        <div key={s} className={styles.contentsLeft}>
-          <LoadingDotsComponent />
-        </div>,
-      );
-    }
-    return list;
-  }, [displayedList, isMessageLeft]);
-
   const messageToolStyles = useMemo(
     () => (allowMessage ? styles.toolContainer : styles.toolContainerInvisible),
     [allowMessage],
@@ -135,14 +107,7 @@ function InterviewMessengerComponent() {
       />
       {/* 메신저 대화 부분 */}
       <main>
-        <div className={styles.messenger}>
-          <div className={styles.messageWrap}>
-            <div className={styles.message}>{messageListDOM}</div>
-            <AlertNewMessageComponent
-              contents={questionListPage1[0].contents}
-            />
-          </div>
-        </div>
+        <InterviewMessengerBodyComponent />
       </main>
       {/* 메신저 입력 부분 */}
       <div className={styles.footer}>
