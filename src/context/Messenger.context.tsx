@@ -20,6 +20,7 @@ import {
 } from "@src/util/messenger";
 import { messageTerm } from "@src/lib/constant/timer.constant";
 import { myAccount } from "@dummy/user.data";
+import interview1 from "@dummy/interview.data";
 
 interface MessengerProviderProps {
   (props: { children: JSX.Element; questionList: Question[] }): JSX.Element;
@@ -100,9 +101,9 @@ export const MessengerProvider: MessengerProviderProps =
 
     const showIntroMessage = useCallback(() => {
       const messages = getIntroMessageList(
-        myAccount,
-        myAccount.jobList,
-        myAccount.techList,
+        interview1.user,
+        interview1.jobList,
+        interview1.techList,
       );
       showNextMessage(messages, () => setIntroFinished(true));
     }, [showNextMessage]);

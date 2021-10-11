@@ -12,7 +12,7 @@ interface Props {
   techList: Tech[];
 }
 
-function MessengerInterviewInfoWrapperComponent({ jobList, techList }) {
+function MessengerInterviewInfoWrapperComponent({ jobList, techList }: Props) {
   const { questionIndex, questionTotal } = useContext(MessengerContext);
   return (
     <InterviewInfoComponent

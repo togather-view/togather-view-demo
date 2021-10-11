@@ -9,8 +9,7 @@ import {
 } from "react";
 
 // dummy
-import { interviewMessageList } from "@dummy/message.data";
-import { myAccount } from "@dummy/user.data";
+import interview1 from "@dummy/interview.data";
 
 // lib
 import MessengerContext from "@src/context/Messenger.context";
@@ -129,8 +128,8 @@ function InterviewMessengerComponent() {
   return (
     <div className={styles.messengerWrap}>
       <InterviewMessengerHeaderComponent
-        jobList={myAccount.jobList}
-        techList={myAccount.techList}
+        jobList={interview1.jobList}
+        techList={interview1.techList}
       />
       {/* 메신저 대화 부분 */}
       <main>
