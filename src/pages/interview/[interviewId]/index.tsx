@@ -23,7 +23,6 @@ function InterviewMessengerPage() {
           <div className={styles.infoWrap}>
             <h1>투게더뷰</h1>
             <InterviewInfoComponent
-              totalQuestion={interviewMessageList.length}
               jobList={myAccount.jobList}
               techList={myAccount.techList}
             />

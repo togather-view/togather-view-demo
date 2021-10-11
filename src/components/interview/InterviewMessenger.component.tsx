@@ -60,14 +60,19 @@ function InterviewMessengerComponent() {
     [addMessage],
   );
 
+  const afterTime = useCallback(() => {
+    clearInterval(timer);
+    setTimer(null);
+    setLeftTime("1분");
+    setIntervieweeDone(true);
+  }, [timer]);
+
   const onClickSubmit = useCallback(() => {
     setIntervieweeDone(true);
     if (timer) {
-      clearInterval(timer);
-      setTimer(null);
-      setLeftTime("1분");
+      afterTime();
     }
-  }, [timer]);
+  }, [afterTime, timer]);
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => showIntroMessage(), []);
@@ -89,11 +94,9 @@ function InterviewMessengerComponent() {
   useEffect(() => {
     if (allowMessage && !timer) {
       textareaRef.current.focus();
-      setTimer(
-        startTimer(answerTimeLimit, onTime, () => setIntervieweeDone(true)),
-      );
+      setTimer(startTimer(answerTimeLimit, onTime, () => afterTime()));
     }
-  }, [allowMessage, onTime, timer]);
+  }, [afterTime, allowMessage, onTime, timer]);
 
   const messageListDOM = useMemo(() => {
     const list = displayedList.map((x) => {
@@ -120,7 +123,7 @@ function InterviewMessengerComponent() {
 
   const messageToolStyles = useMemo(
     () => (allowMessage ? styles.toolContainer : styles.toolContainerInvisible),
-    [allowMessage, questionIndex, questionTotal],
+    [allowMessage],
   );
 
   return (

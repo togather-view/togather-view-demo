@@ -3,6 +3,7 @@ import {
   Dispatch,
   SetStateAction,
   useCallback,
+  useEffect,
   useState,
 } from "react";
 import _ from "lodash";
@@ -58,6 +59,8 @@ export const MessengerProvider = ({ children, questionList }: Props) => {
   ] = useState(false);
   const [isMessageLeft, setMessageLeft] = useState(true);
 
+  const [introFinished, setIntroFinished] = useState(false);
+
   const showNextMessage = useCallback(
     (nextMessageList, callback) => {
       setMessageLeft(true);
@@ -69,9 +72,10 @@ export const MessengerProvider = ({ children, questionList }: Props) => {
         tempDisplayList.push(nextMessageList[i]);
         setDisplayedList([...tempDisplayList]);
         i += 1;
-        if (i >= nextMessageList.length) {
+        if (i === nextMessageList.length) {
           setMessageLeft(false);
           callback();
+        } else if (i > nextMessageList.length) {
         } else {
           x();
         }
@@ -100,11 +104,19 @@ export const MessengerProvider = ({ children, questionList }: Props) => {
       myAccount.jobList,
       myAccount.techList,
     );
-    showNextMessage(messages, () => showQuestionMessage());
-  }, [showNextMessage, showQuestionMessage]);
+    showNextMessage(messages, () => setIntroFinished(true));
+  }, [showNextMessage]);
+
+  useEffect(() => {
+    if (introFinished) {
+      showQuestionMessage();
+      setIntroFinished(false);
+    }
+  }, [introFinished, showQuestionMessage]);
 
   const showOutroMessage = useCallback(() => {
     const messages = getOutroMessageList();
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
     showNextMessage(messages, () => {});
   }, [showNextMessage]);
 

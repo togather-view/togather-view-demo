@@ -46,7 +46,7 @@ export const createNewMessage: CreateNewMessage = function (
   contents,
   side,
 ) {
-  const symbol = Symbol(index).toString();
+  const symbol = Symbol(index).description;
   return {
     id: symbol,
     contents,
@@ -161,7 +161,7 @@ export const getQuestionMessageList: GetQuestionMessageList =
     else
       result.push(
         createNewMessage(
-          index,
+          index.toString(),
           `${index + 1}번 질문입니다.`,
           MessageSide.INTERVIEWER,
         ),
