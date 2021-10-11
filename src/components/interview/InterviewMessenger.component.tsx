@@ -23,6 +23,8 @@ import LoadingDotsComponent from "@src/components/common/LoadingDots.component";
 
 // styles
 import styles from "@src/styles/pages/InterviewMessenger.module.scss";
+import AlertNewMessageComponent from "@src/components/interview/AlertNewMessage.component";
+import { questionListPage1 } from "@dummy/question.data";
 
 function InterviewMessengerComponent() {
   const {
@@ -136,6 +138,9 @@ function InterviewMessengerComponent() {
         <div className={styles.messenger}>
           <div className={styles.messageWrap}>
             <div className={styles.message}>{messageListDOM}</div>
+            <AlertNewMessageComponent
+              contents={questionListPage1[0].contents}
+            />
           </div>
         </div>
       </main>
