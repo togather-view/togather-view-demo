@@ -5,14 +5,12 @@ import { ClockCircleOutlined, SmileOutlined } from "@ant-design/icons";
 // interface
 import { JobGroup, Tech } from "@src/interface/interface";
 
-// lib
-import MessengerContext from "@src/context/Messenger.context";
-
 // component
 import TagComponent from "@src/components/common/Tag.component";
 
 // styles
 import styles from "@src/styles/pages/InterviewMessenger.module.scss";
+import InterviewConditionIconContainerComponent from "@src/components/interview/InterviewConditionIconConatiner.component";
 
 interface Props {
   totalQuestion: number;
@@ -55,14 +53,10 @@ function InterviewInfoComponent({
         <hr />
       </div>
       {/* Interview Details */}
-      <div className={styles.iconContainer}>
-        <Tooltip title="타이머 사용">
-          <ClockCircleOutlined className={styles.active} size={80} />
-        </Tooltip>
-        <Tooltip title="인성 질문 미포함">
-          <SmileOutlined className={styles.inactive} size={80} />
-        </Tooltip>
-      </div>
+      <InterviewConditionIconContainerComponent
+        useTimer
+        containAttitude={false}
+      />
       {jobList.length > 0 && (
         <div className={styles.tagList}>
           <span className={styles.label}>직무</span>
