@@ -1,0 +1,44 @@
+@import "../mixin";
+
+.container {
+  display: grid;
+  grid-template-columns: 280px auto;
+
+  background-color: white;
+  min-height: 93vh;
+}
+
+.info {
+  width: 240px;
+
+  padding: 20px;
+  border-left: 1px solid $color-border-gray;
+
+  .wrapper {
+    margin-bottom: 18px;
+  }
+
+  .detail {
+    display: flex;
+    align-items: center;
+
+    margin-bottom: 6px;
+
+    :first-child {
+      margin-right: 6px;
+      margin-bottom: 1px;
+    }
+
+    p {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.list {
+  padding: 20px;
+  border: 1px solid $color-border-gray;
+  border-top: none;
+  border-bottom: none;
+  width: 100%;
+}

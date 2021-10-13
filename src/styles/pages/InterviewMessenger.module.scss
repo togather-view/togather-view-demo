@@ -118,36 +118,37 @@
   .divider {
     margin: 24px 0;
   }
-
-  .iconContainer {
-    display: flex;
-    margin-bottom: 18px;
-
-    .active {
-      font-size: 25px;
-      color: $color-icon-active;
-    }
-
-    .inactive {
-      font-size: 25px;
-      color: $color-icon-inactive;
-    }
-
-    :nth-child(n) {
-      margin-right: 2px;
-    }
-
-  }
-
-  .label {
-    margin-right: 18px;
-  }
-
-  .tagList {
-    margin-bottom: 10px;
-    line-height: 28px;
-  }
 }
+
+.label {
+  margin-right: 18px;
+}
+
+.tagList {
+  margin-bottom: 10px;
+  line-height: 28px;
+}
+
+.iconContainer {
+  display: flex;
+  margin-bottom: 18px;
+
+  .active {
+    font-size: 25px;
+    color: $color-icon-active;
+  }
+
+  .inactive {
+    font-size: 25px;
+    color: $color-icon-inactive;
+  }
+
+  :nth-child(n) {
+    margin-right: 2px;
+  }
+
+}
+
 
 
 .messengerWrap {
