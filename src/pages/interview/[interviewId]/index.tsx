@@ -1,29 +1,28 @@
 import { memo } from "react";
 
 // dummy
-import { myAccount } from "@dummy/user.data";
+import interview1 from "@dummy/interview.data";
 
 // lib
-import { questionList } from "@dummy/question.data";
 import { MessengerProvider } from "@src/context/Messenger.context";
 
 // components
 import InterviewMessengerComponent from "@src/components/interview/InterviewMessenger.component";
-import InterviewInfoComponent from "@src/components/interview/InterviewInfo.component";
+import MessengerInterviewInfoWrapperComponent from "@src/components/interview/MessengerInterviewInfoWrapper.component";
 
 // styles
 import styles from "@src/styles/pages/InterviewMessenger.module.scss";
 
 function InterviewMessengerPage() {
   return (
-    <MessengerProvider questionList={questionList}>
+    <MessengerProvider questionList={interview1.questionList}>
       <div className={styles.container}>
         <div className={styles.box}>
           <div className={styles.infoWrap}>
             <h1>투게더뷰</h1>
-            <InterviewInfoComponent
-              jobList={myAccount.jobList}
-              techList={myAccount.techList}
+            <MessengerInterviewInfoWrapperComponent
+              jobList={interview1.jobList}
+              techList={interview1.techList}
             />
           </div>
           {/* Messenger */}

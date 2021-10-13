@@ -40,6 +40,17 @@ export interface Message {
   contents: string;
 }
 
+export interface Interview {
+  id: string;
+  jobList: JobGroup[];
+  techList: Tech[];
+  questionList: Question[];
+
+  user: User;
+  useTimer: boolean;
+  containAttitude: boolean;
+}
+
 export enum MessageSide {
   INTERVIEWER,
   INTERVIEWEE,

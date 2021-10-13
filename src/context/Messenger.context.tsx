@@ -2,14 +2,19 @@ import {
   Context,
   createContext,
   Dispatch,
+  MutableRefObject,
   SetStateAction,
   useCallback,
   useEffect,
+  useRef,
   useState,
 } from "react";
 import _ from "lodash";
 
 import { Message, MessageSide, Question } from "@src/interface/interface";
+
+// dummy
+import interview1 from "@dummy/interview.data";
 
 // lib
 import {
@@ -19,37 +24,45 @@ import {
   getQuestionMessageList,
 } from "@src/util/messenger";
 import { messageTerm } from "@src/lib/constant/timer.constant";
-import { myAccount } from "@dummy/user.data";
+import useVisible from "@src/hooks/useVisible.hook";
 
 interface MessengerProviderProps {
   (props: { children: JSX.Element; questionList: Question[] }): JSX.Element;
 }
 
 interface MessengerContextProps {
+  bodyRef: MutableRefObject<HTMLInputElement> | null;
   questionIndex: number;
   questionTotal: number;
   allowMessage: boolean;
+  visibleAlertMessage: boolean;
   isMessageLeft: boolean;
   displayedList: Message[];
   showIntroMessage: () => void;
   showOutroMessage: () => void;
   showQuestionMessage: () => void;
   addMessage: (contents: string) => void;
+  setScrolled: (flag: boolean) => void;
 }
 
 const MessengerContext: Context<MessengerContextProps> = createContext({
+  bodyRef: null,
   questionIndex: 0,
   questionTotal: 0,
   allowMessage: false,
   isMessageLeft: true,
+  visibleAlertMessage: false,
   displayedList: [],
   showIntroMessage: null,
   showOutroMessage: null,
   showQuestionMessage: null,
   addMessage: null,
+  setScrolled: null,
 });
 export const MessengerProvider: MessengerProviderProps =
   function MessengerProvider({ children, questionList }) {
+    const bodyRef = useRef<HTMLInputElement>(null);
+
     const [questionIndex, setQuestionIndex]: [number, Dispatch<number>] =
       useState(0);
     const [displayedList, setDisplayedList]: [Message[], Dispatch<Message[]>] =
@@ -61,6 +74,14 @@ export const MessengerProvider: MessengerProviderProps =
     const [isMessageLeft, setMessageLeft] = useState(true);
 
     const [introFinished, setIntroFinished] = useState(false);
+
+    const [isScrolled, setScrolled] = useState(false);
+    const [checkedMessageIndex, setCheckedMessageIndex] = useState(0);
+    const [
+      visibleAlertMessage,
+      setVisibleAlertMessage,
+      setInvisibleAlertMessage,
+    ] = useVisible(false);
 
     const showNextMessage = useCallback(
       (nextMessageList, callback) => {
@@ -85,7 +106,28 @@ export const MessengerProvider: MessengerProviderProps =
       [displayedList],
     );
 
+    useEffect(() => {
+      if (
+        isScrolled &&
+        checkedMessageIndex !== displayedList.length - 1 &&
+        displayedList[displayedList.length - 1].side === MessageSide.INTERVIEWER
+      ) {
+        setVisibleAlertMessage();
+      } else {
+        setInvisibleAlertMessage();
+        setCheckedMessageIndex(displayedList.length - 1);
+      }
+    }, [
+      checkedMessageIndex,
+      displayedList,
+      isScrolled,
+      setInvisibleAlertMessage,
+      setVisibleAlertMessage,
+    ]);
+
     const showQuestionMessage = useCallback(() => {
+      if (questionIndex >= questionList.length) return;
+
       const isLastQuestion = questionIndex === questionList.length - 1;
       const messages = getQuestionMessageList(
         questionList[questionIndex],
@@ -100,9 +142,9 @@ export const MessengerProvider: MessengerProviderProps =
 
     const showIntroMessage = useCallback(() => {
       const messages = getIntroMessageList(
-        myAccount,
-        myAccount.jobList,
-        myAccount.techList,
+        interview1.user,
+        interview1.jobList,
+        interview1.techList,
       );
       showNextMessage(messages, () => setIntroFinished(true));
     }, [showNextMessage]);
@@ -132,7 +174,16 @@ export const MessengerProvider: MessengerProviderProps =
       [displayedList],
     );
 
+    useEffect(() => {
+      if (
+        displayedList[displayedList.length - 1]?.side ===
+        MessageSide.INTERVIEWEE
+      )
+        bodyRef.current.scrollTo({ behavior: "smooth", top: 0 });
+    }, [displayedList]);
+
     const props: MessengerContextProps = {
+      bodyRef,
       questionIndex,
       questionTotal: questionList.length,
       allowMessage,
@@ -142,6 +193,8 @@ export const MessengerProvider: MessengerProviderProps =
       showOutroMessage,
       showQuestionMessage,
       addMessage,
+      visibleAlertMessage,
+      setScrolled,
     };
     return (
       <MessengerContext.Provider value={props}>

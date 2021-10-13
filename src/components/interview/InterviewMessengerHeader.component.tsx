@@ -3,27 +3,20 @@ import { DownOutlined } from "@ant-design/icons";
 import { Drawer } from "antd";
 
 // lib
+import { JobGroup, Tech } from "@src/interface/interface";
 import useVisible from "@src/hooks/useVisible.hook";
 
 // components
-import InterviewInfoComponent from "@src/components/interview/InterviewInfo.component";
+import MessengerInterviewInfoWrapperComponent from "@src/components/interview/MessengerInterviewInfoWrapper.component";
 
 // styles
 import styles from "@src/styles/pages/InterviewMessenger.module.scss";
-import { JobGroup, Tech } from "@src/interface/interface";
 
 interface Props {
-  totalQuestion: number;
-  nowIndex: number;
   jobList: JobGroup[];
   techList: Tech[];
 }
-function InterviewMessengerHeaderComponent({
-  totalQuestion,
-  nowIndex,
-  jobList,
-  techList,
-}: Props) {
+function InterviewMessengerHeaderComponent({ jobList, techList }: Props) {
   const [infoVisible, , setInfoInvisible, toggleInfoVisible] =
     useVisible(false);
 
@@ -38,9 +31,7 @@ function InterviewMessengerHeaderComponent({
         visible={infoVisible}
         onClose={setInfoInvisible}
       >
-        <InterviewInfoComponent
-          totalQuestion={totalQuestion}
-          nowIndex={nowIndex}
+        <MessengerInterviewInfoWrapperComponent
           jobList={jobList}
           techList={techList}
         />

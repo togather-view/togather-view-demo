@@ -6,6 +6,7 @@ import {
   Tech,
   User,
 } from "@src/interface/interface";
+import { generateRandomKey } from "@src/util/key";
 
 interface CreateNewMessage {
   (index: number | string, contents: string, side: MessageSide): Message;
@@ -46,9 +47,9 @@ export const createNewMessage: CreateNewMessage = function createNewMessage(
   contents,
   side,
 ) {
-  const symbol = Symbol(index).description;
+  const id = index + generateRandomKey();
   return {
-    id: symbol,
+    id,
     contents,
     side,
   };

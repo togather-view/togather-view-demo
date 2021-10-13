@@ -1,0 +1,39 @@
+@import "../mixin";
+
+.container {
+  position: absolute;
+  bottom: 15px;
+  left: 0;
+  right: 0;
+  z-index: 5000;
+
+  width: 100%;
+  text-align: left;
+
+  padding: 0 18px;
+}
+
+.box {
+  @extend .buttonWithNoStyle;
+
+  border: 1px solid $color-border-gray;
+  border-radius: 5px;
+  padding: 14px;
+  cursor: pointer;
+  background-color: white;
+
+  width: 100%;
+
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  .title {
+    color:#878787;
+    font-size: $font-size-small;
+    margin-bottom: 5px;
+  }
+
+  .contents {
+    display: flex;
+    justify-content: space-between;
+
+  }
+}
