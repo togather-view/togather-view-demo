@@ -48,7 +48,7 @@ function InterviewMessengerComponent() {
       if (e.keyCode === 13) {
         if (!e.shiftKey) {
           e.preventDefault();
-          addMessage(e.target.value);
+          if (e.target.value.length > 0) addMessage(e.target.value);
           e.target.value = "";
         }
       }

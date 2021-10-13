@@ -23,10 +23,13 @@ import LoadingDotsComponent from "@src/components/common/LoadingDots.component";
 import styles from "@src/styles/pages/InterviewMessenger.module.scss";
 
 function InterviewMessengerBodyComponent() {
-  const bodyRef = useRef<HTMLInputElement>(null);
-
-  const { isMessageLeft, displayedList, visibleAlertMessage, setScrolled } =
-    useContext(MessengerContext);
+  const {
+    bodyRef,
+    isMessageLeft,
+    displayedList,
+    visibleAlertMessage,
+    setScrolled,
+  } = useContext(MessengerContext);
 
   const messageListDOM = useMemo(() => {
     const list = displayedList.map((x) => {
@@ -52,7 +55,10 @@ function InterviewMessengerBodyComponent() {
   }, [displayedList, isMessageLeft]);
 
   const lastMessage = useMemo(
-    () => displayedList[displayedList.length - 1]?.contents || "",
+    () =>
+      displayedList
+        .filter((x) => x.side === MessageSide.INTERVIEWER)
+        .reverse()[0]?.contents || "",
     [displayedList],
   );
 

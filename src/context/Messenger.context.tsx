@@ -2,9 +2,11 @@ import {
   Context,
   createContext,
   Dispatch,
+  MutableRefObject,
   SetStateAction,
   useCallback,
   useEffect,
+  useRef,
   useState,
 } from "react";
 import _ from "lodash";
@@ -29,6 +31,7 @@ interface MessengerProviderProps {
 }
 
 interface MessengerContextProps {
+  bodyRef: MutableRefObject<HTMLInputElement> | null;
   questionIndex: number;
   questionTotal: number;
   allowMessage: boolean;
@@ -43,6 +46,7 @@ interface MessengerContextProps {
 }
 
 const MessengerContext: Context<MessengerContextProps> = createContext({
+  bodyRef: null,
   questionIndex: 0,
   questionTotal: 0,
   allowMessage: false,
@@ -57,6 +61,8 @@ const MessengerContext: Context<MessengerContextProps> = createContext({
 });
 export const MessengerProvider: MessengerProviderProps =
   function MessengerProvider({ children, questionList }) {
+    const bodyRef = useRef<HTMLInputElement>(null);
+
     const [questionIndex, setQuestionIndex]: [number, Dispatch<number>] =
       useState(0);
     const [displayedList, setDisplayedList]: [Message[], Dispatch<Message[]>] =
@@ -101,7 +107,11 @@ export const MessengerProvider: MessengerProviderProps =
     );
 
     useEffect(() => {
-      if (isScrolled && checkedMessageIndex !== displayedList.length - 1) {
+      if (
+        isScrolled &&
+        checkedMessageIndex !== displayedList.length - 1 &&
+        displayedList[displayedList.length - 1].side === MessageSide.INTERVIEWER
+      ) {
         setVisibleAlertMessage();
       } else {
         setInvisibleAlertMessage();
@@ -164,7 +174,16 @@ export const MessengerProvider: MessengerProviderProps =
       [displayedList],
     );
 
+    useEffect(() => {
+      if (
+        displayedList[displayedList.length - 1]?.side ===
+        MessageSide.INTERVIEWEE
+      )
+        bodyRef.current.scrollTo({ behavior: "smooth", top: 0 });
+    }, [displayedList]);
+
     const props: MessengerContextProps = {
+      bodyRef,
       questionIndex,
       questionTotal: questionList.length,
       allowMessage,
