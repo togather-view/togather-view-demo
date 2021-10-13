@@ -9,6 +9,8 @@
   h1 {
     font-family: "Recipekorea";
     color: $primary-color;
+    user-select: none;
+
   }
 
   @include tablet {
@@ -182,6 +184,7 @@
       font-family: "Recipekorea";
       color: $primary-color;
       margin: 0;
+      user-select: none;
     }
 
     .icon {

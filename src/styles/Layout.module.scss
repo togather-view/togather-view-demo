@@ -40,6 +40,8 @@
         align-items: center;
 
         .logo {
+          user-select: none;
+
           display: block;
 
           height: $height-header-desktop;

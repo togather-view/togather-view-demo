@@ -65,6 +65,8 @@ $breakpoint-desktop: 1200px;
 }
 
 .buttonWithNoStyle {
+  user-select: none;
+
   text-align: inherit;
   border: initial;
   background: inherit;
