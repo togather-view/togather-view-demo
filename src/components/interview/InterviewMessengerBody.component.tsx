@@ -23,7 +23,7 @@ import LoadingDotsComponent from "@src/components/common/LoadingDots.component";
 import styles from "@src/styles/pages/InterviewMessenger.module.scss";
 
 function InterviewMessengerBodyComponent() {
-  const bodyRef = useRef();
+  const bodyRef = useRef<HTMLInputElement>(null);
   const [isScrolled, setScrolled] = useState(false);
 
   const { isMessageLeft, displayedList } = useContext(MessengerContext);
