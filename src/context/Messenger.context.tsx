@@ -116,6 +116,8 @@ export const MessengerProvider: MessengerProviderProps =
     ]);
 
     const showQuestionMessage = useCallback(() => {
+      if (questionIndex >= questionList.length) return;
+
       const isLastQuestion = questionIndex === questionList.length - 1;
       const messages = getQuestionMessageList(
         questionList[questionIndex],

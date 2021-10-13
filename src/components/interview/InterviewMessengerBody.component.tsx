@@ -52,7 +52,7 @@ function InterviewMessengerBodyComponent() {
   }, [displayedList, isMessageLeft]);
 
   const lastMessage = useMemo(
-    () => displayedList[displayedList.length - 1].contents,
+    () => displayedList[displayedList.length - 1]?.contents || "",
     [displayedList],
   );
 
