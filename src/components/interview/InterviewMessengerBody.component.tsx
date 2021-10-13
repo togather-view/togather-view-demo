@@ -24,9 +24,9 @@ import styles from "@src/styles/pages/InterviewMessenger.module.scss";
 
 function InterviewMessengerBodyComponent() {
   const bodyRef = useRef<HTMLInputElement>(null);
-  const [isScrolled, setScrolled] = useState(false);
 
-  const { isMessageLeft, displayedList } = useContext(MessengerContext);
+  const { isMessageLeft, displayedList, visibleAlertMessage, setScrolled } =
+    useContext(MessengerContext);
 
   const messageListDOM = useMemo(() => {
     const list = displayedList.map((x) => {
@@ -51,6 +51,11 @@ function InterviewMessengerBodyComponent() {
     return list;
   }, [displayedList, isMessageLeft]);
 
+  const lastMessage = useMemo(
+    () => displayedList[displayedList.length - 1].contents,
+    [displayedList],
+  );
+
   const trackScrolling = useCallback(() => {
     const element = document.getElementById("messengerBody");
     if (element.scrollTop < 0) {
@@ -58,7 +63,7 @@ function InterviewMessengerBodyComponent() {
     } else {
       setScrolled(false);
     }
-  }, []);
+  }, [setScrolled]);
 
   useEffect(() => {
     if (typeof window !== undefined)
@@ -71,11 +76,8 @@ function InterviewMessengerBodyComponent() {
     <div id="messengerBody" className={styles.messenger} ref={bodyRef}>
       <div className={styles.messageWrap}>
         <div className={styles.message}>{messageListDOM}</div>
-        {isScrolled && (
-          <AlertNewMessageComponent
-            bodyRef={bodyRef}
-            contents={questionListPage1[0].contents}
-          />
+        {visibleAlertMessage && (
+          <AlertNewMessageComponent bodyRef={bodyRef} contents={lastMessage} />
         )}
       </div>
     </div>
