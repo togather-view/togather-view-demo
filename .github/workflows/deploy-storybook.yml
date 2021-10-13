@@ -1,9 +1,7 @@
 name: 'Deploy Storybook'
 on:
-  push:
-    branches:
-      - main
-    path:
+  pull_request:
+    paths:
       - 'src/stories/**'
       - '.storybook/**'
 jobs:
