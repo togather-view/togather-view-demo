@@ -6,6 +6,10 @@
 
   background-color: white;
   min-height: 93vh;
+
+  @include mobile {
+    display: block;
+  }
 }
 
 .info {
@@ -13,6 +17,11 @@
 
   padding: 20px;
   border-left: 1px solid $color-border-gray;
+
+  @include mobile {
+    width: 100%;
+    border-bottom: 1px solid $color-border-gray;
+  }
 
   .wrapper {
     margin-bottom: 18px;
