@@ -25,6 +25,7 @@ import {
 } from "@src/util/messenger";
 import { messageTerm } from "@src/lib/constant/timer.constant";
 import useVisible from "@src/hooks/useVisible.hook";
+import { useRouter } from "next/router";
 
 interface MessengerProviderProps {
   (props: { children: JSX.Element; questionList: Question[] }): JSX.Element;
@@ -37,6 +38,7 @@ interface MessengerContextProps {
   allowMessage: boolean;
   visibleAlertMessage: boolean;
   isMessageLeft: boolean;
+  interviewFinished: boolean;
   displayedList: Message[];
   showIntroMessage: () => void;
   showOutroMessage: () => void;
@@ -52,6 +54,7 @@ const MessengerContext: Context<MessengerContextProps> = createContext({
   allowMessage: false,
   isMessageLeft: true,
   visibleAlertMessage: false,
+  interviewFinished: false,
   displayedList: [],
   showIntroMessage: null,
   showOutroMessage: null,
@@ -82,6 +85,8 @@ export const MessengerProvider: MessengerProviderProps =
       setVisibleAlertMessage,
       setInvisibleAlertMessage,
     ] = useVisible(false);
+
+    const [interviewFinished, setInterviewFinished] = useState(false);
 
     const showNextMessage = useCallback(
       (nextMessageList, callback) => {
@@ -158,8 +163,10 @@ export const MessengerProvider: MessengerProviderProps =
 
     const showOutroMessage = useCallback(() => {
       const messages = getOutroMessageList();
-      // eslint-disable-next-line @typescript-eslint/no-empty-function
-      showNextMessage(messages, () => {});
+      showNextMessage(messages, () => {
+        // setTimeout(() => router.push(`/interview/result/1`), 3000);
+        setInterviewFinished(true);
+      });
     }, [showNextMessage]);
 
     const addMessage = useCallback(
@@ -188,6 +195,7 @@ export const MessengerProvider: MessengerProviderProps =
       questionTotal: questionList.length,
       allowMessage,
       isMessageLeft,
+      interviewFinished,
       displayedList,
       showIntroMessage,
       showOutroMessage,

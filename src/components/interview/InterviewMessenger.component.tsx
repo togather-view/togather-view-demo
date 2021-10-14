@@ -18,16 +18,19 @@ import { startTimer } from "@src/util/messenger";
 
 // components
 import InterviewMessengerHeaderComponent from "@src/components/interview/InterviewMessengerHeader.component";
+import InterviewMessengerBodyComponent from "@src/components/interview/InterviewMessengerBody.component";
 
 // styles
 import styles from "@src/styles/pages/InterviewMessenger.module.scss";
-import InterviewMessengerBodyComponent from "@src/components/interview/InterviewMessengerBody.component";
+import { Button } from "antd";
+import Link from "next/link";
 
 function InterviewMessengerComponent() {
   const {
     questionIndex,
     questionTotal,
     allowMessage,
+    interviewFinished,
     showIntroMessage,
     showOutroMessage,
     showQuestionMessage,
@@ -121,12 +124,22 @@ function InterviewMessengerComponent() {
             답변 완료하기
           </button>
         </div>
-        <textarea
-          ref={textareaRef}
-          disabled={!allowMessage}
-          placeholder="답변 입력하기"
-          onKeyDown={onSubmitMessage}
-        />
+        {interviewFinished ? (
+          <Link href="/interview/result/1">
+            <a>
+              <Button className={styles.resultButton} type="primary">
+                면접 결과 확인하기
+              </Button>
+            </a>
+          </Link>
+        ) : (
+          <textarea
+            ref={textareaRef}
+            disabled={!allowMessage}
+            placeholder="답변 입력하기"
+            onKeyDown={onSubmitMessage}
+          />
+        )}
       </div>
     </div>
   );
