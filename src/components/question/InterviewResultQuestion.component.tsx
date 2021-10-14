@@ -2,13 +2,21 @@ import { memo, useMemo } from "react";
 import Link from "next/link";
 import { Button, Switch } from "antd";
 
+// lib
+import { QuestionToAnswer } from "@src/interface/interface";
+
 // components
 import TagComponent from "@src/components/common/Tag.component";
 
 // styles
 import styles from "@src/styles/pages/InterviewResult.module.scss";
 
-function InterviewResultQuestionComponent({ questionToAnswer }) {
+interface Props {
+  index: number;
+  questionToAnswer: QuestionToAnswer;
+}
+
+function InterviewResultQuestionComponent({ index, questionToAnswer }: Props) {
   const techListDOM = useMemo(
     () => (
       <div className={styles.tagList}>
@@ -64,7 +72,7 @@ function InterviewResultQuestionComponent({ questionToAnswer }) {
         </div>
         {/* 질문 내용 */}
         <div className={styles.contents}>
-          <h3>{questionToAnswer.question.contents}</h3>
+          <h3>{`${index}. ${questionToAnswer.question.contents}`}</h3>
         </div>
       </div>
       {/* 답변 내용 */}

@@ -51,6 +51,12 @@ export interface Interview {
   containAttitude: boolean;
 }
 
+export interface QuestionToAnswer {
+  id: number;
+  question: Question;
+  answer: Answer;
+}
+
 export enum MessageSide {
   INTERVIEWER,
   INTERVIEWEE,

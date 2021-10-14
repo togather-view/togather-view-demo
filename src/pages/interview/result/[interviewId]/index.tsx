@@ -1,4 +1,4 @@
-import { memo } from "react";
+import { memo, useMemo } from "react";
 
 // dummy
 import { myAccount } from "@dummy/user.data";
@@ -13,6 +13,21 @@ import InterviewResultQuestionComponent from "@src/components/question/Interview
 import styles from "@src/styles/pages/InterviewResult.module.scss";
 
 function InterviewResultPage() {
+  const questionListDOM = useMemo(
+    () => (
+      <div className={styles.list}>
+        {questionToAnswer.map((x, index) => (
+          <InterviewResultQuestionComponent
+            key={x.id}
+            questionToAnswer={x}
+            index={index + 1}
+          />
+        ))}
+      </div>
+    ),
+    [],
+  );
+
   return (
     <LayoutComponent>
       <div className={styles.container}>
@@ -24,11 +39,7 @@ function InterviewResultPage() {
           jobList={myAccount.jobList}
           techList={myAccount.techList}
         />
-        <div className={styles.list}>
-          {questionToAnswer.map((x) => (
-            <InterviewResultQuestionComponent key={x.id} questionToAnswer={x} />
-          ))}
-        </div>
+        {questionListDOM}
       </div>
     </LayoutComponent>
   );

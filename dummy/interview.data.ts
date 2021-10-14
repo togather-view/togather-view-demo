@@ -1,4 +1,4 @@
-import { Interview } from "@src/interface/interface";
+import { Interview, QuestionToAnswer } from "@src/interface/interface";
 import { myAccount } from "@dummy/user.data";
 import { questionListPage1 } from "@dummy/question.data";
 import { answerList } from "@dummy/answer.data";
@@ -15,7 +15,7 @@ export const interview1: Interview = {
 
 export default interview1;
 
-export const questionToAnswer = [
+export const questionToAnswer: QuestionToAnswer[] = [
   {
     id: 0,
     question: questionListPage1[0],
