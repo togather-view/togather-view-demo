@@ -26,10 +26,12 @@ function InterviewConditionIconContainerComponent({
         </span>
       </Tooltip>
       <Tooltip title="인성 질문 미포함">
-        <InterviewConditionIconComponent
-          icon={<SmileOutlined size={80} />}
-          active={containAttitude}
-        />
+        <span>
+          <InterviewConditionIconComponent
+            icon={<SmileOutlined size={80} />}
+            active={containAttitude}
+          />
+        </span>
       </Tooltip>
     </div>
   );

@@ -1,16 +1,14 @@
-import { memo, useContext, useMemo } from "react";
-import { Tooltip } from "antd";
-import { ClockCircleOutlined, SmileOutlined } from "@ant-design/icons";
+import { memo, useMemo } from "react";
 
 // interface
 import { JobGroup, Tech } from "@src/interface/interface";
 
-// component
-import TagComponent from "@src/components/common/Tag.component";
+// components
+import InterviewConditionIconContainerComponent from "@src/components/interview/InterviewConditionIconConatiner.component";
+import TagListComponent from "@src/components/common/TagList.component";
 
 // styles
 import styles from "@src/styles/pages/InterviewMessenger.module.scss";
-import InterviewConditionIconContainerComponent from "@src/components/interview/InterviewConditionIconConatiner.component";
 
 interface Props {
   totalQuestion: number;
@@ -57,22 +55,8 @@ function InterviewInfoComponent({
         useTimer
         containAttitude={false}
       />
-      {jobList.length > 0 && (
-        <div className={styles.tagList}>
-          <span className={styles.label}>직무</span>
-          {jobList.map((x) => (
-            <TagComponent title={x.name} key={x.id} />
-          ))}
-        </div>
-      )}
-      {techList.length > 0 && (
-        <div className={styles.tagList}>
-          <span className={styles.label}>기술</span>
-          {techList.map((x) => (
-            <TagComponent title={x.name} color={x.color} key={x.id} />
-          ))}
-        </div>
-      )}
+      <TagListComponent label="직무" tagList={jobList} />
+      <TagListComponent label="기술" tagList={techList} />
     </div>
   );
 }
