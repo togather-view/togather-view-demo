@@ -35,10 +35,6 @@ module.exports = {
       "@dummy": path.resolve(__dirname, "../dummy"),
     };
 
-    if (process.env.NODE_ENV === "production") {
-      config.output.publicPath = "/together-view-web/static/";
-    }
-
     // scss 모듈 적용
     config.module.rules.push({
       test: /\.scss$/,
