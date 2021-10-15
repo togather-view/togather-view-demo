@@ -1,9 +1,12 @@
 import "!style-loader!css-loader!sass-loader!../src/styles/antd-custom.css";
 import "!style-loader!css-loader!sass-loader!../src/styles/globals.scss";
 import { addParameters } from "@storybook/react";
+import { MessengerProvider } from "../src/context/Messenger.context";
+import { questionList } from "../dummy/question.data";
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
+  layout: "fullscreen"
 };
 
 addParameters({
@@ -22,6 +25,7 @@ addParameters({
         styles: {
           height: "896px",
           width: "414px",
+          padding: "0"
         },
         type: "mobile",
       },
@@ -48,7 +52,9 @@ addParameters({
 export const decorators = [
   (Story) => (
     <>
-      <Story />
+      <MessengerProvider questionList={questionList}>
+        <Story />
+      </MessengerProvider>
     </>
   ),
 ];
