@@ -5,7 +5,6 @@ import InterviewStartBannerComponent from "@src/components/banner/InterviewStart
 
 interface BannerProps {
   color: string;
-  imgSrc: string;
   width: string;
 }
 
@@ -26,7 +25,5 @@ const InterviewStartTemplate: Story<BannerProps> = (args) => {
 export const InterviewStart = InterviewStartTemplate.bind({});
 InterviewStart.args = {
   color: "#386CB9",
-  imgSrc:
-    "https://github.com/together-view/together-view-web/blob/main/public/static/illustrations/interview.png?raw=true",
   width: "100%",
 };
