@@ -47,7 +47,7 @@ $breakpoint-desktop: 1200px;
 
 .desktop {
   display: block;
-  @include  tablet {
+  @include tablet {
     display: none;
   }
 }
@@ -81,6 +81,17 @@ $breakpoint-desktop: 1200px;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
+.theme {
+  content: " ";
+
+}
+.theme--light {
+  content: " ";
+}
+
+.theme--dark {
+  content: " ";
+}
 
 
 // Variables
@@ -93,20 +104,87 @@ $layout-margin-x-mobile: 12px;
 $font-size-small: 0.9em;
 $font-size-ex-small: 0.7em;
 
-$color-page-background: #F1F4F7;
-$color-black-default: rgb(0, 0, 0, 0.85);
-$color-border-gray: #DFDFDF;
-$color-icon-active: #3f3f3f;
-$color-icon-inactive: #bfbfbf;
-$color-success: #6DCA33;
-$color-component-background-gray: #fafafa;
-$color-component-background-gray-darker: #f6f6f6;
-
 $border-radius: 2px;
-
 $message-radius: 12px;
+
+$color-page-background: "color-page-background";
+$color-page-background--light: #F1F4F7;
+$color-page-background--dark: #000000;
+
+$color-font-default: "color-font-default";
+$color-font-default--light: rgb(0, 0, 0, 0.85);
+$color-font-default--dark: rgb(0, 0, 0, 0.85);
+
+$color-font-gray: "color-font-gray";
+$color-font-gray--light: #878787;
+$color-font-gray--dark: #878787;
+
+
+$color-border-gray: #DFDFDF;
+
+$color-icon-active: "color-icon-active";
+$color-icon-active--light: #3f3f3f;
+$color-icon-active--dark: #3f3f3f;
+
+$color-icon-inactive: "color-icon-inactive";
+$color-icon-inactive--light: #bfbfbf;
+$color-icon-inactive--dark: #bfbfbf;
+
+$color-icon-black: "color-icon-black";
+$color-icon-black--light: #4f4f4f;
+$color-icon-black--dark: #4f4f4f;
+
+$color-success: #6DCA33;
+
+$color-component-background: "color-component-background";
+$color-component-background--light: #ffffff;
+$color-component-background--dark: #000000;
+
+$color-component-background-gray: "color-component-background-gray";
+$color-component-background-gray--light: #fafafa;
+$color-component-background-gray--dark: #fafafa;
+
+$color-component-background-darker: "color-component-background-darker";
+$color-component-background-darker--light: #f6f6f6;
+$color-component-background-darker--dark: #f6f6f6;
+
+$shadow-banner: "shadow-banner";
+$shadow-banner--light: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+$shadow-banner--dark: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+
 
 $primary-color: #0087e5;
 $primary-color-darker: #003C66;
 $primary-color-light: #008DF2;
 $primary-color-logo: #008DF2;
+
+$themes: (
+        light: (
+                color-page-background:$color-page-background--light,
+                color-font-default: $color-font-default--light,
+                color-font-gray:$color-font-gray--light,
+                color-icon-active:$color-icon-active--light,
+                color-icon-inactive:$color-icon-inactive--light,
+                color-icon-black:$color-icon-black--light,
+                color-component-background:$color-component-background--light,
+                color-component-background-gray:$color-component-background-gray--light,
+                color-component-background-darker:$color-component-background-darker--light,
+                shadow-banner:$shadow-banner--light,
+        ),
+        dark: (
+                color-page-background:$color-page-background--dark,
+                color-font-default: $color-font-default--dark,
+                color-font-gray:$color-font-gray--dark,
+                color-icon-active:$color-icon-active--dark,
+                color-icon-inactive:$color-icon-inactive--dark,
+                color-icon-black:$color-icon-black--dark,
+                color-component-background:$color-component-background--dark,
+                color-component-background-gray:$color-component-background-gray--dark,
+                color-component-background-darker:$color-component-background-darker--dark,
+                shadow-banner:$shadow-banner--dark,
+        )
+);
+
+@function t($key) {
+  @return map-get(map-get($themes, 'light'), $key);
+}
