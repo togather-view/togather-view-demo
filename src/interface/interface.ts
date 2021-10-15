@@ -68,3 +68,8 @@ export enum QuestionSortType {
   COMMENT = "답변순",
   VIEW = "조회순",
 }
+
+export enum TagSelectColor {
+  TECH = "orange",
+  JOB = "blue",
+}

@@ -8,10 +8,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "./node_modules/.bin/eslint src --ext .ts,.tsx",
-    "storybook": "start-storybook -p 6006",
+    "storybook": "start-storybook  -s ./public -p 6006",
     "predeploy": "npm run build-storybook",
-    "deploy-storybook": "npm run predeploy && gh-pages -d storybook-static",
-    "build-storybook": "build-storybook"
+    "deploy-storybook": "NODE_ENV=production npm run predeploy && gh-pages -d storybook-static",
+    "build-storybook": "NODE_ENV=production build-storybook -s ./public"
   },
   "dependencies": {
     "@ant-design/icons": "^4.6.4",
@@ -33,6 +33,7 @@
     "@storybook/addon-docs": "^6.3.9",
     "@storybook/addon-essentials": "^6.3.9",
     "@storybook/addon-links": "^6.3.9",
+    "@storybook/addon-viewport": "^6.3.12",
     "@storybook/preset-scss": "^1.0.3",
     "@storybook/react": "^6.3.9",
     "@types/antd": "^1.0.0",

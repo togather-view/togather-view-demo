@@ -9,6 +9,7 @@ module.exports = {
     "@storybook/addon-links",
     "@storybook/addon-essentials",
     "@storybook/addon-docs",
+    "@storybook/addon-viewport/register"
   ],
   typescript: {
     check: false,
@@ -33,6 +34,10 @@ module.exports = {
       "@src": path.resolve(__dirname, "../src"),
       "@dummy": path.resolve(__dirname, "../dummy"),
     };
+
+    if (process.env.NODE_ENV === "production") {
+      config.output.publicPath = "/together-view-web/static/";
+    }
 
     // scss 모듈 적용
     config.module.rules.push({

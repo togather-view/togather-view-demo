@@ -13,7 +13,7 @@ import TagSelectComponent from "@src/components/common/TagSelect.component";
 import styles from "@src/styles/components/QuestionFilter.module.scss";
 
 import tagStyles from "@src/styles/components/TagSelect.module.scss";
-import { QuestionSortType } from "@src/interface/interface";
+import { QuestionSortType, TagSelectColor } from "@src/interface/interface";
 
 function QuestionFilterComponent() {
   const [selectedJobList, setSelectedJobList] = useState(myAccount.jobList);
@@ -49,7 +49,7 @@ function QuestionFilterComponent() {
       <div className={styles.selectContainer}>
         <h4>직군</h4>
         <TagSelectComponent
-          color="blue"
+          color={TagSelectColor.JOB}
           selectedClassName={tagStyles.tagSelectedBlue}
           selectedList={selectedJobList}
           setSelectedList={setSelectedJobList}
@@ -59,7 +59,7 @@ function QuestionFilterComponent() {
       <div className={styles.selectContainer}>
         <h4>기술</h4>
         <TagSelectComponent
-          color="orange"
+          color={TagSelectColor.JOB}
           selectedClassName={tagStyles.tagSelectedOrange}
           selectedList={selectedTechList}
           setSelectedList={setSelectedTechList}
