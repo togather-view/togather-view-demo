@@ -33,6 +33,7 @@
     "@storybook/addon-docs": "^6.3.9",
     "@storybook/addon-essentials": "^6.3.9",
     "@storybook/addon-links": "^6.3.9",
+    "@storybook/addon-viewport": "^6.3.12",
     "@storybook/preset-scss": "^1.0.3",
     "@storybook/react": "^6.3.9",
     "@types/antd": "^1.0.0",

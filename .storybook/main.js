@@ -9,6 +9,7 @@ module.exports = {
     "@storybook/addon-links",
     "@storybook/addon-essentials",
     "@storybook/addon-docs",
+    "@storybook/addon-viewport/register"
   ],
   typescript: {
     check: false,
