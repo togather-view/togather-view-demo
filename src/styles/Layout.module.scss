@@ -2,8 +2,7 @@
 
 .container {
   min-height: 100vh;
-
-  background: $color-page-background;
+  background: t($color-page-background);
 
   .header {
     height: $height-header-desktop;

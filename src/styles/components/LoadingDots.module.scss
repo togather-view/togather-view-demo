@@ -1,7 +1,9 @@
+@import "../mixin";
+
 $animation-speed: 1.4;
 $interval: $animation-speed/4;
 $ballSize: 5px;
-$ballColor: #4f4f4f;
+$ballColor: t($color-icon-black);
 
 @mixin dot($color) {
   display: inline-block;

@@ -4,7 +4,7 @@
   display: grid;
   grid-template-columns: 280px auto;
 
-  background-color: white;
+  background-color: t($color-component-background);
   min-height: 93vh;
 
   @include mobile {
@@ -70,7 +70,7 @@ $padding: 12px;
 
     button {
       margin-left: 6px;
-      background-color: #f0f0f0;
+      background-color: t($color-component-background-darker);
       border: none
     }
   }
@@ -96,7 +96,7 @@ $padding: 12px;
   }
 
   .answer {
-    background-color: $color-component-background-gray-darker;
+    background-color: t($color-component-background-darker);
     padding: 15px 10px;
     border-radius: 10px;
 

@@ -1,7 +1,7 @@
 @import "../mixin";
 
 .container {
-  background: $color-page-background;
+  background: t($color-page-background);
 
   padding: 0 40px;
   height: 100vh;
@@ -20,7 +20,7 @@
   .box {
     border: 1px solid $color-border-gray;
 
-    background-color: white;
+    background-color: t($color-component-background);
 
     overflow: hidden;
 
@@ -94,7 +94,7 @@
       top: 0;
       bottom: 0;
       left: 0;
-      background-color: $color-success;
+      background-color: t($color-success);
 
       overflow: hidden;
 
@@ -135,12 +135,12 @@
 
   .active {
     font-size: 25px;
-    color: $color-icon-active;
+    color: t($color-icon-active);
   }
 
   .inactive {
     font-size: 25px;
-    color: $color-icon-inactive;
+    color: t($color-icon-inactive);
   }
 
   :nth-child(n) {
@@ -253,7 +253,7 @@
             padding: 10px 13px;
             margin-bottom: 8px;
 
-            background-color: white;
+            background-color: t($color-component-background);
 
             white-space: pre-wrap;
           }
@@ -283,7 +283,7 @@
 
     align-items: center;
 
-    background-color: $color-component-background-gray;
+    background-color: t($color-component-background-gray);
 
     .toolContainer {
       position: relative;
@@ -300,7 +300,7 @@
       .submit {
         @extend .buttonWithNoStyle;
         margin: 0;
-        color: #3AC1E5;
+        color: $primary-color-light;
         font-weight: bold;
         cursor: pointer;
       }
@@ -321,7 +321,7 @@
 
 
       resize: none;
-      background-color: white;
+      background-color: t($color-component-background);
 
       &:focus {
         outline: none;
