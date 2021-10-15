@@ -11,7 +11,7 @@
     "storybook": "start-storybook  -s ./public -p 6006",
     "predeploy": "npm run build-storybook",
     "deploy-storybook": "npm run predeploy && gh-pages -d storybook-static",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook -s ./public"
   },
   "dependencies": {
     "@ant-design/icons": "^4.6.4",
