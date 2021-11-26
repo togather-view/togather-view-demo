@@ -9,7 +9,17 @@ module.exports = {
     "@storybook/addon-links",
     "@storybook/addon-essentials",
     "@storybook/addon-docs",
-    "@storybook/addon-viewport/register"
+    "@storybook/addon-viewport/register",
+    {
+      name: '@storybook/preset-ant-design',
+      options: {
+        lessOptions: {
+          modifyVars: {
+            'primary-color': '#0087e5',
+          },
+        },
+      },
+    }
   ],
   typescript: {
     check: false,
