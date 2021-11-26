@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@ant-design/icons": "^4.6.4",
+    "@netlify/plugin-nextjs": "3.9.2",
     "@zeit/next-less": "^1.0.1",
     "antd": "^4.16.13",
     "classnames": "^2.2.6",
