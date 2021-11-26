@@ -1,5 +1,5 @@
 import { memo } from "react";
-import "@src/styles/antd-custom.css";
+import "@src/styles/variables.less";
 import "@src/styles/globals.scss";
 
 function GlobalStyles() {

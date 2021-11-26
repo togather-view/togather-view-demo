@@ -8,6 +8,10 @@ const nextConfig = {
 
 module.exports = withAntdLess({
   lessVarsFilePath: "./src/styles/variables.less",
+  // optional
+  lessVarsFilePathAppendToEndOfContent: false,
+  // optional https://github.com/webpack-contrib/css-loader#object
+  cssLoaderOptions: {},
   ...nextConfig,
   webpack(config) {
     return config;
