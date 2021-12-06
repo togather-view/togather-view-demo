@@ -59,7 +59,7 @@ function QuestionFilterComponent() {
       <div className={styles.selectContainer}>
         <h4>기술</h4>
         <TagSelectComponent
-          color={TagSelectColor.JOB}
+          color={TagSelectColor.TECH}
           selectedClassName={tagStyles.tagSelectedOrange}
           selectedList={selectedTechList}
           setSelectedList={setSelectedTechList}

@@ -19,18 +19,18 @@ function QuestionListElement({ question }: Props) {
         <a className={styles.wrap}>
           {/* 직군 */}
           <div>
-            <div className={styles.group}>
-              {question.jobGroup.map((x) => (
-                <span key={x.id}>{x.name}</span>
+            <div className={styles.techList}>
+              {question.techList.map((x) => (
+                <TagComponent key={x.id} title={x.name} color={x.color}/>
               ))}
             </div>
             <div />
             {/*  질문 내용 */}
             <h3 className={styles.title}>{question.contents}</h3>
             {/*  관련 기술 */}
-            <div className={styles.techList}>
-              {question.techList.map((x) => (
-                <TagComponent key={x.id} title={x.name} color={x.color} />
+            <div className={styles.group}>
+              {question.jobGroup.map((x) => (
+                <span key={x.id}>{x.name}</span>
               ))}
             </div>
           </div>

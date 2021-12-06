@@ -70,6 +70,8 @@ $breakpoint-desktop: 1200px;
   text-align: inherit;
   border: initial;
   background: inherit;
+
+  width: 100%;
 }
 
 .noScroll {
@@ -90,7 +92,9 @@ $height-header-mobile: 52px;
 $layout-margin-x-desktop: 64px;
 $layout-margin-x-mobile: 12px;
 
+$font-size-large: 1.2em;
 $font-size-small: 0.9em;
+$font-size-so-small: 0.8em;
 $font-size-ex-small: 0.7em;
 
 $color-page-background: #F1F4F7;
