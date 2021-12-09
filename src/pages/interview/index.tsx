@@ -58,54 +58,61 @@ function InterviewFormPage() {
         <div className={styles.formBox}>
           {/* Title */}
           <div className={styles.title}>
-            <h2>
-              {myAccount.firstName}님의 면접을 시작할게요!
-              <p>
-                그 전에, {myAccount.firstName}님에 대해 몇 가지 더 알려주세요.
-              </p>
-            </h2>
+            <h2>{myAccount.firstName}님의 면접을 시작할게요!</h2>
+            <p>
+              그 전에, {myAccount.firstName}님에 대해 몇 가지 더 알려주세요.
+            </p>
           </div>
           {/* Select job group */}
-          <div className={styles.formItem}>
-            <p className={styles.label}>
-              <b>지원하실 직군</b>을 선택해주세요.
-            </p>
-            <TagSelectComponent
-              color="blue"
-              tagList={GroupList}
-              selectedList={selectedJobList}
-              setSelectedList={setSelectedJobList}
-              selectedClassName={tagStyles.tagSelectedBlue}
-            />
-          </div>
-          {/* Select Techs */}
-          <div className={styles.formItem}>
-            <p className={styles.label}>
-              이번에 집중적으로 연습하고 싶은 <b>기술/분야</b>를 선택해주세요.
-            </p>
-            <TagSelectComponent
-              color="orange"
-              tagList={TechList}
-              selectedList={selectedTechList}
-              setSelectedList={setSelectedTechList}
-              selectedClassName={tagStyles.tagSelectedOrange}
-            />
-          </div>
-          {/* Check if allow duplication */}
-          <div className={styles.formItem}>
-            <p className={styles.label}>저번에 했던 질문을 또 해도 될까요?</p>
-            <Radio.Group
-              className={styles.radioGroup}
-              value={allowDuplicated}
-              onChange={onSelectAllowDuplicated}
-            >
-              <Radio.Button className={styles.radioButton} value="true">
-                <span className={styles.emoji}>🙆</span>또 해도 괜찮아요
-              </Radio.Button>
-              <Radio.Button className={styles.radioButton} value="false">
-                <span className={styles.emoji}>🙅</span>새로운 질문만 주세요
-              </Radio.Button>
-            </Radio.Group>
+          <div className={styles.formContentWrap}>
+            <div className={styles.formContent}>
+              <div className={styles.formItem}>
+                <p className={styles.label}>
+                  <b>지원하실 직군</b>을 선택해주세요.
+                </p>
+                <TagSelectComponent
+                  color="blue"
+                  tagList={GroupList}
+                  selectedList={selectedJobList}
+                  setSelectedList={setSelectedJobList}
+                  selectedClassName={tagStyles.tagSelectedBlue}
+                />
+              </div>
+              {/* Select Techs */}
+              <div className={styles.formItem}>
+                <p className={styles.label}>
+                  이번에 집중적으로 연습하고 싶은 <b>기술/분야</b>를
+                  선택해주세요.
+                </p>
+                <TagSelectComponent
+                  color="orange"
+                  tagList={TechList}
+                  selectedList={selectedTechList}
+                  setSelectedList={setSelectedTechList}
+                  selectedClassName={tagStyles.tagSelectedOrange}
+                />
+              </div>
+            </div>
+            {/* Check if allow duplication */}
+            <div className={styles.formContent}>
+              <div className={styles.formItem}>
+                <p className={styles.label}>
+                  저번에 했던 질문을 또 해도 될까요?
+                </p>
+                <Radio.Group
+                  className={styles.radioGroup}
+                  value={allowDuplicated}
+                  onChange={onSelectAllowDuplicated}
+                >
+                  <Radio.Button className={styles.radioButton} value="true">
+                    <span className={styles.emoji}>🙆</span>또 해도 괜찮아요
+                  </Radio.Button>
+                  <Radio.Button className={styles.radioButton} value="false">
+                    <span className={styles.emoji}>🙅</span>새로운 질문만 주세요
+                  </Radio.Button>
+                </Radio.Group>
+              </div>
+            </div>
           </div>
           {/* Start interview */}
           <Button

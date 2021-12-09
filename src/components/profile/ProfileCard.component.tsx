@@ -44,7 +44,7 @@ function ProfileCardComponent({
   return (
     <div className={styles.profile}>
       <div>
-        <Avatar src={profile.avatarUrl} size={120} shape="square" />
+        <Avatar src={profile.avatarUrl} size={180} shape="square" />
       </div>
       <div className={styles.info}>
         <p className={styles.name}>
@@ -58,16 +58,16 @@ function ProfileCardComponent({
       </div>
       <div className={styles.countWrap}>
         <div>
-          <p>답변 작성</p>
-          <p>{answerCount}</p>
+          <p className={styles.label}>답변 작성</p>
+          <p className={styles.count}>{answerCount}</p>
         </div>
         <div>
-          <p>질문 공유</p>
-          <p>{questionCount}</p>
+          <p className={styles.label}>질문 공유</p>
+          <p className={styles.count}>{questionCount}</p>
         </div>
         <div>
-          <p>북마크</p>
-          <p>{bookmarkCount}</p>
+          <p className={styles.label}>북마크</p>
+          <p className={styles.count}>{bookmarkCount}</p>
         </div>
       </div>
     </div>

@@ -47,10 +47,18 @@ function ProfilePage() {
               onSelect={onClickMenu}
               mode="vertical"
             >
-              <Menu.Item key={ProfileMenu.RECORD}>면접 기록</Menu.Item>
-              <Menu.Item key={ProfileMenu.BOOKMARK}>북마크</Menu.Item>
-              <Menu.Item key={ProfileMenu.ANSWER}>나의 답변</Menu.Item>
-              <Menu.Item key={ProfileMenu.QUESTION}>공유한 질문</Menu.Item>
+              <Menu.Item icon={<span>📑</span>} key={ProfileMenu.RECORD}>
+                면접 기록
+              </Menu.Item>
+              <Menu.Item icon={<span>⭐</span>} key={ProfileMenu.BOOKMARK}>
+                북마크
+              </Menu.Item>
+              <Menu.Item icon={<span>✏️</span>} key={ProfileMenu.ANSWER}>
+                ️나의 답변
+              </Menu.Item>
+              <Menu.Item icon={<span>💬</span>} key={ProfileMenu.QUESTION}>
+                공유한 질문
+              </Menu.Item>
             </Menu>
             <div className={styles.mobile}>
               <Tabs

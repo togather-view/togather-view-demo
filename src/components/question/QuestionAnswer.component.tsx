@@ -31,7 +31,7 @@ function QuestionAnswerComponent({ answer }: props) {
     <div className={styles.questionAnswerWrap}>
       <div className={styles.header}>
         <div>
-          <Avatar src={answer.createdBy.avatarUrl} />
+          <Avatar src={answer.createdBy.avatarUrl} size={28} />
         </div>
         <p className={styles.name}>
           {answer.createdBy.familyName}
